@@ -1,4 +1,4 @@
-package teamEarth.homeSchoolHelper.models;
+package teamEarth.homeSchoolHelper.models.user;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

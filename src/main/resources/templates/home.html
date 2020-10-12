@@ -1,29 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="/css/reset.css"/> <!-- This is correct to find the static/... files.-->
-    <link rel="stylesheet" type="text/css" href="/css/base.css"/> <!-- This is correct to find the static/... files.-->
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/d29afa4ed1.js" crossorigin="anonymous"></script>
-</head>
+<head th:replace="fragments/head :: head"></head>
 <body>
 
-<!-- <div th:fragments="header"> -->
-<header> <!-- https://developer.mozilla.org/en-US/docs/web/html/element/header -->
-    <div id="header-container">
-        <div id="left-items">
-            <img class="flex-item" src="/graphics/Icon.png">
-            <h1 class="homeschoolhelper">Homeschool Helper</h1>
-        </div>
-        <div id="right-items"> <!-- TODO: th:if for user -->
-            <i class="far fa-user-circle fa-3x"></i>  <!-- https://fontawesome.com/how-to-use/on-the-web/styling/sizing-icons -->
-        </div>
-    </div>
-    <hr> <!-- https://www.w3schools.com/tags/tag_hr.asp -->
-</header>
-<!-- </div> -->
+    <header th:replace="fragments/header :: header"></header>
 
 <div class="start-here">
     <div class="cheap-padding"></div>
@@ -31,8 +11,8 @@
         <h1 id="center-item">Welcome to Homeschool Helper :)</h1>
         <a href="/login"><button class="login-signin">Login</button></a>
         <a href="/signup"><Button class="login-signin">Sign Up</Button></a>
-    </div>
-    <div class="cheap-padding"></div>
+     </div>
+     <div class="cheap-padding"></div>
 </div>
 
 </body>
