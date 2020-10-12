@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Homeschool Helper Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="/css/reset.css"/> <!-- This is correct to find the static/... files.-->
+    <link rel="stylesheet" type="text/css" href="/css/base.css"/> <!-- This is correct to find the static/... files.-->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d29afa4ed1.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<!-- <header> TODO: TH FRAGMENT HERE</header> -->
+
+<div class="start-here">
+    <div class="cheap-padding"></div>
+    <div>
+        <form action="/signup" method="POST" class="sign-up-form">
+            <p id="create-your-account">Create your Account</p>
+            Username: <input type="text" name="username">
+            First Name: <input type="text" name="firstName">
+            Last Name: <input type="text" name="lastName">
+            Create Password: <input type="password" name="password">
+            <!-- TODO: create a "Confirm Password" box to check against password -->
+            Date of Birth: <input type="date" name="dateOfBirth" >
+            Bio: <input type="text" name="bio">
+            <input type="submit" value="Finish" id="sign-up-finish">
+        </form>
+    </div>
+    <div class="cheap-padding"></div>
+</div>
+</body>
+
+</html>
