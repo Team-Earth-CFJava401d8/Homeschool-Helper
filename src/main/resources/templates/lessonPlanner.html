@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson Planner</title>
+
+</head>
+<body>
+    <section>Left Resources</section>
+
+    <section>
+        <form action=/lessonPlan" method="post">
+            Lesson Plan:<input type="text" name="planName"><br>
+            Date:<input type="date" name="date"><br>
+            Subject:<input type="text" name="subject"><br>
+            Child/Children:<select name="child" id="child"></select><br><!-- TODO: WIRE UP TO DB -->
+            Content:
+            <select name="item" id="item"></select><!-- TODO: drop down of books & links & API's (need db of links and a way to add links to database -->
+<!-- TODO: write th if that checks if the select above is empty if not then create a new select below.           -->
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <section>Right Resources</section>
+</body>
+</html>
