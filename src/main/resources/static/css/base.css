@@ -1,0 +1,86 @@
+* {
+    /* background-color: #309ABA; */
+    background-color: #446938;
+}
+
+#header-container {
+  display: flex;
+  flex-flow: row wrap;
+  background-color: #F23D3D;
+  justify-content: space-between;
+}
+
+#header-container * {
+  background-color: #F23D3D;
+  padding: 5px 0px 3px 0px;
+}
+
+#left-items {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.homeschoolhelper {  /* https://fonts.google.com/specimen/Caveat?preview.text=Homeschool%20Helper&preview.text_type=custom&sidebar.open=true&selection.family=Caveat:wght@700 */
+  font-family: 'Caveat', cursive;
+  font-size: 48px;
+}
+
+#right-items {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 15px;
+}
+
+#lower-color {
+  background-color: black;
+}
+
+hr {
+  height: 10px;
+  background-color: whitesmoke;
+  border-width: 0px;
+  /* color: whitesmoke; */
+  margin: 0px;
+}
+
+#start-here {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  /* background-color: #E6C67C; */
+  margin: 15% 0% 0% 0%;
+}
+
+#title {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  background-color: #E6C67C;
+  padding: 10px;
+  border-style: outset;
+  border-radius: 10px;
+  border-color: #309ABA;
+  border-width: 5px;
+}
+
+#center-item {
+  flex-basis: 100%;
+  text-align: center;
+  margin: 15px;
+  font-family: 'Caveat', cursive;
+  background-color: #E6C67C;
+}
+
+.login-signin {
+  /* flex-basis: 10%; */
+  padding: 10px;
+
+}
+
+button {
+  color: beige;
+  background-color: #F23D3D;
+}

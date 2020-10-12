@@ -1,6 +1,5 @@
 package teamEarth.homeSchoolHelper.configs;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,6 +14,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return applicationUserRepository.findByUsername(username);
+        return applicationUserRepository.findByUsername(username); // LOWERCASE.
     }
 }

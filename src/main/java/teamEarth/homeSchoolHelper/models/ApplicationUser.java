@@ -17,7 +17,7 @@ public class ApplicationUser implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long id;
 
-    private String userName; // TODO: add to vars list
+    public String username; // TODO: add to vars list BECAUSE IT'S ALL lowercase. why? BECAUSE.
     String password;
     private String firstName;
     private String lastName;
@@ -26,8 +26,8 @@ public class ApplicationUser implements UserDetails {
 
     public ApplicationUser(){};
 
-    public ApplicationUser(String userName, String password, String firstName, String lastName, Date dateOfBirth, String bio) {
-        this.userName = userName;
+    public ApplicationUser(String username, String password, String firstName, String lastName, Date dateOfBirth, String bio) {
+        this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -38,7 +38,7 @@ public class ApplicationUser implements UserDetails {
     @Override
     public String toString() {
         return "ApplicationUser{" +
-                "userName: " + userName + " |" +
+                "userName: " + username + " |" +
                 " firstName: " + firstName + " |" +
                 " lastName: " + lastName + " |" +
                 " dateOfBirth: " + dateOfBirth + " |" +
@@ -46,8 +46,8 @@ public class ApplicationUser implements UserDetails {
                 '}';
     }
 
-    public String getUserName() { return userName; }
-    public void setUserName(String userName) { this.userName = userName; }
+    public String getUserName() { return username; }
+    public void setUserName(String userName) { this.username = userName; }
 
     public void setPassword(String password) { this.password = password; }
 
