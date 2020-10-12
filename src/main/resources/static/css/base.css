@@ -1,5 +1,4 @@
 * {
-    /* background-color: #309ABA; */
     background-color: #446938;
 }
 
@@ -46,11 +45,10 @@ hr {
   margin: 0px;
 }
 
-#start-here {
+.start-here {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  /* background-color: #E6C67C; */
   margin: 15% 0% 0% 0%;
 }
 
@@ -59,7 +57,7 @@ hr {
   flex-flow: row wrap;
   justify-content: space-evenly;
   background-color: #E6C67C;
-  padding: 10px;
+  padding: 5px 0px 20px;
   border-style: outset;
   border-radius: 10px;
   border-color: #309ABA;
@@ -69,18 +67,55 @@ hr {
 #center-item {
   flex-basis: 100%;
   text-align: center;
-  margin: 15px;
+  margin: 10px;
   font-family: 'Caveat', cursive;
   background-color: #E6C67C;
 }
 
 .login-signin {
-  /* flex-basis: 10%; */
   padding: 10px;
-
 }
 
 button {
   color: beige;
   background-color: #F23D3D;
+}
+
+.sign-up-form {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-evenly;
+  background: whitesmoke;
+  padding: 10px;
+  background-color: #E6C67C;
+  border-style: outset;
+  border-radius: 10px;
+  border-width: 5px;
+  border-color: #309ABA;
+}
+
+input {
+  background-color: whitesmoke;
+  margin: 3px 0px 3px 0px;
+}
+
+#sign-up-finish {
+  margin-top: 10px;
+  font-family: 'Caveat', cursive;
+  font-size: 1.25em;
+  background-color: #F23D3D;
+  border-radius: 10px;
+}
+
+#create-your-account {
+  font-family: 'Caveat', cursive;
+  background-color: #E6C67C;
+  text-align: center;
+  margin-bottom: 5px;
+  font-size: 1.5em;
+}
+
+#login {
+  font-size: 1.25em;
+  margin-top: 10px;
 }
