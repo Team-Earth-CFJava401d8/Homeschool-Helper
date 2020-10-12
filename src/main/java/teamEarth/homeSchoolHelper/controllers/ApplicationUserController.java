@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,6 +13,7 @@ import teamEarth.homeSchoolHelper.models.user.ApplicationUser;
 import teamEarth.homeSchoolHelper.models.user.ApplicationUserRepository;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.sql.Date;
 
 @Controller
@@ -50,6 +52,14 @@ public class ApplicationUserController {
     @GetMapping("/signup")
     public String signup(){
         return "signup";
+    }
+
+    @GetMapping("/myprofile")
+    public String showMyProfile(Model m, Principal principal) {
+        ApplicationUser user = applicationUserRepository.findByUsername(principal.getName());
+        m.addAttribute("user", user);
+        m.addAttribute("principal", principal);
+        return "myprofile";
     }
 }
 
