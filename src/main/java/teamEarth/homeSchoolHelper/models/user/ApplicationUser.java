@@ -18,7 +18,7 @@ public class ApplicationUser implements UserDetails {
     public long id;
 
     public String username; // TODO: add to vars list BECAUSE IT'S ALL lowercase. why? BECAUSE.
-    String password;
+    public String password;
     private String firstName;
     private String lastName;
     private Date dateOfBirth; // NOTE: used the java.sql version
@@ -67,10 +67,10 @@ public class ApplicationUser implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() { return null; }
 
     @Override
-    public String getPassword() { return null; }
+    public String getPassword() { return password; } // TODO: Always ensure it RETURNS IT.
 
     @Override
-    public String getUsername() { return null; }
+    public String getUsername() { return username; } // TODO: Always ensure it RETURNS IT.
 
     @Override
     public boolean isAccountNonExpired() { return true; }
