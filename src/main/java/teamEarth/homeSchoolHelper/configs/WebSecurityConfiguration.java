@@ -45,7 +45,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/user") // the
+                .defaultSuccessUrl("/myprofile") // the
 //                .failureUrl("/user")
                 .and()
                 .logout(); // this then creates a built-in default logout route at /logout.
