@@ -2,9 +2,8 @@ package teamEarth.homeSchoolHelper;
 
 //import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.Test;
-import teamEarth.homeSchoolHelper.models.ApplicationUser;
+import teamEarth.homeSchoolHelper.models.user.ApplicationUser;
 //import static org.junit.jupiter.api.Assertions.assertNull;
-import java.text.DateFormat;
 
 import static org.junit.Assert.*;
 
