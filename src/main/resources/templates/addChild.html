@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+
+<body>
+    <header th:replace="fragments/header :: header"></header>
+
+    <section>
+        <form action="/addChild" method="post">
+            First name:<input type="text" name="firstName">
+            Last Name:<input type="text" name="lastName">
+            Birthday:<input type="date" name="dob">
+            <button type="submit">Add Child</button>
+        </form>
+    </section>
+
+</body>
+</html>

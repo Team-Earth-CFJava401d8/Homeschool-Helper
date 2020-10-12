@@ -1,9 +1,12 @@
 package teamEarth.homeSchoolHelper.models.child;
 
+import teamEarth.homeSchoolHelper.models.lessonPlan.LessonPlan;
 import teamEarth.homeSchoolHelper.models.user.ApplicationUser;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Child {
@@ -31,9 +34,15 @@ public class Child {
     @ManyToMany(cascade = CascadeType.REMOVE)
 
     @JoinTable(
-            //name="lessons4u",
-
+            name="lessons4u",
+            joinColumns = { @JoinColumn(name="child")},
+            inverseJoinColumns ={@JoinColumn(name="parents")}
     )
+
+    public Set<Child> children = new HashSet<>();
+
+    @ManyToMany(mappedBy = "children")
+    public Set<LessonPlan> plans = new HashSet<>();
 
     //=========== Getters & Setters ==========
 
