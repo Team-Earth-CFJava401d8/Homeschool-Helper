@@ -1,4 +1,4 @@
-package teamEarth.homeSchoolHelper.models;
+package teamEarth.homeSchoolHelper.models.lessonPlan;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
