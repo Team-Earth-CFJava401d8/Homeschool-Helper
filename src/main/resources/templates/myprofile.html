@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+    <header th:replace="fragments/header :: header"></header>
+    <main>
+        <div>
+            <h1>My Account Profile</h1>
+            <!--        Make a image profile property in ApplicationUser constructor-->
+            <!--        <img th:src="${user.()}">-->
+            <p th:text="'Username: ' + ${user.getUsername()}"></p>
+            <p th:if="${user.getFirstName()} !=''"
+               th:text="'First Name: ' + ${user.getFirstName()}"></p>
+            <p th:if="${user.getLastName()} != ''"
+               th:text="'Last Name: ' + ${user.getLastName()}"></p>
+            <p th:if="${user.getDateOfBirth()} != null"
+               th:text="'Date of Birth: ' + ${user.getDateOfBirth()}"></p>
+            <p th:if="${user.getBio()} != ''" th:text="'Bio: ' + ${user.getBio()}"></p>
+        </div>
+    </main>
+</body>
+</html>
