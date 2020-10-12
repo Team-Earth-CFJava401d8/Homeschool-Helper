@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+
+    <header th:replace="fragments/header :: header"></header>
+    <main>
+        <h1>Book Page</h1>
+        <div>
+<!--            Add some image for the page-->
+            <form action="/book" method="POST">
+<!--                Subject is going to be an object-->
+                Subject: <select name="subject" id="subject"></select><br>
+                Title: <input type="text" name="title"><br>
+                Author: <input type="text" name="author"><br>
+                ISBN: <input type="text" name="ISBN"><br>
+                Edition: <input type="text" name="edition"><br>
+<!--                Change grade level to be a dropdown-->
+                Grade Level: <input type="text" name="gradeLevel"><br>
+<!--                Number of units might change to an object-->
+                Number of Units: <input type="number" name="numberOfUnits">
+            </form>
+        </div>
+    </main>
+
+</body>
+</html>
