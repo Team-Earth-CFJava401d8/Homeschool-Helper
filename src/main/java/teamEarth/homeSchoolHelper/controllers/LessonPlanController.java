@@ -42,7 +42,9 @@ public class LessonPlanController {
 
     @PostMapping("/lessonPlanner")
     public String planner2(Model m, Principal principal, Long subjectId) {
-        List<SubCat> subCats = subCatRepository.findAll();
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!" + subjectId);
+        List<SubCat> subCats = subCatRepository.findAllSubCatBySubjectId(subjectId);
+        System.out.println(subCats);
         return "lessonPlanner";
     }
 
