@@ -17,6 +17,15 @@
                th:text="'Date of Birth: ' + ${user.getDateOfBirth()}"></p>
             <p th:if="${user.getBio()} != ''" th:text="'Bio: ' + ${user.getBio()}"></p>
         </div>
+
+        <section th:each="child : ${children}" th:value="${child.getId()}"  class="container">
+            <img src="/graphics/Icon.png" alt="homeschool helper logo" class='profilepic'>
+            <p th:text="${child.getFirstName()} + ' ' + ${child.getLastName()}" class="name">Paul O'Brien</p>
+            <p class="plan-one">Content all here <br> and here</p>
+            <p class="plan-two">More <br> then there</p>
+
+        </section>
+
         <section>
             <form action="/assignLesson" method="post">
                 <select name="child" >
@@ -32,4 +41,7 @@
         </section>
     </main>
 </body>
+
+<script src="js/dropdown.js"></script>
+
 </html>

@@ -10,7 +10,7 @@
 }
 
 #header-container * {
-  background-color: #F23D3D;
+  /* background-color: #F23D3D; */
   padding: 5px 0px 3px 0px;
 }
 
@@ -18,11 +18,13 @@
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
+  background-color: #F23D3D;
 }
 
 .homeschoolhelper {  /* https://fonts.google.com/specimen/Caveat?preview.text=Homeschool%20Helper&preview.text_type=custom&sidebar.open=true&selection.family=Caveat:wght@700 */
   font-family: 'Caveat', cursive;
   font-size: 48px;
+  background-color: #F23D3D;
 }
 
 #right-items {
@@ -31,6 +33,7 @@
   justify-content: flex-end;
   align-items: center;
   margin-right: 15px;
+  background-color: #F23D3D;
 }
 
 #lower-color {
@@ -45,7 +48,7 @@ hr {
   margin: 0px;
 }
 
-.start-here {
+#start-here {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -79,6 +82,8 @@ hr {
 button {
   color: beige;
   background-color: #F23D3D;
+  border-radius: 10px;
+  font-family: "Caveat", cursive;
 }
 
 .sign-up-form {
@@ -118,4 +123,80 @@ input {
 #login {
   font-size: 1.25em;
   margin-top: 10px;
+}
+#add-button {
+  margin 0px 0px 0px 0px;
+  padding 0px;
+  border: none;
+}
+
+#profile-pic {
+  background-color: #F23D3D;
+}
+
+#plus-pic {
+  background-color: #F23D3D;
+}
+
+.container {
+  display: grid;
+  inline-size: 480px;
+  grid-template-columns: 90px 310px 65px;
+  grid-template-rows: 40px 50px 50px; /*  */
+  border-radius: 10px;
+  border-color: black;
+  border-style: solid;
+  background-color: lightgreen;
+  gap: 5px 5px;
+}
+
+.name {
+  grid-column: 1 / span 3;
+  grid-row: 1;
+  align-self: center;
+  padding: 2px 0px 6px 10px;
+  background-color: #faf7fa;
+  margin-left: 5px;
+  border-radius: 6px;
+  font: 1.2em sans-serif;
+  align-self: center;
+}
+
+.profilepic {
+  grid-column: 1;
+  grid-row: 2 / span 3;
+  justify-self: center;
+  align-self: center;
+  background-color: #faf7fa;
+  border-radius: 5px;
+  font: 1em sans-serif;
+}
+
+.plan-one {
+  grid-column: 2 / span 2;
+  grid-row: 2 / span 1;
+  background-color: #faf7fa;
+  margin: 1px;
+  border-radius: 8px;
+  font: 1em sans-serif;
+  padding: 3px;
+}
+
+.plan-two {
+  grid-column: 2 / span 2;
+  grid-row: 3 / span 1;
+  background-color: #faf7fa;
+  margin: 1px;
+  border-radius: 8px;
+  padding: 3px;
+  font: 1em sans-serif;
+}
+
+.nav-bar-item {
+  margin-right: 10px;
+}
+
+.flex-item {
+  margin-left: 8px;
+  background-color: #F23D3D;
 }
