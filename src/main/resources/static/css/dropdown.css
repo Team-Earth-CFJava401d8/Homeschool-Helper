@@ -40,13 +40,13 @@
   display: block;
 }
 
-.dropdown a:hover {
+.dropdown a:hover, #logobg {
   background-color:#F23D3D;
 }
 
 .show {display: block}
 
-#plus-button-static {
+#plus-button-static, #profilepic-static {
     background-color:#F23D3D;
     margin-right: 12px;
 }
