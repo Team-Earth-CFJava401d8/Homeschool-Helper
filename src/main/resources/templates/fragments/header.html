@@ -1,12 +1,22 @@
 <!-- <div th:fragments="header"> -->
 <header> <!-- https://developer.mozilla.org/en-US/docs/web/html/element/header -->
+
+
+
     <div id="header-container">
         <div id="left-items">
             <img class="flex-item" src="/graphics/Icon.png">
             <h1 class="homeschoolhelper">Homeschool Helper</h1>
         </div>
         <div id="right-items"> <!-- TODO: th:if for user -->
-            <i class="far fa-user-circle fa-3x"></i>  <!-- https://fontawesome.com/how-to-use/on-the-web/styling/sizing-icons -->
+            <div class="dropDown" id="plus-button-static"> <!-- class="nav-bar-item"-->
+                <a onclick="dropDown()" class="dropbtn" id="plus-button"><i id="plus-pic" class="fas fa-plus-circle fa-2x"></i></a>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="/lessonPlanner"> Add a Lesson Plan</a>
+                    <a href="/addChild"> Add a Student Profile</a>
+                </div>
+            </div>
+            <i id="profile-pic" class="far fa-user-circle fa-3x"></i>  <!-- https://fontawesome.com/how-to-use/on-the-web/styling/sizing-icons -->
         </div>
     </div>
     <hr> <!-- https://www.w3schools.com/tags/tag_hr.asp -->

@@ -3,9 +3,14 @@
 <head th:replace="fragments/head :: head"></head>
 <body>
 
-    <header th:replace="fragments/header :: header"></header>
+<div id="header-container">
+    <div id="left-items">
+        <img class="flex-item" src="/graphics/Icon.png">
+        <h1 class="homeschoolhelper">Homeschool Helper</h1>
+    </div>
+</div>
 
-<div class="start-here">
+<div id="start-here">
     <div class="cheap-padding"></div>
     <div id="title">
         <h1 id="center-item">Welcome to Homeschool Helper :)</h1>
@@ -16,4 +21,7 @@
 </div>
 
 </body>
+
+<script src="js/dropdown.js"></script>
+
 </html>
