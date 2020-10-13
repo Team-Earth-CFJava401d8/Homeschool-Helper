@@ -2,20 +2,22 @@ package teamEarth.homeSchoolHelper.models.user;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import teamEarth.homeSchoolHelper.models.child.Child;
+import teamEarth.homeSchoolHelper.models.child.ChildRepository;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 
 @Entity
 public class ApplicationUser implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public long id;
+    private long id;
 
     public String username; // TODO: add to vars list BECAUSE IT'S ALL lowercase. why? BECAUSE.
     public String password;
@@ -35,6 +37,9 @@ public class ApplicationUser implements UserDetails {
         this.bio = bio;
     }
 
+    @OneToMany(mappedBy = "applicationUser", cascade = CascadeType.ALL)
+    public List<Child> children = new ArrayList<>();
+
     @Override
     public String toString() {
         return "ApplicationUser{" +
@@ -44,6 +49,14 @@ public class ApplicationUser implements UserDetails {
                 " dateOfBirth: " + dateOfBirth + " |" +
                 " bio: " + bio +
                 '}';
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getUserName() { return username; }

@@ -2,12 +2,16 @@ package teamEarth.homeSchoolHelper.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 import teamEarth.homeSchoolHelper.models.child.Child;
 import teamEarth.homeSchoolHelper.models.child.ChildRepository;
 import teamEarth.homeSchoolHelper.models.lessonPlan.LessonPlanRepository;
+import teamEarth.homeSchoolHelper.models.user.ApplicationUser;
+import teamEarth.homeSchoolHelper.models.user.ApplicationUserRepository;
 
+import java.security.Principal;
 import java.sql.Date;
 
 @Controller
@@ -16,14 +20,21 @@ public class ChildController {
     @Autowired
     ChildRepository childRepository;
 
-    //@Autowired
-    //LessonPlanRepository lessonPlanRepository;
+    @Autowired
+    ApplicationUserRepository applicationUserRepository;
+
+    @Autowired
+    LessonPlanRepository lessonPlanRepository;
 
     //=========== "Add child ============
-    @PostMapping("/addChild")
-    public RedirectView(String firstName, String lastName, Date dob){
+    @GetMapping("/addChild")
+    public String addChild(){ return "addChild";}
 
-        Child newChild = new Child(firstName, lastName, dob);
+    @PostMapping("/addChild")
+    public RedirectView RedirectView(String firstName, String lastName, Date dob, Principal principal){
+
+        ApplicationUser user = applicationUserRepository.findByUsername(principal.getName());
+        Child newChild = new Child(user, firstName, lastName, dob);
         childRepository.save(newChild);
 
         return new RedirectView("/myprofile");

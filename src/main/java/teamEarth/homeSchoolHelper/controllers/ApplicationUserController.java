@@ -9,12 +9,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
+import teamEarth.homeSchoolHelper.models.child.Child;
+import teamEarth.homeSchoolHelper.models.child.ChildRepository;
 import teamEarth.homeSchoolHelper.models.user.ApplicationUser;
 import teamEarth.homeSchoolHelper.models.user.ApplicationUserRepository;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.sql.Date;
+import java.util.*;
 
 @Controller
 public class ApplicationUserController {
@@ -24,6 +27,9 @@ public class ApplicationUserController {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    ChildRepository childRepository;
 
     @PostMapping("/signup")
     public ModelAndView newUser(String username,
@@ -57,7 +63,10 @@ public class ApplicationUserController {
     @GetMapping("/myprofile")
     public String showMyProfile(Model m, Principal principal) {
         ApplicationUser user = applicationUserRepository.findByUsername(principal.getName());
+
+        List<Child> usersChildren = user.children;
         m.addAttribute("user", user);
+        m.addAttribute("children", usersChildren);
         m.addAttribute("principal", principal);
         return "myprofile";
     }

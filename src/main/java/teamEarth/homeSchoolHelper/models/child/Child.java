@@ -21,7 +21,8 @@ public class Child {
     //=========== Constructors ================
     public Child() {};
 
-    public Child(String firstName, String lastName, Date dob) {
+    public Child(ApplicationUser applicationUser, String firstName, String lastName, Date dob) {
+        this.applicationUser = applicationUser;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dob = dob;
@@ -42,9 +43,10 @@ public class Child {
     public Set<Child> children = new HashSet<>();
 
     @ManyToMany(mappedBy = "children")
-    public Set<LessonPlan> plans = new HashSet<>();
+    //public Set<LessonPlan> plans = new HashSet<>();
 
     //=========== Getters & Setters ==========
+
 
     public String getFirstName() {
         return firstName;
@@ -68,5 +70,13 @@ public class Child {
 
     public void setDob(Date dob) {
         this.dob = dob;
+    }
+
+    public ApplicationUser getApplicationUser() {
+        return applicationUser;
+    }
+
+    public void setApplicationUser(ApplicationUser applicationUser) {
+        this.applicationUser = applicationUser;
     }
 }
