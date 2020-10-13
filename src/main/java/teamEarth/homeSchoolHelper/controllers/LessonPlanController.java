@@ -41,19 +41,15 @@ public class LessonPlanController {
     public RedirectView redirectview(Model m, Principal principal, Long child, Long lesson){
 
         Child assignedChild = childRepository.getOne(child);
-        LessonPlan lessonToAssign = lessonPlanRepository.getOne((long) 1);
+        LessonPlan lessonToAssign = lessonPlanRepository.findById(lesson).get();
 
-        //List<LessonPlan> lessonPlans= lessonPlanRepository.findAll();
-
-        System.out.println("!!!!!!!!!!!!!" + assignedChild.getFirstName().toString());
-        System.out.println(lessonToAssign.getPlanName().toString());
         assignedChild.plans.add(lessonToAssign);
         lessonToAssign.kids.add(assignedChild);
 
         childRepository.save(assignedChild);
         lessonPlanRepository.save(lessonToAssign);
 
-        m.addAttribute("principal", principal);
+        //m.addAttribute("principal", principal);
 
         return new RedirectView("/myprofile");
     }

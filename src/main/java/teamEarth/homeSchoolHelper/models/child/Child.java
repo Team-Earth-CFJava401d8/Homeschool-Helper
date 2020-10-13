@@ -33,18 +33,7 @@ public class Child {
     //====== One to Many (user to children) ====
     @ManyToOne
     ApplicationUser applicationUser;
-//////////////////////////////////////////////////
-    //===== Many to Many (lessonPlans to children)
-//    @ManyToMany(cascade = CascadeType.REMOVE)
-//
-//    @JoinTable(
-//            name="lessons4u",
-//            joinColumns =  @JoinColumn(name="lesson2"),
-//            inverseJoinColumns = @JoinColumn(name="child1")
-//    )
-//
-//    public Set<LessonPlan> lessonPlans = new HashSet<>();
-/////////////////////////////////////////////////////
+
     @ManyToMany (mappedBy = "kids")
     public Set<LessonPlan> plans = new HashSet<>();
 
