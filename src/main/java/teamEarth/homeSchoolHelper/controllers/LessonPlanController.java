@@ -10,6 +10,10 @@ import teamEarth.homeSchoolHelper.models.child.Child;
 import teamEarth.homeSchoolHelper.models.child.ChildRepository;
 import teamEarth.homeSchoolHelper.models.lessonPlan.LessonPlan;
 import teamEarth.homeSchoolHelper.models.lessonPlan.LessonPlanRepository;
+import teamEarth.homeSchoolHelper.models.subCat.SubCat;
+import teamEarth.homeSchoolHelper.models.subCat.SubCatRepository;
+import teamEarth.homeSchoolHelper.models.subject.Subject;
+import teamEarth.homeSchoolHelper.models.subject.SubjectRepository;
 
 import java.security.Principal;
 import java.util.List;
@@ -23,16 +27,30 @@ public class LessonPlanController {
     @Autowired
     LessonPlanRepository lessonPlanRepository;
 
+    @Autowired
+    SubjectRepository subjectRepository;
+
+    @Autowired
+    SubCatRepository subCatRepository;
+
     @GetMapping("/lessonPlanner")
-    public String planner(){return "lessonPlanner";}
+    public String planner(Model m, Principal principal) {
+        List<Subject> subjects = subjectRepository.findAll();
+        m.addAttribute("monkey", subjects);
+        return "lessonPlanner";
+    }
+
+    @PostMapping("/lessonPlanner")
+    public String planner2(Model m, Principal principal, Long subjectId) {
+        List<SubCat> subCats = subCatRepository.findAll();
+        return "lessonPlanner";
+    }
 
     @PostMapping("/lessonPlan")
     public RedirectView RedirectView(Model m, Principal principal, String planName, Child child) {
 
         LessonPlan lessonPlan = new LessonPlan(planName);
-
         lessonPlanRepository.save(lessonPlan);
-
 
         return new RedirectView( "/myprofile");
     }
