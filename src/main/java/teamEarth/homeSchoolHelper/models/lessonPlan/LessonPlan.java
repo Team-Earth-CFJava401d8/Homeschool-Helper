@@ -39,19 +39,19 @@ public class LessonPlan {
     }
 
     //======== Many to Many =================
-//    @ManyToMany(cascade = CascadeType.REMOVE)
-//
-//    @JoinTable(
-//            name="childlessons",
-//            joinColumns = @JoinColumn(name="child1"),
-//            inverseJoinColumns = @JoinColumn(name="lesson2")
-//            )
-//
-//    public Set<LessonPlan> kids = new HashSet<>();
-//
+    @ManyToMany(cascade = CascadeType.REMOVE)
+
+    @JoinTable(
+            name="childlessons",
+            joinColumns = @JoinColumn(name="child1"),
+            inverseJoinColumns = @JoinColumn(name="lesson2")
+            )
+
+    public Set<Child> kids = new HashSet<>();
+//////////////////////////////////////////////
 //    @ManyToMany(mappedBy = "lessonPlans")
 //    public Set<Child> children = new HashSet<>();
-
+///////////////////////////////////////////
     //========= Getters & Setters ============
 
 

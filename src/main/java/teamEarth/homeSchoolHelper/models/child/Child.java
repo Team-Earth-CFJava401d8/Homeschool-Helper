@@ -33,7 +33,7 @@ public class Child {
     //====== One to Many (user to children) ====
     @ManyToOne
     ApplicationUser applicationUser;
-
+//////////////////////////////////////////////////
     //===== Many to Many (lessonPlans to children)
 //    @ManyToMany(cascade = CascadeType.REMOVE)
 //
@@ -44,9 +44,9 @@ public class Child {
 //    )
 //
 //    public Set<LessonPlan> lessonPlans = new HashSet<>();
-//
-//    @ManyToMany (mappedBy = "kids")
-//    public Set<LessonPlan> plans = new HashSet<>();
+/////////////////////////////////////////////////////
+    @ManyToMany (mappedBy = "kids")
+    public Set<LessonPlan> plans = new HashSet<>();
 
     //=========== Getters & Setters ==========
 
@@ -83,5 +83,6 @@ public class Child {
     public void setId(long id) {
         this.id = id;
     }
+
 
 }
