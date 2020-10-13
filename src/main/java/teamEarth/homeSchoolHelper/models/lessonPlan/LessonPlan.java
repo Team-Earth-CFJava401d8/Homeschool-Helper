@@ -3,6 +3,7 @@ package teamEarth.homeSchoolHelper.models.lessonPlan;
 import org.springframework.beans.factory.annotation.Autowired;
 import teamEarth.homeSchoolHelper.models.child.Child;
 import teamEarth.homeSchoolHelper.models.child.ChildRepository;
+import teamEarth.homeSchoolHelper.models.subCat.SubCat;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -38,7 +39,12 @@ public class LessonPlan {
        // this.child = child;
     }
 
+    //======== Many to One =================
+    @ManyToOne
+    SubCat subCat;
+
     //======== Many to Many =================
+
     @ManyToMany(cascade = CascadeType.REMOVE)
 
     @JoinTable(
