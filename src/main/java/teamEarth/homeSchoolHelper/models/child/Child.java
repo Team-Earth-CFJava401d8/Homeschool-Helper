@@ -1,6 +1,8 @@
 package teamEarth.homeSchoolHelper.models.child;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import teamEarth.homeSchoolHelper.models.lessonPlan.LessonPlan;
+import teamEarth.homeSchoolHelper.models.lessonPlan.LessonPlanRepository;
 import teamEarth.homeSchoolHelper.models.user.ApplicationUser;
 
 import javax.persistence.*;
@@ -10,6 +12,7 @@ import java.util.Set;
 
 @Entity
 public class Child {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id ;
@@ -32,18 +35,18 @@ public class Child {
     ApplicationUser applicationUser;
 
     //===== Many to Many (lessonPlans to children)
-    @ManyToMany(cascade = CascadeType.REMOVE)
-
-    @JoinTable(
-            name="lessons4u",
-            joinColumns = { @JoinColumn(name="child")},
-            inverseJoinColumns ={@JoinColumn(name="parents")}
-    )
-
-    public Set<Child> children = new HashSet<>();
-
-    @ManyToMany(mappedBy = "children")
-    //public Set<LessonPlan> plans = new HashSet<>();
+//    @ManyToMany(cascade = CascadeType.REMOVE)
+//
+//    @JoinTable(
+//            name="lessons4u",
+//            joinColumns =  @JoinColumn(name="lesson2"),
+//            inverseJoinColumns = @JoinColumn(name="child1")
+//    )
+//
+//    public Set<LessonPlan> lessonPlans = new HashSet<>();
+//
+//    @ManyToMany (mappedBy = "kids")
+//    public Set<LessonPlan> plans = new HashSet<>();
 
     //=========== Getters & Setters ==========
 
@@ -72,11 +75,13 @@ public class Child {
         this.dob = dob;
     }
 
-    public ApplicationUser getApplicationUser() {
-        return applicationUser;
+
+    public long getId() {
+        return id;
     }
 
-    public void setApplicationUser(ApplicationUser applicationUser) {
-        this.applicationUser = applicationUser;
+    public void setId(long id) {
+        this.id = id;
     }
+
 }

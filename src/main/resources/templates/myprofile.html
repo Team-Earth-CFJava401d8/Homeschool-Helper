@@ -19,9 +19,14 @@
         </div>
         <section>
             <form action="/assignLesson" method="post">
-                <select name="kids" >
-                    <option th:each="child : ${children}" th:value="${child.getFirstName()}" th:text="${child.getFirstName()}"></option>
+                <select name="child" >
+                    <option th:each="child : ${children}" th:value="${child.getId()}" th:text="${child.getFirstName()}"></option>
                 </select>
+
+                <select name="lesson">
+                    <option th:each="plan : ${plans}" th:value="${plan.getId()}" th:text="${plan.getPlanName()}"></option>
+                </select>
+                <input type="submit" value="Assign">
             </form>
 
         </section>

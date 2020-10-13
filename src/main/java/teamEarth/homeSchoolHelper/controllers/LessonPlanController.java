@@ -36,5 +36,11 @@ public class LessonPlanController {
         return new RedirectView( "/myprofile");
     }
 
+//    @PostMapping("/assignLesson")
+//    public RedirectView redirectview(Model m, Principal principal, Long child, Long lesson){
+//
+//
+//    }
+
 
 }

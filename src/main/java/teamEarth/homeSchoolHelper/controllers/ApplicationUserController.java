@@ -11,6 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import teamEarth.homeSchoolHelper.models.child.Child;
 import teamEarth.homeSchoolHelper.models.child.ChildRepository;
+import teamEarth.homeSchoolHelper.models.lessonPlan.LessonPlan;
+import teamEarth.homeSchoolHelper.models.lessonPlan.LessonPlanRepository;
 import teamEarth.homeSchoolHelper.models.user.ApplicationUser;
 import teamEarth.homeSchoolHelper.models.user.ApplicationUserRepository;
 
@@ -24,6 +26,9 @@ public class ApplicationUserController {
 
     @Autowired
     ApplicationUserRepository applicationUserRepository;
+
+    @Autowired
+    LessonPlanRepository lessonPlanRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -64,7 +69,10 @@ public class ApplicationUserController {
     public String showMyProfile(Model m, Principal principal) {
         ApplicationUser user = applicationUserRepository.findByUsername(principal.getName());
 
+        List<LessonPlan> lessonPlans = lessonPlanRepository.findAll();
         List<Child> usersChildren = user.children;
+
+        m.addAttribute("plans", lessonPlans);
         m.addAttribute("user", user);
         m.addAttribute("children", usersChildren);
         m.addAttribute("principal", principal);
