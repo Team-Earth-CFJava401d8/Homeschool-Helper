@@ -1,6 +1,8 @@
 package teamEarth.homeSchoolHelper.models.lessonPlan;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import teamEarth.homeSchoolHelper.models.child.Child;
+import teamEarth.homeSchoolHelper.models.child.ChildRepository;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -12,13 +14,14 @@ import java.util.Set;
 
 @Entity
 public class LessonPlan {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
     public String planName;
 //    public String subject; // TODO: change to subject obj once subject obj's are created
-   // public Child child;
+//    public Child child;
     //public Link link;
     //public Unit unit;
 
@@ -40,16 +43,25 @@ public class LessonPlan {
 
     @JoinTable(
             name="childlessons",
-            joinColumns = {@JoinColumn(name="child1")},
-            inverseJoinColumns = {@JoinColumn(name="lesson2")}
-    )
+            joinColumns = @JoinColumn(name="child1"),
+            inverseJoinColumns = @JoinColumn(name="lesson2")
+            )
 
-    public Set<LessonPlan> plans = new HashSet<>();
-
-    @ManyToMany(mappedBy = "plans")
-    //public List<Child> kids = new ArrayList<>();
-
+    public Set<Child> kids = new HashSet<>();
+//////////////////////////////////////////////
+//    @ManyToMany(mappedBy = "lessonPlans")
+//    public Set<Child> children = new HashSet<>();
+///////////////////////////////////////////
     //========= Getters & Setters ============
+
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getPlanName() {
         return planName;
@@ -66,4 +78,5 @@ public class LessonPlan {
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
+
 }

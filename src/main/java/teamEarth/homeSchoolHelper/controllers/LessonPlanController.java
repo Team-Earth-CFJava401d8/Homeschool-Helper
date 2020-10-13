@@ -12,6 +12,7 @@ import teamEarth.homeSchoolHelper.models.lessonPlan.LessonPlan;
 import teamEarth.homeSchoolHelper.models.lessonPlan.LessonPlanRepository;
 
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 public class LessonPlanController {
@@ -34,6 +35,27 @@ public class LessonPlanController {
 
 
         return new RedirectView( "/myprofile");
+    }
+
+    @PostMapping("/assignLesson")
+    public RedirectView redirectview(Model m, Principal principal, Long child, Long lesson){
+
+        Child assignedChild = childRepository.getOne(child);
+        LessonPlan lessonToAssign = lessonPlanRepository.getOne((long) 1);
+
+        //List<LessonPlan> lessonPlans= lessonPlanRepository.findAll();
+
+        System.out.println("!!!!!!!!!!!!!" + assignedChild.getFirstName().toString());
+        System.out.println(lessonToAssign.getPlanName().toString());
+        assignedChild.plans.add(lessonToAssign);
+        lessonToAssign.kids.add(assignedChild);
+
+        childRepository.save(assignedChild);
+        lessonPlanRepository.save(lessonToAssign);
+
+        m.addAttribute("principal", principal);
+
+        return new RedirectView("/myprofile");
     }
 
 
