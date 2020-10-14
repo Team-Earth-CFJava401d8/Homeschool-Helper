@@ -3,11 +3,14 @@ package teamEarth.homeSchoolHelper.models.child;
 import org.springframework.beans.factory.annotation.Autowired;
 import teamEarth.homeSchoolHelper.models.lessonPlan.LessonPlan;
 import teamEarth.homeSchoolHelper.models.lessonPlan.LessonPlanRepository;
+import teamEarth.homeSchoolHelper.models.notes.Notes;
 import teamEarth.homeSchoolHelper.models.user.ApplicationUser;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -30,9 +33,18 @@ public class Child {
         this.lastName = lastName;
         this.dob = dob;
     }
-    //====== One to Many (user to children) ====
+
+    //======== Many to One ==================
+
     @ManyToOne
     ApplicationUser applicationUser;
+
+    //====== One to Many ====
+
+    @OneToMany(mappedBy = "child", cascade = CascadeType.ALL)
+    List<Notes> notes = new ArrayList<>();
+
+    //======== Many to Many ==================
 
     @ManyToMany (mappedBy = "kids")
     public Set<LessonPlan> plans = new HashSet<>();
@@ -66,6 +78,16 @@ public class Child {
     public void setId(long id) {
         this.id = id;
     }
+  
+     public List<Notes> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(List<Notes> notes) {
+        this.notes = notes;
+
+    }
+
 
     public Set<LessonPlan> getPlans() { return plans; }
     public void setPlans(Set<LessonPlan> plans) { this.plans = plans; }
@@ -77,5 +99,5 @@ public class Child {
         return "Child{ id=" + id + ", firstName='" + firstName + '\''
                 + ", lastName='" + lastName + '\'' + ", dob=" + dob + '}' +
                 " lessonPlan: " + getPlans();
-    }
-}
+      }
+   }
