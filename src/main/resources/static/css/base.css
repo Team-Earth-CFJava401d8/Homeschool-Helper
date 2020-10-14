@@ -143,7 +143,7 @@ input {
   background-color: whitesmoke;
 }
 
-#one-hundred-basis {
+.one-hundred-basis {
     flex-basis: 100%;
 }
 
@@ -188,6 +188,26 @@ input {
   grid-row: 1;
 }
 
+#agenda {
+  margin: 12px 0px 0px 0px;
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.daily {
+  padding: 5px;
+  border-radius: 10px;
+  margin: 3px 20px 5px 3px;
+  background-color: #EDF9E3;
+  min-width: 150px;
+  border-width: 3px;
+  padding-right: 10px;
+}
+
+.daily * {
+  background-color: #EDF9E3;
+}
+
 .container {
   display: grid;
   inline-size: 480px;
@@ -196,7 +216,7 @@ input {
   border-radius: 10px;
   border-color: black;
   border-style: solid;
-  background-color: lightgreen;
+  background-color: rgba(1, 136, 130, 0.5);
   gap: 5px 5px;
   margin: 10px;
   box-shadow: 5px 5px 10px black;
@@ -257,6 +277,6 @@ input {
   text-shadow: 1px 3px 4px black;
 }
 
-.flex-item:hover {
-  filter: drop-shadow(5px 5px 5px #666666);
+#logobg:hover {
+  opacity: 0.5;
 }
