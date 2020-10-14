@@ -8,17 +8,20 @@
         <h1>Book Page</h1>
         <div>
 <!--            Add some image for the page-->
-            <form action="/book" method="POST">
-<!--                Subject is going to be an object-->
-                Subject: <select name="subject" id="subject"></select><br>
+            <form action="/addBook" method="POST">
+                Subject:<select name="subject">
+                <option th:each="subject : ${subjects}" th:value="${subject.getId()}"
+                        th:text="${subject.getSubjectMatter()}"></option>
+            </select><br>
                 Title: <input type="text" name="title"><br>
                 Author: <input type="text" name="author"><br>
                 ISBN: <input type="text" name="ISBN"><br>
-                Edition: <input type="text" name="edition"><br>
+                Edition: <input type="number" name="edition"><br>
 <!--                Change grade level to be a dropdown-->
-                Grade Level: <input type="text" name="gradeLevel"><br>
+                Grade Level: <input type="number" name="gradeLevel"><br>
 <!--                Number of units might change to an object-->
-                Number of Units: <input type="number" name="numberOfUnits">
+                Number of Pages: <input type="number" name="numberOfPages">
+                <input type="submit" value="Add Book">
             </form>
         </div>
     </main>

@@ -14,17 +14,36 @@
             <input type="submit" value="Add">
         </form>
 
-        <form th:if="${subjectId != null}" action="/lessonPlan/update" method="post">
+        <form th:if="${panda}" action="/lessonPlanner/subCat" method="POST">
+            Subject Category:<select name="subCatId">
+            <option th:each="subCat : ${panda}" th:value="${subCat.getId()}"
+                    th:text="${subCat.getCategoryName()}"></option>
+        </select><br>
+            <input type="submit" value="Add">
+        </form>
+
+
+
+
+
+
+
+        <form action="/lessonPlan/update" method="post">
             Lesson Plan:<input type="text" name="planName"><br>
 <!--            Date:<input type="date" name="date"><br>-->
-<!--            Sub Category: <select th:if=""-->
-            Child/Children:<select name="child" id="child"></select><br><!-- TODO: WIRE UP TO DB -->
+            TO DB -->
 <!--            Content:-->
 <!--            <select name="item" id="item"></select>&lt;!&ndash; TODO: drop down of books & links & API's (need db of links and a way to add links to database &ndash;&gt;-->
 <!-- TODO: write th if that checks if the select above is empty if not then create a new select below.           -->
             <input type="submit" value="Add">Submit</input>
         </form>
     </section>
+
+
+
+
+
+
 
         <form action="/addSubject" method="POST">
             Subject: <input type="text" name="subjectMatter">

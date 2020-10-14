@@ -42,9 +42,8 @@ public class LessonPlanController {
 
     @PostMapping("/lessonPlanner")
     public String planner2(Model m, Principal principal, Long subjectId) {
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!" + subjectId);
         List<SubCat> subCats = subCatRepository.findAllSubCatBySubjectId(subjectId);
-        System.out.println(subCats);
+        m.addAttribute("panda", subCats);
         return "lessonPlanner";
     }
 
