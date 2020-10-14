@@ -16,7 +16,7 @@
                    th:text="'Last Name: ' + ${user.getLastName()}"></p>
                 <p th:if="${user.getDateOfBirth()} != null"
                    th:text="'Date of Birth: ' + ${user.getDateOfBirth()}"></p>
-                <p th:if="${user.getBio()} != ''" th:text="'Bio: ' + ${user.getBio()}"></p>
+<!--                <p th:if="${user.getBio()} != ''" th:text="'Bio: ' + ${user.getBio()}"></p>-->
 
                 <form action="/assignLesson" method="post">
                     <select name="child" >
@@ -31,10 +31,21 @@
             </div>
 
             <div id="students">
+              
                 <section th:each="child, iStat : ${children}" th:value="${child.getId()}" class="container">
                     <img src="/graphics/Icon.png" alt="homeschool helper logo" class='profilepic'>
                     <p th:text="${child.getFirstName()} + ' ' + ${child.getLastName()}" class="name">Paul O'Brien</p>
-                    <div th:each="note : ${childNotes.get(iStat.index)}">
+                    
+                  <section class="plans">
+<!--                        <h3>Lesson Plans</h3>-->
+                        <div th:each="plan : ${child.getPlans()}" class="plan"> <!-- th:each="plan : ${child.getPlans()}"-->
+                            <p th:text=" 'Plan Name : ' + ${plan.getPlanName()}"></p>
+                            <p th:text=" 'Subject: ' + ${plan.getSubject()}"></p>
+                        </div>
+
+                    </section>
+                  
+                  <div th:each="note : ${childNotes.get(iStat.index)}">
                         <p th:text="${note.getNotes()}"></p>
                     </div>
                     <p class="plan-one" >Content all here <br>
@@ -46,6 +57,7 @@
                         <input type="submit" value="Add Note">
                     </form>
                 </section>
+
             </div>
 
             <section id="agenda" class="flex-flow-container">

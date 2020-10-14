@@ -40,7 +40,7 @@
   display: block;
 }
 
-.dropdown a:hover, #logobg {
+.dropdown-content a:hover {
   background-color:#F23D3D;
 }
 

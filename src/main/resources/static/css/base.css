@@ -20,6 +20,10 @@
   background-color: #F23D3D;
 }
 
+#left-items a {
+  background-color: #F23D3D
+}
+
 .homeschoolhelper {  /* https://fonts.google.com/specimen/Caveat?preview.text=Homeschool%20Helper&preview.text_type=custom&sidebar.open=true&selection.family=Caveat:wght@700 */
   font-family: 'Caveat', cursive;
   font-size: 48px;
@@ -72,6 +76,10 @@ hr {
   border-width: 5px;
 }
 
+#title a {
+    background: #E6C67C;
+}
+
 #center-item {
   flex-basis: 100%;
   text-align: center;
@@ -89,6 +97,7 @@ button {
   background-color: #F23D3D;
   border-radius: 10px;
   font-family: "Caveat", cursive;
+  border-width: 0;
 }
 
 .sign-up-form {
@@ -143,6 +152,10 @@ input {
   background-color: whitesmoke;
 }
 
+.basic-column-box * {
+  background-color: whitesmoke;
+}
+
 .one-hundred-basis {
     flex-basis: 100%;
 }
@@ -182,6 +195,10 @@ input {
   justify-content: space-around;
 }
 
+#students p {
+  background-color: #faf7fa;
+}
+
 #teacher {
   margin-top: 12px;
   grid-column: 2;
@@ -211,27 +228,33 @@ input {
 .container {
   display: grid;
   inline-size: 480px;
-  grid-template-columns: 90px 310px 65px;
-  grid-template-rows: 40px 50px 50px; /*  */
+/*  grid-template-areas:
+    'name name name .'
+    'header content content extra'
+    'header content content extra'
+    'header content content extra'
+    'footer details details .'; */
+  grid-template-columns: 90px 155px 155px 65px;
+  grid-template-rows: 40px 75px 75px;
   border-radius: 10px;
-  border-color: black;
   border-style: solid;
-  background-color: rgba(1, 136, 130, 0.5);
+  background-color: rgba(1, 136, 130, 1);
   gap: 5px 5px;
   margin: 10px;
   box-shadow: 5px 5px 10px black;
+  box-sizing: border-box;
 }
 
 .name {
-  grid-column: 1 / span 3;
+  /* grid-area: name; */
   grid-row: 1;
-  align-self: center;
+  grid-column: 1 / 4;
+  align-self: flex-start;
   padding: 2px 0px 6px 10px;
   background-color: #faf7fa;
-  margin-left: 5px;
+  margin: 7px 0px 3px 5px;
   border-radius: 6px;
   font: 1.2em sans-serif;
-  align-self: center;
 }
 
 .profilepic {
@@ -244,25 +267,51 @@ input {
   font: 1em sans-serif;
 }
 
-.plan-one {
+.plans {
   grid-column: 2 / span 2;
-  grid-row: 2 / span 1;
-  background-color: #faf7fa;
-  margin: 1px;
+  grid-row: 2 / span 2;
+  background-color: rgba(1, 136, 130, 1);
+  margin: 0px;
   border-radius: 8px;
   font: 1em sans-serif;
-  padding: 3px;
+  padding: 0px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
 }
 
-.plan-two {
-  grid-column: 2 / span 2;
-  grid-row: 3 / span 1;
+.plan {
+  /* grid-column: 2;
+  grid-row: 2; */
   background-color: #faf7fa;
   margin: 1px;
   border-radius: 8px;
   padding: 3px;
   font: 1em sans-serif;
+  inline-size: 145px;
+  height: 60px;
 }
+
+.plan p {
+  font-size: .80em;
+}
+
+.plans h3 {
+  background-color: rgba(1, 136, 130, 1);
+  flex-basis: 100%;
+  height: 0;
+  text-align: center;
+}
+/* #plan-two {
+  grid-column: 3;
+  grid-row: 2;
+  background-color: #faf7fa;
+  margin: 1px;
+  border-radius: 8px;
+  padding: 3px;
+  font: 1em sans-serif;
+} */
+
 
 .nav-bar-item {
   margin-right: 10px;

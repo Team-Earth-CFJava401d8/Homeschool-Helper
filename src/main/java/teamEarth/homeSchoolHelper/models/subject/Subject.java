@@ -24,7 +24,6 @@ public class Subject {
     private String subjectMatter;
 
     public Subject() {};
-
     public Subject(String subjectMatter) {
         this.subjectMatter = subjectMatter;
     }
@@ -32,7 +31,6 @@ public class Subject {
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
@@ -40,7 +38,6 @@ public class Subject {
     public String getSubjectMatter() {
         return subjectMatter;
     }
-
     public void setSubjectMatter(String subjectMatter) {
         this.subjectMatter = subjectMatter;
     }
@@ -48,8 +45,17 @@ public class Subject {
     public List<SubCat> getCategory() {
         return category;
     }
-
     public void setCategory(List<SubCat> category) {
         this.category = category;
     }
+
+    //=========== toString method ==========
+
+    @Override
+    public String toString() {
+        return "Subject{ id= " + id +
+                ", subjectMatter='" + subjectMatter + '\'' +
+                '}';
+    }
+
 }
