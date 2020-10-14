@@ -1,10 +1,13 @@
 package teamEarth.homeSchoolHelper.models.lessonPlan;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import teamEarth.homeSchoolHelper.models.book.Book;
 import teamEarth.homeSchoolHelper.models.child.Child;
 import teamEarth.homeSchoolHelper.models.child.ChildRepository;
 import teamEarth.homeSchoolHelper.models.links.Links;
 import teamEarth.homeSchoolHelper.models.subCat.SubCat;
+import teamEarth.homeSchoolHelper.models.subject.Subject;
+import teamEarth.homeSchoolHelper.models.user.ApplicationUser;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -31,6 +34,9 @@ public class LessonPlan {
 
     //======== Many to Many =================
 
+    @ManyToMany(mappedBy = "plans")
+    public Set<Book> books = new HashSet<>();
+
     @ManyToMany(cascade = CascadeType.REMOVE)
 
     @JoinTable(
@@ -41,23 +47,29 @@ public class LessonPlan {
 
     public Set<Child> kids = new HashSet<>();
 
-    public String planName;
-//    public String subject; // TODO: change to subject obj once subject obj's are created
-//    public Child child;
-    //public List link;
-    //public Unit unit;
+    private String planName;
+    private String subject;
+    private String url;
 
+    private Long bookId;
+    private String creator;
     Timestamp createdAt = new Timestamp(System.currentTimeMillis());
 
-    //public String content;
+
 
     //========== Constructors ===========
     public LessonPlan(){}
 
-    public LessonPlan(String planName) {
+    public LessonPlan(String planName, String subject, SubCat subCat,
+                      String url, Long bookId, String creator,
+                      Timestamp createdAt) {
         this.planName = planName;
-        this.createdAt = new Timestamp(System.currentTimeMillis());
-
+        this.subject = subject;
+        this.subCat = subCat;
+        this.url = url;
+        this.bookId = bookId;
+        this.creator = creator;
+        this.createdAt = createdAt;
     }
 
     //========= Getters & Setters ============
@@ -71,12 +83,68 @@ public class LessonPlan {
         this.id = id;
     }
 
+    public List<Links> getLinks() {
+        return links;
+    }
+
+    public void setLinks(List<Links> links) {
+        this.links = links;
+    }
+
+    public SubCat getSubCat() {
+        return subCat;
+    }
+
+    public void setSubCat(SubCat subCat) {
+        this.subCat = subCat;
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
+
+    public Set<Child> getKids() {
+        return kids;
+    }
+
+    public void setKids(Set<Child> kids) {
+        this.kids = kids;
+    }
+
     public String getPlanName() {
         return planName;
     }
 
     public void setPlanName(String planName) {
         this.planName = planName;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public Long getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(Long bookId) {
+        this.bookId = bookId;
+    }
+
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
     }
 
     public Timestamp getCreatedAt() {
@@ -87,11 +155,11 @@ public class LessonPlan {
         this.createdAt = createdAt;
     }
 
-    public List<Links> getLinks() {
-        return links;
+    public String getSubject() {
+        return subject;
     }
 
-    public void setLinks(List<Links> links) {
-        this.links = links;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 }

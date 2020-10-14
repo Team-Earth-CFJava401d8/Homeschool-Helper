@@ -5,7 +5,7 @@
     <header th:replace="fragments/header :: header"></header>
     <section>Left Resources</section>
 
-
+<!--     This select the subject-->
     <section class="flex-flow-container">
         <form th:unless="${panda}" class="basic-row-box" action="/lessonPlanner" method="POST">
             Subject:&nbsp;<select name="subjectId">
@@ -15,24 +15,30 @@
             <input type="submit" value="Add">
         </form>
 
-
 <!-- If subject has been selected this form shows subject categories -->
-        <form class="basic-row-box" th:if="${panda}" action="/lessonPlanner/subCat" method="POST">
+        <form class="basic-row-box" th:if="${panda}" action="/createLessonPlan" method="POST">
+            <input type="hidden" th:value="${subject.getSubjectMatter()}" name="subject">
             Subject Category:&nbsp;<select name="subCatId">
             <option th:each="subCat : ${panda}" th:value="${subCat.getId()}"
                     th:text="${subCat.getCategoryName()}"></option>
         </select><br>
+
+            Links:<select name="links">
+            <option th:each="link : ${links}"
+                    th:text="${link.getDescription()}"
+                    th:value="${link.getUrl()}"></option>
+        </select><br>
+
+            Books:<select name="booksId">
+            <option th:each="books : ${books}"
+                    th:text="${books.getTitle()}"
+                    th:value="${books.getId()}"></option>
+        </select><br>
+            <input type="hidden" th:value="${user.getUserName()}" name="creator">
+            Lesson Plan:<input type="text" name="planName"><br>
             <input type="submit" value="Add">
         </form>
 
-<!--        This form displays all links to select from-->
-        <form th:if="${panda}" action="/lessonPlanner/subCat" method="POST">
-            Subject Category:<select name="subCatId">
-            <option th:each="link : ${links}"
-                    th:text="${link.getDescription()}"></option>
-        </select><br>
-            <input type="submit" value="Add">
-        </form>
 
         <form action="/lessonPlan/update" method="post">
             Lesson Plan:<input type="text" name="planName"><br>
@@ -44,7 +50,6 @@
             <input type="submit" value="Add">Submit</input>
         </form>
     </section>
-
 
 
         <form action="/addLink" method="post">
