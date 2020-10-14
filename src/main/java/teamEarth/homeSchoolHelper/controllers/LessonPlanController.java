@@ -48,16 +48,15 @@ public class LessonPlanController {
     @Autowired
     SubCatRepository subCatRepository;
 
-
+    // Grabbing list of subjects from database to be used in add a lesson plan form
     @GetMapping("/lessonPlanner")
     public String planner(Model m, Principal principal) {
         List<Subject> subjects = subjectRepository.findAll();
-
-
         m.addAttribute("monkey", subjects);
         return "lessonPlanner";
     }
 
+    // Making the properties of lesson planner available for the user to create lesson plan
     @PostMapping("/lessonPlanner")
     public String planner2(Model m, Principal principal, Long subjectId) {
         ApplicationUser user = applicationUserRepository.findByUsername(principal.getName());
@@ -74,6 +73,7 @@ public class LessonPlanController {
         return "lessonPlanner";
     }
 
+    // Create the lesson plan and save to the database
     @PostMapping("/createLessonPlan")
     public RedirectView RedirectView(Model m, Principal principal,
                                      String planName, String subject,
@@ -91,6 +91,7 @@ public class LessonPlanController {
         return new RedirectView( "/myprofile");
     }
 
+    // Assigning a lesson to a child
     @PostMapping("/assignLesson")
     public RedirectView redirectview(Model m, Principal principal, Long child, Long lesson){
 

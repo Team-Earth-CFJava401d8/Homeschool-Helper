@@ -16,9 +16,8 @@ public class LinkController {
     @Autowired
     LinksRepository linksRepository;
 
-    @Autowired
-    LessonPlanRepository lessonPlanRepository;
 
+    // Create a link and saving to the database
    @PostMapping("/addLink")
     public RedirectView newLink(String url, String desc){
 
@@ -27,8 +26,6 @@ public class LinkController {
        linksRepository.save(newLink);
 
        return new RedirectView("/lessonPlanner");
-
-
    }
 
 
