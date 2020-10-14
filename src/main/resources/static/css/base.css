@@ -72,6 +72,10 @@ hr {
   border-width: 5px;
 }
 
+#title a {
+  background-color: #E6C67C;
+}
+
 #center-item {
   flex-basis: 100%;
   text-align: center;
@@ -89,6 +93,7 @@ button {
   background-color: #F23D3D;
   border-radius: 10px;
   font-family: "Caveat", cursive;
+  border-width: 0;
 }
 
 .sign-up-form {
@@ -115,6 +120,7 @@ input {
   font-size: 1.25em;
   background-color: #F23D3D;
   border-radius: 10px;
+  border-width: 0px;
 }
 
 .basic-column-box {
@@ -279,4 +285,8 @@ input {
 
 #logobg:hover {
   opacity: 0.5;
+}
+
+#logobg {
+  background-color: #E6D058;
 }
