@@ -10,7 +10,6 @@
 }
 
 #header-container * {
-  /* background-color: #F23D3D; */
   padding: 5px 0px 3px 0px;
 }
 
@@ -44,8 +43,14 @@ hr {
   height: 10px;
   background-color: whitesmoke;
   border-width: 0px;
-  /* color: whitesmoke; */
   margin: 0px;
+}
+
+.flex-flow-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 15% 0% 0% 0%;
 }
 
 #start-here {
@@ -112,6 +117,36 @@ input {
   border-radius: 10px;
 }
 
+.basic-column-box {
+  background-color: #E6C67C;
+  text-align: center;
+  padding: 12px;
+  font-size: 1.5em;
+  display: flex;
+  flex-flow: column wrap;
+  border-radius: 8px;
+  font-family: 'Caveat', cursive;
+}
+
+.basic-row-box {
+  background-color: #E6C67C;
+  text-align: center;
+  padding: 12px;
+  font-size: 1.5em;
+  display: flex;
+  flex-flow: row wrap;
+  border-radius: 8px;
+  font-family: 'Caveat', cursive;
+}
+
+.basic-row-box * {
+  background-color: whitesmoke;
+}
+
+#one-hundred-basis {
+    flex-basis: 100%;
+}
+
 #create-your-account {
   font-family: 'Caveat', cursive;
   background-color: #E6C67C;
@@ -130,18 +165,27 @@ input {
   border: none;
 }
 
-#profile-pic {
+#profile-pic, #plus-pic {
   background-color: #F23D3D;
 }
 
-#plus-pic {
-  background-color: #F23D3D;
+#pageAll {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  gird-template-rows: 30px auto;
 }
 
 #students {
+  grid-column: 1;
   display: flex;
   flex-flow: row wrap;
-  justify-content: flex-start;
+  justify-content: space-around;
+}
+
+#teacher {
+  margin-top: 12px;
+  grid-column: 2;
+  grid-row: 1;
 }
 
 .container {
@@ -155,6 +199,7 @@ input {
   background-color: lightgreen;
   gap: 5px 5px;
   margin: 10px;
+  box-shadow: 5px 5px 10px black;
 }
 
 .name {
@@ -206,4 +251,12 @@ input {
 .flex-item {
   margin-left: 8px;
   background-color: #F23D3D;
+}
+
+#plus-pic:hover, #profile-pic:hover {
+  text-shadow: 1px 3px 4px black;
+}
+
+.flex-item:hover {
+  filter: drop-shadow(5px 5px 5px #666666);
 }
