@@ -17,9 +17,9 @@ public class Child {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id ;
 
-    public String firstName;
-    public String lastName;
-    public Date dob;
+    private String firstName;
+    private String lastName;
+    private Date dob;
 
     //=========== Constructors ================
     public Child() {};

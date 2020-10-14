@@ -5,6 +5,7 @@
     <header th:replace="fragments/header :: header"></header>
     <section>Left Resources</section>
 
+
     <section class="flex-flow-container">
         <form th:unless="${panda}" class="basic-row-box" action="/lessonPlanner" method="POST">
             Subject:&nbsp;<select name="subjectId">
@@ -14,6 +15,8 @@
             <input type="submit" value="Add">
         </form>
 
+
+<!-- If subject has been selected this form shows subject categories -->
         <form class="basic-row-box" th:if="${panda}" action="/lessonPlanner/subCat" method="POST">
             Subject Category:&nbsp;<select name="subCatId">
             <option th:each="subCat : ${panda}" th:value="${subCat.getId()}"
@@ -22,11 +25,14 @@
             <input type="submit" value="Add">
         </form>
 
-
-
-
-
-
+<!--        This form displays all links to select from-->
+        <form th:if="${panda}" action="/lessonPlanner/subCat" method="POST">
+            Subject Category:<select name="subCatId">
+            <option th:each="link : ${links}"
+                    th:text="${link.getDescription()}"></option>
+        </select><br>
+            <input type="submit" value="Add">
+        </form>
 
         <form action="/lessonPlan/update" method="post">
             Lesson Plan:<input type="text" name="planName"><br>
@@ -41,7 +47,12 @@
 
 
 
+        <form action="/addLink" method="post">
+            Link: <input type="text" name="url">
+            Description: <input type="text" name="desc">
+            <input type="submit" value="Add">
 
+        </form>
 
 
 

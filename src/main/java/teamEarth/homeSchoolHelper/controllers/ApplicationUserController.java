@@ -33,8 +33,6 @@ public class ApplicationUserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Autowired
-    ChildRepository childRepository;
 
     @PostMapping("/signup")
     public ModelAndView newUser(String username,
