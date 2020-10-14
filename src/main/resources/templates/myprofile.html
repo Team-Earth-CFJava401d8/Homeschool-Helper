@@ -31,11 +31,20 @@
             </div>
 
             <div id="students">
-                <section th:each="child : ${children}" th:value="${child.getId()}" class="container">
+                <section th:each="child, iStat : ${children}" th:value="${child.getId()}" class="container">
                     <img src="/graphics/Icon.png" alt="homeschool helper logo" class='profilepic'>
                     <p th:text="${child.getFirstName()} + ' ' + ${child.getLastName()}" class="name">Paul O'Brien</p>
-                    <p class="plan-one">Content all here <br> and here</p>
+                    <div th:each="note : ${childNotes.get(iStat.index)}">
+                        <p th:text="${note.getNotes()}"></p>
+                    </div>
+                    <p class="plan-one" >Content all here <br>
+                    and here</p>
                     <p class="plan-two">More <br> then there</p>
+                    <form action="/notes" method="POST">
+                        <input type="hidden" th:value="${child.getId()}" name="childId">
+                        <input type="text" name="notes">
+                        <input type="submit" value="Add Note">
+                    </form>
                 </section>
             </div>
 
@@ -55,6 +64,13 @@
             </section>
 
         </section>
+
+
+
+
+
+
+
     </main>
 </body>
 

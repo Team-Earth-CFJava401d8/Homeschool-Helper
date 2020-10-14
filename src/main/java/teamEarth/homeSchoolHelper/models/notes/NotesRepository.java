@@ -1,8 +1,11 @@
-//package teamEarth.homeSchoolHelper.models.notes;
-//
-//import org.springframework.data.jpa.repository.JpaRepository;
-//import teamEarth.homeSchoolHelper.models.subCat.SubCat;
-//
+package teamEarth.homeSchoolHelper.models.notes;
 
-//public interface NotesRepository extends JpaRepository<Notes, Long> {
-//}
+import org.springframework.data.jpa.repository.JpaRepository;
+
+
+import java.util.List;
+
+
+public interface NotesRepository extends JpaRepository<Notes, Long> {
+    public List<Notes> findAllNotesByChildId(Long id);
+}
