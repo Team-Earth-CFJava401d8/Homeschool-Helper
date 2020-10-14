@@ -24,6 +24,7 @@ public class BookController {
     @Autowired
     BookRepository bookRepository;
 
+    // Grabbing list of subjects from database to be used in add a book form
     @GetMapping("/book")
     public String planner(Model m, Principal principal) {
         List<Subject> subjects = subjectRepository.findAll();
@@ -31,6 +32,7 @@ public class BookController {
         return "book";
     }
 
+    //Adding book to the database
     @PostMapping("/addBook")
     public RedirectView createBook(Model m, Principal principal, Subject subject, String title,
                                    String author, String ISBN, int edition, int gradeLevel,

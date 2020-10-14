@@ -50,12 +50,9 @@ public class LessonPlan {
     private String planName;
     private String subject;
     private String url;
-
     private Long bookId;
     private String creator;
     Timestamp createdAt = new Timestamp(System.currentTimeMillis());
-
-
 
     //========== Constructors ===========
     public LessonPlan(){}

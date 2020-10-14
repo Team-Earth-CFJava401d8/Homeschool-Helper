@@ -24,11 +24,7 @@ public class SubjectController {
     @Autowired
     SubCatRepository subCatRepository;
 
-//
-//
-//    Subject subject = new Subject(subjectMatter);
-////        subjectRepository.save(subject);
-
+    // Creating a new subject matter
     @PostMapping("/addSubject")
     public RedirectView addSubject(String subjectMatter) {
         Subject subject = new Subject(subjectMatter);
@@ -36,6 +32,7 @@ public class SubjectController {
         return new RedirectView("/lessonPlanner");
     }
 
+    // Linking sub category to subject matter and saving sub category to database
     @PostMapping("/addSubCat")
     public RedirectView addSubCat(String categoryName, String subjectName) {
         Subject subject = subjectRepository.findBySubjectMatter(subjectName);
