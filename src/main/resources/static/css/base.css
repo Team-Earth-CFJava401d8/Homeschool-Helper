@@ -138,6 +138,12 @@ input {
   background-color: #F23D3D;
 }
 
+#students {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
+
 .container {
   display: grid;
   inline-size: 480px;
@@ -148,6 +154,7 @@ input {
   border-style: solid;
   background-color: lightgreen;
   gap: 5px 5px;
+  margin: 10px;
 }
 
 .name {
