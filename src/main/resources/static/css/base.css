@@ -138,6 +138,12 @@ input {
   background-color: #F23D3D;
 }
 
+#students {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
+
 .container {
   display: grid;
   inline-size: 480px;
