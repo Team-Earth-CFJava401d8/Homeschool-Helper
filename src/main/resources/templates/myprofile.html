@@ -34,8 +34,11 @@
                 <section th:each="child : ${children}" th:value="${child.getId()}" class="container">
                     <img src="/graphics/Icon.png" alt="homeschool helper logo" class='profilepic'>
                     <p th:text="${child.getFirstName()} + ' ' + ${child.getLastName()}" class="name">Paul O'Brien</p>
-                    <p class="plan-one">Content all here <br> and here</p>
-                    <p class="plan-two">More <br> then there</p>
+                    <div th:each="plan : ${child.getPlans()}" class="plan-one">
+                        <p th:text="${plan.getPlanName()}"></p>
+                        <p th:text=" 'Subject: ' + ${plan.getSubject()}"></p>
+                    </div>
+<!--                    <p class="plan-two">More <br> then there</p>-->
                 </section>
             </div>
 

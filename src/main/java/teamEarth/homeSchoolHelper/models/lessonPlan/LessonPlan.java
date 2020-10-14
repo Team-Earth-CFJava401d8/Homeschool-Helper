@@ -75,7 +75,6 @@ public class LessonPlan {
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
@@ -83,7 +82,6 @@ public class LessonPlan {
     public List<Links> getLinks() {
         return links;
     }
-
     public void setLinks(List<Links> links) {
         this.links = links;
     }
@@ -91,7 +89,6 @@ public class LessonPlan {
     public SubCat getSubCat() {
         return subCat;
     }
-
     public void setSubCat(SubCat subCat) {
         this.subCat = subCat;
     }
@@ -99,7 +96,6 @@ public class LessonPlan {
     public Set<Book> getBooks() {
         return books;
     }
-
     public void setBooks(Set<Book> books) {
         this.books = books;
     }
@@ -107,7 +103,6 @@ public class LessonPlan {
     public Set<Child> getKids() {
         return kids;
     }
-
     public void setKids(Set<Child> kids) {
         this.kids = kids;
     }
@@ -115,7 +110,6 @@ public class LessonPlan {
     public String getPlanName() {
         return planName;
     }
-
     public void setPlanName(String planName) {
         this.planName = planName;
     }
@@ -123,7 +117,6 @@ public class LessonPlan {
     public String getUrl() {
         return url;
     }
-
     public void setUrl(String url) {
         this.url = url;
     }
@@ -131,7 +124,6 @@ public class LessonPlan {
     public Long getBookId() {
         return bookId;
     }
-
     public void setBookId(Long bookId) {
         this.bookId = bookId;
     }
@@ -139,7 +131,6 @@ public class LessonPlan {
     public String getCreator() {
         return creator;
     }
-
     public void setCreator(String creator) {
         this.creator = creator;
     }
@@ -147,7 +138,6 @@ public class LessonPlan {
     public Timestamp getCreatedAt() {
         return createdAt;
     }
-
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
@@ -155,8 +145,19 @@ public class LessonPlan {
     public String getSubject() {
         return subject;
     }
-
     public void setSubject(String subject) {
         this.subject = subject;
+    }
+
+    //=========== toString Method ==========
+
+
+    @Override
+    public String toString() {
+        return "LessonPlan{ id= " + id +
+                ", subCat= " + subCat +
+                ", planName='" + planName + '\'' +
+                ", subject='" + subject + '\'' +
+                '}';
     }
 }

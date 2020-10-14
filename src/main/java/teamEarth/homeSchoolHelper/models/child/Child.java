@@ -39,11 +39,9 @@ public class Child {
 
     //=========== Getters & Setters ==========
 
-
     public String getFirstName() {
         return firstName;
     }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -51,7 +49,6 @@ public class Child {
     public String getLastName() {
         return lastName;
     }
-
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -59,19 +56,26 @@ public class Child {
     public Date getDob() {
         return dob;
     }
-
     public void setDob(Date dob) {
         this.dob = dob;
     }
 
-
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
 
+    public Set<LessonPlan> getPlans() { return plans; }
+    public void setPlans(Set<LessonPlan> plans) { this.plans = plans; }
 
+    //=========== toString Method ==========
+
+    @Override
+    public String toString() {
+        return "Child{ id=" + id + ", firstName='" + firstName + '\''
+                + ", lastName='" + lastName + '\'' + ", dob=" + dob + '}' +
+                " lessonPlan: " + getPlans();
+    }
 }

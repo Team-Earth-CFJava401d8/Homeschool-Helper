@@ -32,7 +32,6 @@ public class SubCat {
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
@@ -40,7 +39,6 @@ public class SubCat {
     public Subject getSubject() {
         return subject;
     }
-
     public void setSubject(Subject subject) {
         this.subject = subject;
     }
@@ -48,7 +46,6 @@ public class SubCat {
     public List<LessonPlan> getLessons() {
         return lessons;
     }
-
     public void setLessons(List<LessonPlan> lessons) {
         this.lessons = lessons;
     }
@@ -56,8 +53,17 @@ public class SubCat {
     public String getCategoryName() {
         return categoryName;
     }
-
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
+    }
+
+    //=========== toString Method ==========
+
+    @Override
+    public String toString() {
+        return "SubCat{ id= " + id +
+                ", subject=" + subject +
+                ", categoryName='" + categoryName + '\'' +
+                '}';
     }
 }

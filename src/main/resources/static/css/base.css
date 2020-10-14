@@ -20,6 +20,10 @@
   background-color: #F23D3D;
 }
 
+#left-items a {
+  background-color: #F23D3D
+}
+
 .homeschoolhelper {  /* https://fonts.google.com/specimen/Caveat?preview.text=Homeschool%20Helper&preview.text_type=custom&sidebar.open=true&selection.family=Caveat:wght@700 */
   font-family: 'Caveat', cursive;
   font-size: 48px;
@@ -148,6 +152,10 @@ input {
   background-color: whitesmoke;
 }
 
+.basic-column-box * {
+  background-color: whitesmoke;
+}
+
 .one-hundred-basis {
     flex-basis: 100%;
 }
@@ -185,6 +193,10 @@ input {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+}
+
+#students p {
+  background-color: #faf7fa;
 }
 
 #teacher {
