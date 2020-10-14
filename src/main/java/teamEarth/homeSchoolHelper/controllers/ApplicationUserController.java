@@ -13,6 +13,8 @@ import teamEarth.homeSchoolHelper.models.child.Child;
 import teamEarth.homeSchoolHelper.models.child.ChildRepository;
 import teamEarth.homeSchoolHelper.models.lessonPlan.LessonPlan;
 import teamEarth.homeSchoolHelper.models.lessonPlan.LessonPlanRepository;
+import teamEarth.homeSchoolHelper.models.notes.Notes;
+import teamEarth.homeSchoolHelper.models.notes.NotesRepository;
 import teamEarth.homeSchoolHelper.models.user.ApplicationUser;
 import teamEarth.homeSchoolHelper.models.user.ApplicationUserRepository;
 
@@ -29,6 +31,9 @@ public class ApplicationUserController {
 
     @Autowired
     LessonPlanRepository lessonPlanRepository;
+
+    @Autowired
+    NotesRepository notesRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -69,7 +74,17 @@ public class ApplicationUserController {
 
         List<LessonPlan> lessonPlans = lessonPlanRepository.findAll();
         List<Child> usersChildren = user.children;
+        //Creating an array list where each element is a list of each individual child's notes
+        ArrayList<List<Notes>> childNotes = new ArrayList<>();
 
+
+        for (int i = 0; i < usersChildren.size(); i++) {
+            long childId = usersChildren.get(i).getId();
+            List<Notes> thisNotesList = notesRepository.findAllNotesByChildId(childId);
+            childNotes.add(thisNotesList);
+        }
+
+        m.addAttribute("childNotes", childNotes);
         m.addAttribute("plans", lessonPlans);
         m.addAttribute("user", user);
         m.addAttribute("children", usersChildren);
