@@ -10,6 +10,8 @@ import teamEarth.homeSchoolHelper.models.child.Child;
 import teamEarth.homeSchoolHelper.models.child.ChildRepository;
 import teamEarth.homeSchoolHelper.models.lessonPlan.LessonPlan;
 import teamEarth.homeSchoolHelper.models.lessonPlan.LessonPlanRepository;
+import teamEarth.homeSchoolHelper.models.links.Links;
+import teamEarth.homeSchoolHelper.models.links.LinksRepository;
 import teamEarth.homeSchoolHelper.models.subCat.SubCat;
 import teamEarth.homeSchoolHelper.models.subCat.SubCatRepository;
 import teamEarth.homeSchoolHelper.models.subject.Subject;
@@ -20,6 +22,9 @@ import java.util.List;
 
 @Controller
 public class LessonPlanController {
+
+    @Autowired
+    LinksRepository linksRepository;
 
     @Autowired
     ChildRepository childRepository;
@@ -36,6 +41,7 @@ public class LessonPlanController {
     @GetMapping("/lessonPlanner")
     public String planner(Model m, Principal principal) {
         List<Subject> subjects = subjectRepository.findAll();
+
         m.addAttribute("monkey", subjects);
         return "lessonPlanner";
     }
@@ -43,6 +49,9 @@ public class LessonPlanController {
     @PostMapping("/lessonPlanner")
     public String planner2(Model m, Principal principal, Long subjectId) {
         List<SubCat> subCats = subCatRepository.findAllSubCatBySubjectId(subjectId);
+        List<Links> links = linksRepository.findAll();
+
+        m.addAttribute("links", links);
         m.addAttribute("panda", subCats);
         return "lessonPlanner";
     }

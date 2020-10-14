@@ -22,6 +22,14 @@
             <input type="submit" value="Add">
         </form>
 
+<!--////////////////////////////////////////////////////////////////-->
+        <form th:if="${panda}" action="/lessonPlanner/subCat" method="POST">
+            Subject Category:<select name="subCatId">
+            <option th:each="link : ${links}"
+                    th:text="${link.getDescription()}"></option>
+        </select><br>
+            <input type="submit" value="Add">
+        </form>
 
 
 
@@ -41,7 +49,12 @@
 
 
 
+        <form action="/addLink" method="post">
+            Link: <input type="text" name="url">
+            Description: <input type="text" name="desc">
+            <input type="submit" value="Add">
 
+        </form>
 
 
 

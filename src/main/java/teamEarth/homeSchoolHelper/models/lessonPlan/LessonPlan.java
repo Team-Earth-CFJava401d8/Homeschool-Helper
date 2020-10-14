@@ -3,6 +3,7 @@ package teamEarth.homeSchoolHelper.models.lessonPlan;
 import org.springframework.beans.factory.annotation.Autowired;
 import teamEarth.homeSchoolHelper.models.child.Child;
 import teamEarth.homeSchoolHelper.models.child.ChildRepository;
+import teamEarth.homeSchoolHelper.models.links.Links;
 import teamEarth.homeSchoolHelper.models.subCat.SubCat;
 
 import javax.persistence.*;
@@ -20,24 +21,9 @@ public class LessonPlan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
-    public String planName;
-//    public String subject; // TODO: change to subject obj once subject obj's are created
-//    public Child child;
-    //public Link link;
-    //public Unit unit;
-
-    Timestamp createdAt = new Timestamp(System.currentTimeMillis());
-
-    //public String content;
-
-    //========== Constructors ===========
-    public LessonPlan(){}
-
-    public LessonPlan(String planName) {
-        this.planName = planName;
-        this.createdAt = new Timestamp(System.currentTimeMillis());
-       // this.child = child;
-    }
+    //======= One to Many ==================
+    @OneToMany(mappedBy = "lessonPlan", cascade = CascadeType.ALL)
+    public List<Links> links = new ArrayList<>();
 
     //======== Many to One =================
     @ManyToOne
@@ -51,13 +37,29 @@ public class LessonPlan {
             name="childlessons",
             joinColumns = @JoinColumn(name="child1"),
             inverseJoinColumns = @JoinColumn(name="lesson2")
-            )
+    )
 
     public Set<Child> kids = new HashSet<>();
-//////////////////////////////////////////////
-//    @ManyToMany(mappedBy = "lessonPlans")
-//    public Set<Child> children = new HashSet<>();
-///////////////////////////////////////////
+
+    public String planName;
+//    public String subject; // TODO: change to subject obj once subject obj's are created
+//    public Child child;
+    //public List link;
+    //public Unit unit;
+
+    Timestamp createdAt = new Timestamp(System.currentTimeMillis());
+
+    //public String content;
+
+    //========== Constructors ===========
+    public LessonPlan(){}
+
+    public LessonPlan(String planName) {
+        this.planName = planName;
+        this.createdAt = new Timestamp(System.currentTimeMillis());
+
+    }
+
     //========= Getters & Setters ============
 
 
@@ -85,4 +87,11 @@ public class LessonPlan {
         this.createdAt = createdAt;
     }
 
+    public List<Links> getLinks() {
+        return links;
+    }
+
+    public void setLinks(List<Links> links) {
+        this.links = links;
+    }
 }

@@ -23,8 +23,7 @@ public class ChildController {
     @Autowired
     ApplicationUserRepository applicationUserRepository;
 
-    @Autowired
-    LessonPlanRepository lessonPlanRepository;
+
 
     //=========== "Add child ============
     @GetMapping("/addChild")
