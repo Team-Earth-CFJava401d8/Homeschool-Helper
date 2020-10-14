@@ -31,15 +31,22 @@
             </div>
 
             <div id="students">
-                <section th:each="child : ${children}" th:value="${child.getId()}" class="container">
+                <div class="container" th:each="child : ${children}" th:value="${child.getId()}">
                     <img src="/graphics/Icon.png" alt="homeschool helper logo" class='profilepic'>
-                    <p th:text="${child.getFirstName()} + ' ' + ${child.getLastName()}" class="name">Paul O'Brien</p>
-                    <div th:each="plan : ${child.getPlans()}" class="plan-one">
-                        <p th:text="${plan.getPlanName()}"></p>
-                        <p th:text=" 'Subject: ' + ${plan.getSubject()}"></p>
-                    </div>
+                    <p th:text="${child.getFirstName()} + ' ' + ${child.getLastName()}" class="name"></p>
+                    <section class="plans">
+<!--                        <h3>Lesson Plans</h3>-->
+                        <div th:each="plan : ${child.getPlans()}" class="plan"> <!-- th:each="plan : ${child.getPlans()}"-->
+                            <p th:text=" 'Plan Name : ' + ${plan.getPlanName()}"></p>
+                            <p th:text=" 'Subject: ' + ${plan.getSubject()}"></p>
+                        </div>
+<!--                        <div class="plan"> &lt;!&ndash; id="plan-two" th:each="plan : ${child.getPlans()}"&ndash;&gt;-->
+<!--                            <p th:text="${plans.get(1).getPlanName()}"></p>-->
+<!--                            <p th:text=" 'Subject: ' + ${plans.get(1).getSubject()}"></p>-->
+<!--                        </div>-->
+                    </section>
 <!--                    <p class="plan-two">More <br> then there</p>-->
-                </section>
+                </div>
             </div>
 
             <section id="agenda" class="flex-flow-container">

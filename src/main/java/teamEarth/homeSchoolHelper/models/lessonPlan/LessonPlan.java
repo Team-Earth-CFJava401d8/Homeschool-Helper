@@ -71,7 +71,6 @@ public class LessonPlan {
 
     //========= Getters & Setters ============
 
-
     public long getId() {
         return id;
     }
@@ -150,7 +149,6 @@ public class LessonPlan {
     }
 
     //=========== toString Method ==========
-
 
     @Override
     public String toString() {
