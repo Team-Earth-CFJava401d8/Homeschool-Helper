@@ -16,7 +16,7 @@
                    th:text="'Last Name: ' + ${user.getLastName()}"></p>
                 <p th:if="${user.getDateOfBirth()} != null"
                    th:text="'Date of Birth: ' + ${user.getDateOfBirth()}"></p>
-                <p th:if="${user.getBio()} != ''" th:text="'Bio: ' + ${user.getBio()}"></p>
+<!--                <p th:if="${user.getBio()} != ''" th:text="'Bio: ' + ${user.getBio()}"></p>-->
 
                 <form action="/assignLesson" method="post">
                     <select name="child" >
