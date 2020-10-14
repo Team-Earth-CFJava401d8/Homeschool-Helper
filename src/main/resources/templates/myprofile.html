@@ -4,40 +4,40 @@
 <body>
     <header th:replace="fragments/header :: header"></header>
     <main>
-        <div>
-            <h1>My Account Profile</h1>
-            <!--        Make a image profile property in ApplicationUser constructor-->
-            <!--        <img th:src="${user.()}">-->
-            <p th:text="'Username: ' + ${user.getUsername()}"></p>
-            <p th:if="${user.getFirstName()} !=''"
-               th:text="'First Name: ' + ${user.getFirstName()}"></p>
-            <p th:if="${user.getLastName()} != ''"
-               th:text="'Last Name: ' + ${user.getLastName()}"></p>
-            <p th:if="${user.getDateOfBirth()} != null"
-               th:text="'Date of Birth: ' + ${user.getDateOfBirth()}"></p>
-            <p th:if="${user.getBio()} != ''" th:text="'Bio: ' + ${user.getBio()}"></p>
-        </div>
+        <section id="pageAll">
+            <div id="teacher">
+                <h1>My Account Profile</h1>
+                <!--        Make a image profile property in ApplicationUser constructor-->
+                <!--        <img th:src="${user.()}">-->
+                <p th:text="'Username: ' + ${user.getUsername()}"></p>
+                <p th:if="${user.getFirstName()} !=''"
+                   th:text="'First Name: ' + ${user.getFirstName()}"></p>
+                <p th:if="${user.getLastName()} != ''"
+                   th:text="'Last Name: ' + ${user.getLastName()}"></p>
+                <p th:if="${user.getDateOfBirth()} != null"
+                   th:text="'Date of Birth: ' + ${user.getDateOfBirth()}"></p>
+                <p th:if="${user.getBio()} != ''" th:text="'Bio: ' + ${user.getBio()}"></p>
 
-        <div id="students">
-            <section th:each="child : ${children}" th:value="${child.getId()}" class="container">
-                <img src="/graphics/Icon.png" alt="homeschool helper logo" class='profilepic'>
-                <p th:text="${child.getFirstName()} + ' ' + ${child.getLastName()}" class="name">Paul O'Brien</p>
-                <p class="plan-one">Content all here <br> and here</p>
-                <p class="plan-two">More <br> then there</p>
-            </section>
-        </div>
+                <form action="/assignLesson" method="post">
+                    <select name="child" >
+                        <option th:each="child : ${children}" th:value="${child.getId()}" th:text="${child.getFirstName()}"></option>
+                    </select>
 
-        <section>
-            <form action="/assignLesson" method="post">
-                <select name="child" >
-                    <option th:each="child : ${children}" th:value="${child.getId()}" th:text="${child.getFirstName()}"></option>
-                </select>
+                    <select name="lesson">
+                        <option th:each="plan : ${plans}" th:value="${plan.getId()}" th:text="${plan.getPlanName()}"></option>
+                    </select>
+                    <input type="submit" value="Assign">
+                </form>
+            </div>
 
-                <select name="lesson">
-                    <option th:each="plan : ${plans}" th:value="${plan.getId()}" th:text="${plan.getPlanName()}"></option>
-                </select>
-                <input type="submit" value="Assign">
-            </form>
+            <div id="students">
+                <section th:each="child : ${children}" th:value="${child.getId()}" class="container">
+                    <img src="/graphics/Icon.png" alt="homeschool helper logo" class='profilepic'>
+                    <p th:text="${child.getFirstName()} + ' ' + ${child.getLastName()}" class="name">Paul O'Brien</p>
+                    <p class="plan-one">Content all here <br> and here</p>
+                    <p class="plan-two">More <br> then there</p>
+                </section>
+            </div>
 
         </section>
     </main>
