@@ -1,4 +1,4 @@
-package teamEarth.homeSchoolHelper.models.notes;
-
-public class Notes {
-}
+//package teamEarth.homeSchoolHelper.models.notes;
+//
+//public class Notes {
+//}
