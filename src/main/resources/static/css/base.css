@@ -48,6 +48,13 @@ hr {
   margin: 0px;
 }
 
+.flex-flow-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 15% 0% 0% 0%;
+}
+
 #start-here {
   display: flex;
   flex-flow: row wrap;
@@ -112,6 +119,22 @@ input {
   border-radius: 10px;
 }
 
+.basic-column-box {
+  background-color: #E6C67C;
+  text-align: center;
+  padding: 12px;
+  font-size: 1.5em;
+  display: flex;
+  flex-flow: column wrap;
+  border-radius: 8px;
+  font-family: 'Caveat', cursive;
+}
+
+
+#one-hundred-basis {
+    flex-basis: 100%;
+}
+
 #create-your-account {
   font-family: 'Caveat', cursive;
   background-color: #E6C67C;
@@ -130,18 +153,27 @@ input {
   border: none;
 }
 
-#profile-pic {
+#profile-pic, #plus-pic {
   background-color: #F23D3D;
 }
 
-#plus-pic {
-  background-color: #F23D3D;
+#pageAll {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  gird-template-rows: 30px auto;
 }
 
 #students {
+  grid-column: 1;
   display: flex;
   flex-flow: row wrap;
-  justify-content: flex-start;
+  justify-content: space-around;
+}
+
+#teacher {
+  margin-top: 12;
+  grid-column: 2;
+  grid-row: 1;
 }
 
 .container {
