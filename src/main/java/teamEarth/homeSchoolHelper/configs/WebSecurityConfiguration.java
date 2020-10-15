@@ -40,12 +40,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/signup").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/newuser").permitAll()
-                .antMatchers("/css/*", "/graphics/*").permitAll() // and here for more info https://stackoverflow.com/questions/25368535/spring-security-does-not-allow-css-or-js-resources-to-be-loaded
+                .antMatchers("/css/*", "/graphics/*", "/js/*").permitAll() // and here for more info https://stackoverflow.com/questions/25368535/spring-security-does-not-allow-css-or-js-resources-to-be-loaded
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/user") // the
+                .defaultSuccessUrl("/myprofile") // the
 //                .failureUrl("/user")
                 .and()
                 .logout(); // this then creates a built-in default logout route at /logout.

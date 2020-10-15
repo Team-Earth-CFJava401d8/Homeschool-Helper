@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Here</title>
+    <link rel="stylesheet" type="text/css" href="/css/reset.css"/> <!-- This is correct to find the static/... files.-->
+    <link rel="stylesheet" type="text/css" href="/css/highlevel.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/base.css"/> <!-- This is correct to find the static/... files.-->
+    <link rel="stylesheet" type="text/css" href="/css/dropdown.css"/> <!-- This is correct to find the static/... files.-->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d29afa4ed1.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<div id="header-container">
+    <div id="left-items">
+        <img class="flex-item" src="/graphics/Icon.png">
+        <h1 class="homeschoolhelper">Homeschool Helper</h1>
+    </div>
+</div>
+
+    <form action="/login" method="POST" class="form-standard">
+        <h1 id="center-item">Login to Your Account</h1>
+        Username <input type="text" name="username">
+        Password <input type="password" name="password">
+        <input id="sign-up-finish" type="submit" name="Login">
+    </form>
+
+</body>
+
+</html>

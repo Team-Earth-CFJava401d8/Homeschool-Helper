@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+
+<body>
+    <header th:replace="fragments/header :: header"></header>
+
+    <section class="form-standard">
+        <div class="cheap-padding"></div>
+        <form class="basic-column-box" action="/addChild" method="post">
+            First name:<input type="text" name="firstName">
+            Last Name:<input type="text" name="lastName">
+            Birthday:<input type="date" name="dob" class="one-hundred-basis">
+            <input type="submit" value="Add Child"></input>
+        </form>
+    </section>
+
+</body>
+
+<script th:replace="fragments/bottomcontent.html :: javascripts"></script>
+
+</html>

@@ -1,0 +1,29 @@
+<!-- <div th:fragments="header"> -->
+<header> <!-- https://developer.mozilla.org/en-US/docs/web/html/element/header -->
+
+
+
+    <div id="header-container">
+        <div id="left-items">
+            <a href="/myprofile"><img class="flex-item" id="logobg" src="/graphics/Icon.svg"></a>
+            <h1 class="homeschoolhelper">Homeschool Helper</h1>
+        </div>
+        <div id="right-items"> <!-- TODO: th:if for user -->
+            <div class="dropDown" id="plus-button-static"> <!-- class="nav-bar-item"-->
+                <a onclick="dropDown()" class="dropbtn" id="plus-button"><i id="plus-pic" class="fas fa-plus-circle fa-2x"></i></a>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="/lessonPlanner">Add a Lesson Plan</a>
+                    <a href="/addChild">Add a Student Profile</a>
+                </div>
+            </div>
+            <div class="accountDropDown" id="profilepic-static">
+                <a onclick="accountDropDown()" class="dropbtn" id="profile-button"><i id="profile-pic" class="far fa-user-circle fa-3x"></i></a> <!-- https://fontawesome.com/how-to-use/on-the-web/styling/sizing-icons -->
+                <div id="myAccountDropdown" class="dropdown-content">
+                    <a href="/logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr> <!-- https://www.w3schools.com/tags/tag_hr.asp -->
+</header>
+<!-- </div> -->

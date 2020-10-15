@@ -1,8 +1,3 @@
-* {
-    /* background-color: #309ABA; */
-    background-color: #446938;
-}
-
 #header-container {
   display: flex;
   flex-flow: row wrap;
@@ -11,7 +6,6 @@
 }
 
 #header-container * {
-  background-color: #F23D3D;
   padding: 5px 0px 3px 0px;
 }
 
@@ -19,11 +13,17 @@
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
+  background-color: #F23D3D;
+}
+
+#left-items a {
+  background-color: #F23D3D
 }
 
 .homeschoolhelper {  /* https://fonts.google.com/specimen/Caveat?preview.text=Homeschool%20Helper&preview.text_type=custom&sidebar.open=true&selection.family=Caveat:wght@700 */
   font-family: 'Caveat', cursive;
   font-size: 48px;
+  background-color: #F23D3D;
 }
 
 #right-items {
@@ -32,25 +32,18 @@
   justify-content: flex-end;
   align-items: center;
   margin-right: 15px;
+  background-color: #F23D3D;
 }
 
 #lower-color {
   background-color: black;
 }
 
-hr {
-  height: 10px;
-  background-color: whitesmoke;
-  border-width: 0px;
-  /* color: whitesmoke; */
-  margin: 0px;
-}
 
 #start-here {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  /* background-color: #E6C67C; */
   margin: 15% 0% 0% 0%;
 }
 
@@ -59,28 +52,306 @@ hr {
   flex-flow: row wrap;
   justify-content: space-evenly;
   background-color: #E6C67C;
-  padding: 10px;
+  padding: 5px 0px 20px;
   border-style: outset;
   border-radius: 10px;
   border-color: #309ABA;
   border-width: 5px;
 }
 
+#title a {
+    background: #E6C67C;
+}
+
 #center-item {
   flex-basis: 100%;
   text-align: center;
-  margin: 15px;
+  margin: 10px;
   font-family: 'Caveat', cursive;
   background-color: #E6C67C;
+  font-size: 1.6em;
+  margin: 3px 0px 10px 0px;
 }
 
 .login-signin {
-  /* flex-basis: 10%; */
   padding: 10px;
-
 }
 
-button {
-  color: beige;
+.form-standard { /* was .sign-up-form */
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-evenly;
+  background: whitesmoke;
+  padding: 10px;
+  background-color: #E6C67C;
+  border-style: outset;
+  border-radius: 10px;
+  border-width: 5px;
+  border-color: #309ABA;
+  inline-size: 480px;
+  margin: auto;
+  margin-top: 270px;
+  inline-size: 215px;
+}
+
+#sign-up-finish {
+  margin-top: 10px;
+  font-family: 'Caveat', cursive;
+  font-size: 1.25em;
   background-color: #F23D3D;
+  border-radius: 10px;
+  border-width: 0px;
+  inline-size: 120px;
+  align-self: center;
+}
+
+.subject-select {
+  margin-top: 10px;
+}
+
+#create-your-account {
+  font-family: 'Caveat', cursive;
+  background-color: #E6C67C;
+  text-align: center;
+  margin-bottom: 5px;
+  font-size: 1.5em;
+}
+
+#login {
+  font-size: 1.25em;
+  margin-top: 10px;
+}
+
+#add-button {
+  margin 0px 0px 0px 0px;
+  padding 0px;
+  border: none;
+}
+
+#profile-pic, #plus-pic {
+  background-color: #F23D3D;
+}
+
+#pageAll {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  gird-template-rows: 30px auto;
+}
+
+#students {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+#students p {
+  background-color: #faf7fa;
+}
+
+#teacher {
+  margin-top: 12px;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+#agenda {
+  margin: 12px 0px 0px 0px;
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.daily {
+  padding: 5px;
+  border-radius: 10px;
+  margin: 3px 20px 5px 3px;
+  background-color: #EDF9E3;
+  min-width: 150px;
+  border-width: 3px;
+  padding-right: 10px;
+}
+
+.daily * {
+  background-color: #EDF9E3;
+}
+
+.container {
+  display: grid;
+  inline-size: 480px;
+  grid-template-columns: 90px 155px 155px 65px;
+  grid-template-rows: 40px 75px 75px 90px;
+  border-radius: 10px;
+  border-style: solid;
+  background-color: rgba(1, 136, 130, 1);
+  gap: 1px 5px;
+  margin: 10px;
+  box-shadow: 5px 5px 10px black;
+  box-sizing: border-box;
+}
+
+.name {
+  grid-row: 1;
+  grid-column: 1 / 4;
+  align-self: flex-start;
+  padding: 2px 0px 6px 10px;
+  background-color: #faf7fa;
+  margin: 7px 0px 3px 5px;
+  border-radius: 6px;
+  font: 1.2em sans-serif;
+}
+
+.profilepic {
+  grid-column: 1;
+  grid-row: 2 / span 3;
+  justify-self: center;
+  align-self: start;
+  background-color: rgba(1, 136, 130, 1);
+  border-radius: 5px;
+  font: 1em sans-serif;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.plans {
+  grid-column: 2 / span 2;
+  grid-row: 2 / span 2;
+  background-color: rgba(1, 136, 130, 1);
+  margin: 0px;
+  border-radius: 8px;
+  font: 1em sans-serif;
+  padding: 0px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.plan {
+  background-color: #faf7fa;
+  margin: 1px;
+  border-radius: 8px;
+  padding: 3px;
+  font: 1em sans-serif;
+  inline-size: 145px;
+  height: 60px;
+}
+
+.plan p {
+  font-size: .80em;
+}
+
+.plans h3 {
+  background-color: rgba(1, 136, 130, 1);
+  flex-basis: 100%;
+  height: 0;
+  text-align: center;
+}
+
+.notes-container {
+  grid-row: 4;
+  grid-column: 1 / 5;
+  background-color: rgba(1, 136, 130, 1);
+  border-radius: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  overflow: auto;
+}
+
+.notes-container a {
+    background-color: rgba(1, 136, 130, 1);
+    text-decoration: none;
+    color: black;
+    position: relative; /* */
+}
+
+.notes-container textarea {
+    background-color: #EDF9E3;
+    margin: 1px 0px 8px 10px;
+    border-radius: 10px;
+    padding: 3px 3px 3px 6px;
+    font-size: 1em;
+}
+
+.notes-container textarea:focus {
+    outline: -webkit-focus-ring-color auto 0px;
+}
+
+.note {
+    inline-size: 90px;
+    border-radius: 10px;
+    background-color: #faf7fa;
+    height: 70px;
+    padding: 6px;
+    margin: 3px 3px 9px 7px;
+    overflow:hidden;
+}
+
+
+.submit {
+    border-radius: 10px;
+    margin-left: 2px;
+    align-self: self-start;
+    padding: 33px 4px 28px 4px;
+}
+
+.nav-bar-item {
+  margin-right: 10px;
+}
+
+.flex-item {
+  margin-left: 8px;
+  background-color: #F23D3D;
+  height: 64px;
+}
+
+#plus-pic:hover, #profile-pic:hover {
+  text-shadow: 1px 3px 4px black;
+}
+
+#logobg {
+  transition: transform .3s;
+  padding: 0px;
+  margin: 0px;
+  border-radius: 9px;
+}
+
+#logobg:hover {
+/*   opacity: 0.5; */
+  transform: scale(1.5);
+}
+
+.note i { /* ::before https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_image_overlay_fade */
+ /*   content: "\f1f8";
+    font-family: "FontAwesome"; */
+    opacity: 0;
+    position: absolute;
+    top: 25px;
+    left: 40px;
+    z-index: 100;
+    width: 33%;
+    height: auto;
+    font-size: 2.8em;
+    background-color: whitesmoke;
+}
+
+.note i:hover {
+    animation-name: apparate;
+    animation-duration: .235s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes apparate { /* https://www.alltechnotricks.com/Blog/font_awesome_animation_css.html */
+    0% {
+        opacity: 0;
+        transform-origin: 50% 0%;
+        transform: scale(.2) translate(0%, -200%);
+    }
+    100% {
+        opacity: 1;
+        transform-origin: 50% 0%;
+        transform: scale(1) translate(0%, 0%);
+    }
+
 }

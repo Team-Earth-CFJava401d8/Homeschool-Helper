@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+    <header th:replace="fragments/header :: header"></header>
+    <section>Left Resources</section>
+
+<!--     This select the subject-->
+    <section class="form-standard">
+        <form th:unless="${panda}" class="basic-column-box" action="/lessonPlanner" method="POST">
+            Subject:&nbsp;<select name="subjectId" class="subject-select">
+                        <option th:each="subject : ${monkey}" th:value="${subject.getId()}"
+                        th:text="${subject.getSubjectMatter()}"></option>
+                    </select><br>
+            <input type="submit" value="Add">
+        </form>
+
+<!-- If subject has been selected this form shows subject categories -->
+        <form class="basic-column-box" th:if="${panda}" action="/createLessonPlan" method="POST">
+            <input type="hidden" th:value="${subject.getSubjectMatter()}" name="subject">
+            Subject Category:&nbsp;<select name="subCatId" class="subject-select">
+            <option th:each="subCat : ${panda}" th:value="${subCat.getId()}"
+                    th:text="${subCat.getCategoryName()}" class="subject-select"></option>
+        </select><br>
+
+            Links:<select name="links" class="subject-select">
+            <option th:each="link : ${links}"
+                    th:text="${link.getDescription()}"
+                    th:value="${link.getUrl()}"></option>
+        </select><br>
+
+            Books:<select name="booksId" class="subject-select">
+            <option th:each="books : ${books}"
+                    th:text="${books.getTitle()}"
+                    th:value="${books.getId()}"></option>
+        </select><br>
+            <input type="hidden" th:value="${user.getUserName()}" name="creator">
+            Lesson Plan:<input type="text" name="planName"><br>
+            <input type="submit" value="Add">
+        </form>
+
+
+<!--        <form action="/lessonPlan/update" method="post">-->
+<!--            Lesson Plan:<input type="text" name="planName"><br>-->
+<!--&lt;!&ndash;            Date:<input type="date" name="date"><br>&ndash;&gt;-->
+<!--            TO DB &ndash;&gt;-->
+<!--&lt;!&ndash;            Content:&ndash;&gt;-->
+<!--&lt;!&ndash;            <select name="item" id="item"></select>&lt;!&ndash; TODO: drop down of books & links & API's (need db of links and a way to add links to database &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash; TODO: write th if that checks if the select above is empty if not then create a new select below.           &ndash;&gt;-->
+<!--            <input type="submit" value="Add">Submit</input>-->
+<!--        </form>-->
+    </section>
+
+
+        <form action="/addLink" method="post">
+            Link: <input type="text" name="url">
+            Description: <input type="text" name="desc">
+            <input type="submit" value="Add">
+
+        </form>
+
+
+
+        <form action="/addSubject" method="POST">
+            Subject: <input type="text" name="subjectMatter">
+            <input type="submit" value="Add">
+        </form>
+
+        <form action="/addSubCat" method="POST">
+            Subject: <input type="text" name="subjectName">
+            Sub Category: <input type="text" name="categoryName">
+            <input type="submit" value="Add">
+        </form>
+
+    <section>Right Resources</section>
+</body>
+
+<script th:replace="fragments/bottomcontent.html :: javascripts"></script>
+
+</html>

@@ -1,0 +1,68 @@
+* {
+    background-color: #446938;
+}
+
+button {
+  color: beige;
+  background-color: #F23D3D;
+  border-radius: 10px;
+  font-family: "Caveat", cursive;
+  border-width: 0;
+}
+
+input {
+  background-color: whitesmoke;
+  margin: 3px 0px 3px 0px;
+}
+
+.basic-column-box {
+  background-color: #E6C67C;
+  text-align: center;
+  padding: 3px 12px 12px 12px;
+  font-size: 1.5em;
+  display: flex;
+  flex-flow: column wrap;
+  border-radius: 8px;
+  font-family: 'Caveat', cursive;
+}
+
+.basic-row-box {
+  background-color: #E6C67C;
+  text-align: center;
+  padding: 12px;
+  font-size: 1.5em;
+  display: flex;
+  flex-flow: row wrap;
+  border-radius: 8px;
+  font-family: 'Caveat', cursive;
+}
+
+.basic-row-box select {
+  margin-top: 10px;
+}
+
+.basic-row-box * {
+  background-color: whitesmoke;
+}
+
+.basic-column-box * {
+  background-color: whitesmoke;
+}
+
+.one-hundred-basis {
+  flex-basis: 100%;
+}
+
+hr {
+  height: 10px;
+  background-color: whitesmoke;
+  border-width: 0px;
+  margin: 0px;
+}
+
+.flex-flow-container {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  margin: 15% 0% 0% 0%;
+}

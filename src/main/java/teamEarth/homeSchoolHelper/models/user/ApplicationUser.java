@@ -1,24 +1,26 @@
-package teamEarth.homeSchoolHelper.models;
+package teamEarth.homeSchoolHelper.models.user;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import teamEarth.homeSchoolHelper.models.child.Child;
+import teamEarth.homeSchoolHelper.models.child.ChildRepository;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 
 @Entity
 public class ApplicationUser implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public long id;
+    private long id;
 
     public String username; // TODO: add to vars list BECAUSE IT'S ALL lowercase. why? BECAUSE.
-    String password;
+    public String password;
     private String firstName;
     private String lastName;
     private Date dateOfBirth; // NOTE: used the java.sql version
@@ -35,6 +37,9 @@ public class ApplicationUser implements UserDetails {
         this.bio = bio;
     }
 
+    @OneToMany(mappedBy = "applicationUser", cascade = CascadeType.ALL)
+    public List<Child> children = new ArrayList<>();
+
     @Override
     public String toString() {
         return "ApplicationUser{" +
@@ -44,6 +49,14 @@ public class ApplicationUser implements UserDetails {
                 " dateOfBirth: " + dateOfBirth + " |" +
                 " bio: " + bio +
                 '}';
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getUserName() { return username; }
@@ -67,10 +80,10 @@ public class ApplicationUser implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() { return null; }
 
     @Override
-    public String getPassword() { return null; }
+    public String getPassword() { return password; } // TODO: Always ensure it RETURNS IT.
 
     @Override
-    public String getUsername() { return null; }
+    public String getUsername() { return username; } // TODO: Always ensure it RETURNS IT.
 
     @Override
     public boolean isAccountNonExpired() { return true; }

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+    <header th:replace="fragments/header :: header"></header>
+    <main>
+        <section id="pageAll">
+            <div id="teacher">
+                <h1>My Account Profile</h1>
+                <!--        Make a image profile property in ApplicationUser constructor-->
+                <!--        <img th:src="${user.()}">-->
+                <p th:text="'Username: ' + ${user.getUsername()}"></p>
+                <p th:if="${user.getFirstName()} !=''"
+                   th:text="'First Name: ' + ${user.getFirstName()}"></p>
+                <p th:if="${user.getLastName()} != ''"
+                   th:text="'Last Name: ' + ${user.getLastName()}"></p>
+                <p th:if="${user.getDateOfBirth()} != null"
+                   th:text="'Date of Birth: ' + ${user.getDateOfBirth()}"></p>
+<!--                <p th:if="${user.getBio()} != ''" th:text="'Bio: ' + ${user.getBio()}"></p>-->
+
+                <form action="/assignLesson" method="post">
+                    <select name="child" >
+                        <option th:each="child : ${children}" th:value="${child.getId()}" th:text="${child.getFirstName()}"></option>
+                    </select>
+
+                    <select name="lesson">
+                        <option th:each="plan : ${plans}" th:value="${plan.getId()}" th:text="${plan.getPlanName()}"></option>
+                    </select>
+                    <input type="submit" value="Assign">
+                </form>
+            </div>
+
+            <div id="students">
+              
+                <section th:each="child, iStat : ${children}" th:value="${child.getId()}" class="container">
+                    <img src="/graphics/Icon.svg" alt="homeschool helper logo" class='profilepic'>
+                    <p th:text="${child.getFirstName()} + ' ' + ${child.getLastName()}" class="name">Paul O'Brien</p>
+                    
+                  <section class="plans">
+<!--                        <h3>Lesson Plans</h3>-->
+                        <div th:each="plan : ${child.getPlans()}" class="plan"> <!-- th:each="plan : ${child.getPlans()}"-->
+                            <p th:text=" 'Plan Name : ' + ${plan.getPlanName()}"></p>
+                            <p th:text=" 'Subject: ' + ${plan.getSubject()}"></p>
+                        </div>
+
+                    </section>
+
+                    <section class="notes-container">
+                        <a th:each="note : ${childNotes.get(iStat.index)}" th:href=" '/delete/' + ${note.getId()}"> <!-- https://css-tricks.com/snippets/jquery/make-entire-div-clickable/ -->
+                            <div class="note">
+                                <i class="fas fa-trash"></i> <!-- https://fontawesome.com/icons/trash?style=solid -->
+                                <p th:text="${note.getNotes()}"></p>
+    <!--                            <form class="notes-container" action="delete/${note.getId()}" method="delete"> &lt;!&ndash; Todo: Finish delete route&ndash;&gt;-->
+    <!--                                <input class="submit" type="submit" value="Delete">-->
+    <!--                            </form>-->
+                            </div>
+                        </a>
+                        <form class="notes-container" action="/notes" method="POST">
+                            <input type="hidden" th:value="${child.getId()}" name="childId">
+                            <textarea cols="31" rows="5" name="notes"></textarea>
+                            <input class="submit" type="submit" value="Add">
+                        </form>
+
+                    </section>
+
+                </section>
+
+            </div>
+
+            <section id="agenda" class="flex-flow-container">
+                <p style="text-align:center;" class="one-hundred-basis">The Weekly Lowdown</p>
+                <div class="daily">
+                    <p>Monday</p>
+                    <p>more content here</p>
+                </div>
+                <div class="daily">
+                    <p>Tuesday</p>
+                    <p>and here</p>
+                </div>
+                <div class="daily">
+                    <p>Wednesday</p>
+                </div>
+            </section>
+
+        </section>
+
+
+
+
+
+
+
+    </main>
+</body>
+
+<script th:replace="fragments/bottomcontent.html :: javascripts"></script>
+
+</html>
