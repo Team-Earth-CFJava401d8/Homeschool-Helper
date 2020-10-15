@@ -128,15 +128,17 @@ public class LessonPlanController {
 
 
 
-        lessonPlan.links.add(link);
+        lessonPlan.linksForPlan.add(link); // TODO: problem line
         System.out.println(lessonPlan.links + "Knock Knock");
 
 
 
         
 
-        lessonPlan.planOrder.push("L");
+        lessonPlan.planOrder.add("L");
         System.out.println(lessonPlan.planOrder + "Hello");
+        lessonPlanRepository.save(lessonPlan);
+
 
         m.addAttribute("subCats", subCats);
         m.addAttribute("lessonPlan", lessonPlan);
