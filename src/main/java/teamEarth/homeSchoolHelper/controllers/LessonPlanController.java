@@ -69,6 +69,7 @@ public class LessonPlanController {
         List<Links> links = linksRepository.findAll();
         LessonPlan lessonPlan = new LessonPlan("Addition", subjectName, null,
                 "", null, "", null);
+
         lessonPlanRepository.save(lessonPlan);
         m.addAttribute("lessonPlan", lessonPlan);
         m.addAttribute("subject", subject);
@@ -93,7 +94,6 @@ public class LessonPlanController {
         LessonPlan lessonPlan = new LessonPlan(planName, subject, category,
                                                links, booksId, creator, createdAt);
         lessonPlanRepository.save(lessonPlan);
-        System.out.println("HAHAHAHAHAHAHAHAHAHAHAHAHAHAHA");
 
         return new RedirectView( "/myprofile");
     }
@@ -123,8 +123,6 @@ public class LessonPlanController {
 
         List<SubCat> subCats = subCatRepository.findAllSubCatBySubjectId(subjectId);
         Links link = linksRepository.findById(linkId).get();
-        System.out.println("LinkID-- " + link);
-        System.out.println("Link@@@@@@@@@@@@@@@@ " + link.getDescription());
         LessonPlan lessonPlan = lessonPlanRepository.findById(lessonPlanId).get();
 
         System.out.println(lessonPlan.links + "!!!!!!!!!");
@@ -134,11 +132,8 @@ public class LessonPlanController {
 
         System.out.println(lessonPlan.links);
 
-        //lessonPlan.linksForPlan.add(link.getId());
         lessonPlan.planOrder.add("L");
-//        lessonPlanRepository.save(lessonPlan);
 
-        //System.out.println(lessonPlan.linksForPlan);
         System.out.println(lessonPlan.planOrder);
 
         m.addAttribute("subCats", subCats);
