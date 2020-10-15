@@ -34,7 +34,7 @@ public class SubjectController {
     // Linking sub category to subject matter and saving sub category to database
     @PostMapping("/createSubCat")
     public RedirectView addSubCat(String categoryName, Long subjectId) {
-        System.out.println("catName " + categoryName);
+        System.out.println("subid " + subjectId);
         Subject subject = subjectRepository.findById(subjectId).get();
        // Subject subject = subjectRepository.findBySubjectMatter(subjectName);
         System.out.println("the subject" + subject);

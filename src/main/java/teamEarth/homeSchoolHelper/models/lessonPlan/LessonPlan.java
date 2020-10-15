@@ -29,8 +29,7 @@ public class LessonPlan {
     //======== Many to Many =================
 
 
-    @ManyToMany(mappedBy = "plans", cascade = CascadeType.ALL)
-    public List<Book> booksList = new LinkedList<>();
+
 
     //Links to lessons connection
     @ManyToMany(cascade = CascadeType.REMOVE)
@@ -41,8 +40,14 @@ public class LessonPlan {
     )
     public List<Links> links = new ArrayList<>();
 
-
-
+    //Book to lessons connection
+    @ManyToMany(cascade = CascadeType.REMOVE)
+    @JoinTable(
+            name="lessonBooks",
+            joinColumns = @JoinColumn(name="lesson"),
+            inverseJoinColumns = @JoinColumn(name="books")
+    )
+    public List<Book> books = new ArrayList<>();
 
     // Child to lesson connection
     @ManyToMany(cascade = CascadeType.REMOVE)
@@ -60,6 +65,7 @@ public class LessonPlan {
     private String creator;
 
     public ArrayList<String> planOrder = new ArrayList<>();
+    public ArrayList<String> displayContent = new ArrayList<>();
 
     Timestamp createdAt = new Timestamp(System.currentTimeMillis());
 
@@ -96,14 +102,6 @@ public class LessonPlan {
     }
     public void setSubCat(SubCat subCat) {
         this.subCat = subCat;
-    }
-
-    public List<Book> getBooksList() {
-        return booksList;
-    }
-
-    public void setBooksList(List<Book> booksList) {
-        this.booksList = booksList;
     }
 
     public void setLinks(LinkedList<Links> links) {
@@ -158,16 +156,6 @@ public class LessonPlan {
     public void setSubject(String subject) {
         this.subject = subject;
     }
-
-//    public ArrayList<Book> getBooksForPlan() {
-//        return booksForPlan;
-//    }
-//
-//    public void setBooksForPlan(ArrayList<Book> booksForPlan) {
-//        this.booksForPlan = booksForPlan;
-//    }
-//
-
 
     public ArrayList<String> getPlanOrder() {
         return planOrder;

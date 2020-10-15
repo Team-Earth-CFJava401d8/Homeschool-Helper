@@ -4,10 +4,7 @@ import teamEarth.homeSchoolHelper.models.lessonPlan.LessonPlan;
 import teamEarth.homeSchoolHelper.models.subject.Subject;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class Book {
@@ -20,13 +17,8 @@ public class Book {
     @ManyToOne
     Subject subject;
 
-    @ManyToMany(cascade = CascadeType.REMOVE)
-    @JoinTable(
-            name="books",
-            joinColumns = @JoinColumn(name="book"),
-            inverseJoinColumns = @JoinColumn(name="lesson")
-    )
-    public Set<LessonPlan> plans = new HashSet<>();
+    @ManyToMany(mappedBy = "books", cascade = CascadeType.ALL)
+    public List<LessonPlan> lessonPlans = new LinkedList<>();
 
     private String title;
     private String author;
