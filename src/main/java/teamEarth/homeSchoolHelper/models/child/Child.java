@@ -51,42 +51,20 @@ public class Child {
 
     //=========== Getters & Setters ==========
 
-    public String getFirstName() {
-        return firstName;
-    }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+    public String getFirstName() { return firstName; }
+    public void setFirstName(String firstName) { this.firstName = firstName; }
 
-    public String getLastName() {
-        return lastName;
-    }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+    public String getLastName() { return lastName; }
+    public void setLastName(String lastName) { this.lastName = lastName; }
 
-    public Date getDob() {
-        return dob;
-    }
-    public void setDob(Date dob) {
-        this.dob = dob;
-    }
+    public Date getDob() { return dob; }
+    public void setDob(Date dob) { this.dob = dob; }
 
-    public long getId() {
-        return id;
-    }
-    public void setId(long id) {
-        this.id = id;
-    }
+    public long getId() { return id; }
+    public void setId(long id) { this.id = id; }
   
-     public List<Notes> getNotes() {
-        return notes;
-    }
-
-    public void setNotes(List<Notes> notes) {
-        this.notes = notes;
-
-    }
+     public List<Notes> getNotes() { return notes; }
+    public void setNotes(List<Notes> notes) { this.notes = notes; }
 
     public Set<LessonPlan> getPlans() { return plans; }
     public void setPlans(Set<LessonPlan> plans) { this.plans = plans; }
@@ -97,6 +75,6 @@ public class Child {
     public String toString() {
         return "Child{ id=" + id + ", firstName='" + firstName + '\''
                 + ", lastName='" + lastName + '\'' + ", dob=" + dob + '}' +
-                " lessonPlan: " + getPlans();
+                " lessonPlan: " + getPlans() + '\'' + ", and Notes :" + getNotes();
       }
    }

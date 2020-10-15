@@ -26,7 +26,6 @@ public class Notes {
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
@@ -34,7 +33,6 @@ public class Notes {
     public Child getChild() {
         return child;
     }
-
     public void setChild(Child child) {
         this.child = child;
     }
@@ -42,8 +40,15 @@ public class Notes {
     public String getNotes() {
         return notes;
     }
-
     public void setNotes(String notes) {
         this.notes = notes;
     }
+
+    //=========== toString Method ==========
+
+    @Override
+    public String toString() {
+        return "Notes{" + notes + '}';
+    }
+
 }

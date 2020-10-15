@@ -5,9 +5,11 @@
     <header th:replace="fragments/header :: header"></header>
 
 <!--     This select the subject-->
-    <section class="flex-flow-container">
-        <form th:unless="${subCats}" class="basic-row-box" action="/lessonPlanner" method="POST">
-            Subject:&nbsp;<select name="subjectId">
+
+
+    <section class="form-standard">
+        <form th:unless="${subCats}" class="basic-column-box" action="/lessonPlanner" method="POST">
+            Subject:&nbsp;<select name="subjectId" class="subject-select">
                         <option th:each="subject : ${monkey}" th:value="${subject.getId()}"
                         th:text="${subject.getSubjectMatter()}"></option>
                     </select><br>
@@ -19,12 +21,20 @@
               action="/createLessonPlan"
               method="POST">
             <input type="hidden" th:value="${subject.getSubjectMatter()}" name="subject">
-            Subject Category:&nbsp;<select name="subCatId">
+
+            Subject Category:&nbsp;<select name="subCatId" class="subject-select">
             <option th:each="subCat : ${subCats}" th:value="${subCat.getId()}"
-                    th:text="${subCat.getCategoryName()}"></option>
+                    th:text="${subCat.getCategoryName()}" class="subject-select"></option>
         </select><br>
 
-            Books:<select name="booksId">
+            Links:<select name="links" class="subject-select">
+            <option th:each="link : ${links}"
+                    th:text="${link.getDescription()}"
+                    th:value="${link.getUrl()}"></option>
+        </select><br>
+
+            Books:<select name="booksId" class="subject-select">
+
             <option th:each="books : ${books}"
                     th:text="${books.getTitle()}"
                     th:value="${books.getId()}"></option>
