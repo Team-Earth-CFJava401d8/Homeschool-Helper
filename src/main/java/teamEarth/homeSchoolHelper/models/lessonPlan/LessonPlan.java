@@ -48,8 +48,6 @@ public class LessonPlan {
     private Long bookId;
     private String creator;
 
-   // public ArrayList<Book> booksForPlan = new ArrayList<>();
-   // public ArrayList<Links> linksForPlan = new ArrayList<>();
     public ArrayList<String> planOrder = new ArrayList<>();
 
     Timestamp createdAt = new Timestamp(System.currentTimeMillis());
