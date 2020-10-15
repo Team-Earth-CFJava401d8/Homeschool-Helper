@@ -29,17 +29,17 @@
                     th:text="${subCat.getCategoryName()}" class="subject-select"></option>
         </select><br>
 
-            Links:<select name="links" class="subject-select">
-            <option th:each="link : ${links}"
-                    th:text="${link.getDescription()}"
-                    th:value="${link.getUrl()}"></option>
-        </select><br>
-
+            <div th:if="${display}">
+                <ol>
+                    <li th:each="display : ${display}" th:text="${display}"></li>
+                </ol>
+            </div>
 
             <input type="hidden" th:value="${user.getUserName()}" name="creator">
             Lesson Plan:<input type="text" name="planName"><br>
             <input type="submit" value="Create Lesson Plan">
         </form>
+
 
 <!--        //================= Add Link =====================-->
         <form th:if="${subCats}" action="/addLink" method="POST">
@@ -76,7 +76,7 @@
       <section class="basic-row-box" id="create-a-box">
         <section class="form-standard">
             <form class="basic-column-box" action="/createSubject" method="POST">
-            Create Subject<input type="text" name="subjectMatter" value="">   
+            Create Subject<input type="text" name="subjectMatter" >
       <input type="submit" value="Create">
         </form>
 

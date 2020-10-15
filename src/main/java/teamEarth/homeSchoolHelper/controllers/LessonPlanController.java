@@ -132,13 +132,13 @@ public class LessonPlanController {
 
         lessonPlan.links.add(link);
         lessonPlan.planOrder.add("L");
+        lessonPlan.displayContent.add(link.getDescription());
+        ArrayList<String> display = lessonPlan.displayContent;
         lessonPlanRepository.save(lessonPlan);
 
+        m.addAttribute("display", display);
         m.addAttribute("subCats", subCats);
         m.addAttribute("lessonPlan", lessonPlan);
-
-
-
         m.addAttribute("subject", subject);
         m.addAttribute("user", user);
         m.addAttribute("books", books);
@@ -155,24 +155,20 @@ public class LessonPlanController {
         List<SubCat> subCats = subCatRepository.findAllSubCatBySubjectId(subjectId);
         Book book = bookRepository.findById(booksId).get();
         LessonPlan lessonPlan = lessonPlanRepository.findById(lessonPlanId).get();
-
-
-        book.plans.add(lessonPlan);
-        lessonPlan.planOrder.add("B");
-
-        bookRepository.save(book);
-
-
-        System.out.println(lessonPlan.planOrder);
-
-        m.addAttribute("subCats", subCats);
-        m.addAttribute("lessonPlan", lessonPlan);
-
         ApplicationUser user = applicationUserRepository.findByUsername(principal.getName());
         Subject subject = subjectRepository.findById(subjectId).get();
         List<Book> books = bookRepository.findAllBooksBySubjectId(subjectId);
         List<Links> links = linksRepository.findAll();
 
+        lessonPlan.books.add(book);
+        lessonPlan.planOrder.add("B");
+        lessonPlan.displayContent.add(book.getTitle());
+        ArrayList<String> display = lessonPlan.displayContent;
+        lessonPlanRepository.save(lessonPlan);
+
+        m.addAttribute( "display", display);
+        m.addAttribute("subCats", subCats);
+        m.addAttribute("lessonPlan", lessonPlan);
         m.addAttribute("subject", subject);
         m.addAttribute("user", user);
         m.addAttribute("books", books);
