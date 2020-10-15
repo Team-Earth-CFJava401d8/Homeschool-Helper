@@ -32,7 +32,7 @@ public class BookController {
     }
 
     //Adding book to the database
-    @PostMapping("/addBook")
+    @PostMapping("/createBook")
     public RedirectView createBook(Model m, Principal principal, Subject subject, String title,
                                    String author, String ISBN, int edition, int gradeLevel,
                                    int numberOfPages) {

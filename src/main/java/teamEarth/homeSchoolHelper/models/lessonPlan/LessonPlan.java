@@ -27,14 +27,25 @@ public class LessonPlan {
     SubCat subCat;
 
     //======== Many to Many =================
-    @ManyToMany(mappedBy = "lessonPlans", cascade = CascadeType.ALL)
-    public List<Links> links = new LinkedList<>();
+
 
     @ManyToMany(mappedBy = "plans", cascade = CascadeType.ALL)
     public List<Book> booksList = new LinkedList<>();
 
+    //Links to lessons connection
     @ManyToMany(cascade = CascadeType.REMOVE)
+    @JoinTable(
+            name="lessonLinks",
+            joinColumns = @JoinColumn(name="lesson"),
+            inverseJoinColumns = @JoinColumn(name="links")
+    )
+    public List<Links> links = new ArrayList<>();
 
+
+
+
+    // Child to lesson connection
+    @ManyToMany(cascade = CascadeType.REMOVE)
     @JoinTable(
             name="childlessons",
             joinColumns = @JoinColumn(name="child1"),
@@ -48,8 +59,6 @@ public class LessonPlan {
     private Long bookId;
     private String creator;
 
-   // public ArrayList<Book> booksForPlan = new ArrayList<>();
-   // public ArrayList<Links> linksForPlan = new ArrayList<>();
     public ArrayList<String> planOrder = new ArrayList<>();
 
     Timestamp createdAt = new Timestamp(System.currentTimeMillis());

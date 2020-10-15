@@ -8,7 +8,7 @@
         <h1>Book Page</h1>
         <div>
 <!--            Add some image for the page-->
-            <form action="/addBook" method="POST">
+            <form action="/createBook" method="POST">
                 Subject:<select name="subject">
                 <option th:each="subject : ${subjects}" th:value="${subject.getId()}"
                         th:text="${subject.getSubjectMatter()}"></option>
