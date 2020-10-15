@@ -23,6 +23,8 @@ import teamEarth.homeSchoolHelper.models.user.ApplicationUserRepository;
 
 import java.security.Principal;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @Controller
@@ -61,15 +63,19 @@ public class LessonPlanController {
     public String planner2(Model m, Principal principal, Long subjectId) {
         ApplicationUser user = applicationUserRepository.findByUsername(principal.getName());
         Subject subject = subjectRepository.findById(subjectId).get();
+        String subjectName = subject.getSubjectMatter();
         List<SubCat> subCats = subCatRepository.findAllSubCatBySubjectId(subjectId);
         List<Book> books = bookRepository.findAllBooksBySubjectId(subjectId);
         List<Links> links = linksRepository.findAll();
-
+        LessonPlan lessonPlan = new LessonPlan("Addition", subjectName, null,
+                "", null, "", null);
+        lessonPlanRepository.save(lessonPlan);
+        m.addAttribute("lessonPlan", lessonPlan);
         m.addAttribute("subject", subject);
         m.addAttribute("user", user);
         m.addAttribute("books", books);
         m.addAttribute("links", links);
-        m.addAttribute("panda", subCats);
+        m.addAttribute("subCats", subCats);
         return "lessonPlanner";
     }
 
@@ -87,6 +93,7 @@ public class LessonPlanController {
         LessonPlan lessonPlan = new LessonPlan(planName, subject, category,
                                                links, booksId, creator, createdAt);
         lessonPlanRepository.save(lessonPlan);
+        System.out.println("HAHAHAHAHAHAHAHAHAHAHAHAHAHAHA");
 
         return new RedirectView( "/myprofile");
     }
@@ -108,6 +115,63 @@ public class LessonPlanController {
 
         return new RedirectView("/myprofile");
     }
+
+    @PostMapping("/addLink")
+    public String addLink(Model m, Principal principal, Long subjectId, Long linkId,
+                          Long lessonPlanId) {
+
+
+        List<SubCat> subCats = subCatRepository.findAllSubCatBySubjectId(subjectId);
+        Links link = linksRepository.findById(linkId).get();
+        LessonPlan lessonPlan = lessonPlanRepository.findById(lessonPlanId).get();
+
+
+
+
+        lessonPlan.links.add(link);
+        System.out.println(lessonPlan.links + "Knock Knock");
+
+
+
+        
+
+        lessonPlan.planOrder.push("L");
+        System.out.println(lessonPlan.planOrder + "Hello");
+
+        m.addAttribute("subCats", subCats);
+        m.addAttribute("lessonPlan", lessonPlan);
+
+
+
+        ApplicationUser user = applicationUserRepository.findByUsername(principal.getName());
+        Subject subject = subjectRepository.findById(subjectId).get();
+        List<Book> books = bookRepository.findAllBooksBySubjectId(subjectId);
+        List<Links> links = linksRepository.findAll();
+
+        m.addAttribute("subject", subject);
+        m.addAttribute("user", user);
+        m.addAttribute("books", books);
+        m.addAttribute("links", links);
+
+        return "lessonPlanner";
+    }
+
+//    @PostMapping("/addBook")
+//    public RedirectView addBook(Model m, Principal principal, Long bookId,
+//                                Long lessonId) {
+//        Book book = bookRepository.findById(bookId).get();
+//        LessonPlan lessonPlan = lessonPlanRepository.findById(lessonId).get();
+//
+//
+////        LinkedList<Book> books = booksList;
+////        books.add(book);
+////        LinkedList<String> planOrder = order;
+////        planOrder.add("b");
+////        m.addAttribute("links", linksList);
+////        m.addAttribute("books", books);
+////        m.addAttribute("order", order);
+////        return new RedirectView("/lessonPlanner");
+//    }
 
 
 }

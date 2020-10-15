@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import teamEarth.homeSchoolHelper.models.child.Child;
-import teamEarth.homeSchoolHelper.models.child.ChildRepository;
 import teamEarth.homeSchoolHelper.models.lessonPlan.LessonPlan;
 import teamEarth.homeSchoolHelper.models.lessonPlan.LessonPlanRepository;
 import teamEarth.homeSchoolHelper.models.notes.Notes;
@@ -89,10 +88,6 @@ public class ApplicationUserController {
         m.addAttribute("user", user);
         m.addAttribute("children", usersChildren);
         m.addAttribute("principal", principal);
-
-//        System.out.println("This is a plan: " + lessonPlans.get(0).toString());
-//        System.out.println("This is a user: " + user.toString());
-//        System.out.println("This is a child: " + usersChildren.get(0));
 
         return "myprofile";
     }

@@ -1,6 +1,7 @@
 package teamEarth.homeSchoolHelper.models.subject;
 
 import teamEarth.homeSchoolHelper.models.book.Book;
+import teamEarth.homeSchoolHelper.models.links.Links;
 import teamEarth.homeSchoolHelper.models.subCat.SubCat;
 
 import javax.persistence.*;
@@ -19,6 +20,9 @@ public class Subject {
 
     @OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
     List<Book> book = new ArrayList<>();
+
+    @OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
+    List<Links> links = new ArrayList<>();
 
 
     private String subjectMatter;

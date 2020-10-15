@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 import teamEarth.homeSchoolHelper.models.child.Child;
 import teamEarth.homeSchoolHelper.models.child.ChildRepository;
-import teamEarth.homeSchoolHelper.models.lessonPlan.LessonPlanRepository;
 import teamEarth.homeSchoolHelper.models.user.ApplicationUser;
 import teamEarth.homeSchoolHelper.models.user.ApplicationUserRepository;
 
