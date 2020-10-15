@@ -90,9 +90,9 @@ public class ApplicationUserController {
         m.addAttribute("children", usersChildren);
         m.addAttribute("principal", principal);
 
-        System.out.println("This is a plan: " + lessonPlans.get(0).toString());
-        System.out.println("This is a user: " + user.toString());
-        System.out.println("This is a child: " + usersChildren.get(0));
+//        System.out.println("This is a plan: " + lessonPlans.get(0).toString());
+//        System.out.println("This is a user: " + user.toString());
+//        System.out.println("This is a child: " + usersChildren.get(0));
 
         return "myprofile";
     }
