@@ -124,15 +124,44 @@ public class LessonPlanController {
         List<SubCat> subCats = subCatRepository.findAllSubCatBySubjectId(subjectId);
         Links link = linksRepository.findById(linkId).get();
         LessonPlan lessonPlan = lessonPlanRepository.findById(lessonPlanId).get();
+        ApplicationUser user = applicationUserRepository.findByUsername(principal.getName());
+        Subject subject = subjectRepository.findById(subjectId).get();
+        List<Book> books = bookRepository.findAllBooksBySubjectId(subjectId);
+        List<Links> links = linksRepository.findAll();
 
-        System.out.println(lessonPlan.links + "!!!!!!!!!");
 
-        link.lessonPlans.add(lessonPlan);
-        linksRepository.save(link);
-
-        System.out.println(lessonPlan.links);
-
+        lessonPlan.links.add(link);
         lessonPlan.planOrder.add("L");
+        lessonPlanRepository.save(lessonPlan);
+
+        m.addAttribute("subCats", subCats);
+        m.addAttribute("lessonPlan", lessonPlan);
+
+
+
+        m.addAttribute("subject", subject);
+        m.addAttribute("user", user);
+        m.addAttribute("books", books);
+        m.addAttribute("links", links);
+
+        return "lessonPlanner";
+    }
+
+    //================= Add Book ==========================
+    @PostMapping("/addBook")
+    public String addBook(Model m, Principal principal, Long subjectId, Long booksId,
+                          Long lessonPlanId) {
+
+        List<SubCat> subCats = subCatRepository.findAllSubCatBySubjectId(subjectId);
+        Book book = bookRepository.findById(booksId).get();
+        LessonPlan lessonPlan = lessonPlanRepository.findById(lessonPlanId).get();
+
+
+        book.plans.add(lessonPlan);
+        lessonPlan.planOrder.add("B");
+
+        bookRepository.save(book);
+
 
         System.out.println(lessonPlan.planOrder);
 
@@ -151,42 +180,6 @@ public class LessonPlanController {
 
         return "lessonPlanner";
     }
-
-    //================= Add Book ==========================
-//    @PostMapping("/addBook")
-//    public String addLink(Model m, Principal principal, Long subjectId, Long bookId,
-//                          Long lessonPlanId) {
-//
-//        List<SubCat> subCats = subCatRepository.findAllSubCatBySubjectId(subjectId);
-//        Links link = linksRepository.findById(bookId).get();
-//        LessonPlan lessonPlan = lessonPlanRepository.findById(lessonPlanId).get();
-//
-//        System.out.println(lessonPlan.links + "!!!!!!!!!");
-//
-//        link.lessonPlans.add(lessonPlan);
-//        linksRepository.save(link);
-//
-//        System.out.println(lessonPlan.links);
-//
-//        lessonPlan.planOrder.add("L");
-//
-//        System.out.println(lessonPlan.planOrder);
-//
-//        m.addAttribute("subCats", subCats);
-//        m.addAttribute("lessonPlan", lessonPlan);
-//
-//        ApplicationUser user = applicationUserRepository.findByUsername(principal.getName());
-//        Subject subject = subjectRepository.findById(subjectId).get();
-//        List<Book> books = bookRepository.findAllBooksBySubjectId(subjectId);
-//        List<Links> links = linksRepository.findAll();
-//
-//        m.addAttribute("subject", subject);
-//        m.addAttribute("user", user);
-//        m.addAttribute("books", books);
-//        m.addAttribute("links", links);
-//
-//        return "lessonPlanner";
-//    }
 
 
 }

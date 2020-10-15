@@ -17,13 +17,8 @@ public class Links {
     @ManyToOne
     Subject subject;
 
-    @ManyToMany(cascade = CascadeType.REMOVE)
-    @JoinTable(
-            name="linkLessons",
-            joinColumns = @JoinColumn(name="link"),
-            inverseJoinColumns = @JoinColumn(name="lesson")
-    )
-    public List<LessonPlan> lessonPlans = new ArrayList<>();
+    @ManyToMany(mappedBy = "links", cascade = CascadeType.ALL)
+    public List<LessonPlan> lessonPlans = new LinkedList<>();
 
     private String url;
     private String description;
