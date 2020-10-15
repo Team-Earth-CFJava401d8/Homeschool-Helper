@@ -9,6 +9,7 @@
 
     <section class="form-standard">
         <form th:unless="${subCats}" class="basic-column-box" action="/lessonPlanner" method="POST">
+            <p>Create a Lesson Plan</p>
             Subject:&nbsp;<select name="subjectId" class="subject-select">
                         <option th:each="subject : ${monkey}" th:value="${subject.getId()}"
                         th:text="${subject.getSubjectMatter()}"></option>
@@ -17,6 +18,7 @@
         </form>
 
 <!-- If subject has been selected this form shows subject categories -->
+
         <form class="basic-column-box" th:if="${subCats}"
               action="/createLessonPlan"
               method="POST">
@@ -55,45 +57,42 @@
             <input type="submit" value="Add Link">
         </form>
 
-<!--        <form action="/lessonPlan/update" method="post">-->
-<!--            Lesson Plan:<input type="text" name="planName"><br>-->
-<!--&lt;!&ndash;            Date:<input type="date" name="date"><br>&ndash;&gt;-->
-<!--            TO DB &ndash;&gt;-->
-<!--&lt;!&ndash;            Content:&ndash;&gt;-->
-<!--&lt;!&ndash;            <select name="item" id="item"></select>&lt;!&ndash; TODO: drop down of books & links & API's (need db of links and a way to add links to database &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash; TODO: write th if that checks if the select above is empty if not then create a new select below.           &ndash;&gt;-->
-<!--            <input type="submit" value="Add">Submit</input>-->
-<!--        </form>-->
     </section>
 
 
-
-
-
-
-        <form action="/createSubject" method="POST">
-        Subject: <input type="text" name="subjectMatter" value="">
-        <input type="submit" value="Create">
-        </form>
-
-        <form action="/createLink" method="post">
-            Subject:&nbsp;<select name="subjectId">
-            <option th:each="subject : ${monkey}" th:value="${subject.getId()}"
-                    th:text="${subject.getSubjectMatter()}"></option>
-        </select><br>
-            Link: <input type="text" name="url">
-            Description: <input type="text" name="desc">
+    <section class="basic-row-box" id="create-a-box">
+        <section class="form-standard">
+            <form class="basic-column-box" action="/createSubject" method="POST">
+            Create Subject<input type="text" name="subjectMatter" value="">
             <input type="submit" value="Create">
-        </form>
+            </form>
+        </section>
 
-        <form action="/createSubCat" method="POST">
-            Subject:&nbsp;<select name="subjectId">
-            <option th:each="subject : ${monkey}" th:value="${subject.getId()}"
-                    th:text="${subject.getSubjectMatter()}"></option>
-        </select><br>
-            Sub Category: <input type="text" name="categoryName">
-            <input type="submit" value="Create">
-        </form>
+        <section class="form-standard">
+            <form class="basic-column-box" action="/createSubCat" method="POST">
+                <p> Create a Subcategory</p>
+                Subject:&nbsp;<select name="subjectId">
+                <option th:each="subject : ${monkey}" th:value="${subject.getId()}"
+                        th:text="${subject.getSubjectMatter()}"></option>
+            </select><br>
+                Sub Category: <input type="text" name="categoryName">
+                <input type="submit" value="Create">
+            </form>
+        </section>
+
+        <section class="form-standard">
+            <form class="basic-column-box" action="/createLink" method="post">
+                <p> Create a Link</p>
+                Subject:&nbsp;<select name="subjectId">
+                <option th:each="subject : ${monkey}" th:value="${subject.getId()}"
+                        th:text="${subject.getSubjectMatter()}"></option>
+            </select><br>
+                Link: <input type="text" name="url">
+                Description: <input type="text" name="desc">
+                <input type="submit" value="Create">
+            </form>
+        </section>
+    </section>
 
 </body>
 

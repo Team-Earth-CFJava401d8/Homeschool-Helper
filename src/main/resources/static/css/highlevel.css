@@ -42,7 +42,8 @@ input {
 }
 
 .basic-row-box * {
-  background-color: whitesmoke;
+  /* background-color: whitesmoke; */
+  background-color: #E6C67C;
 }
 
 .basic-column-box * {
@@ -65,4 +66,13 @@ hr {
   flex-flow: column wrap;
   justify-content: center;
   margin: 15% 0% 0% 0%;
+}
+
+#create-a-box {
+    background-color: #446938;
+    margin: auto;
+}
+
+#create-a-box * {
+    margin: auto;
 }
