@@ -47,9 +47,10 @@ public class LessonPlan {
     private String url;
     private Long bookId;
     private String creator;
-    public LinkedList<Book> booksForPlan = new LinkedList<>();
-    public LinkedList<Links> linksForPlan = new LinkedList<>();
-    public LinkedList<String> planOrder;
+
+   // public ArrayList<Book> booksForPlan = new ArrayList<>();
+   // public ArrayList<Links> linksForPlan = new ArrayList<>();
+    public ArrayList<String> planOrder = new ArrayList<>();
 
     Timestamp createdAt = new Timestamp(System.currentTimeMillis());
 
@@ -149,29 +150,21 @@ public class LessonPlan {
         this.subject = subject;
     }
 
-    public LinkedList<Book> getBooksForPlan() {
-        return booksForPlan;
-    }
+//    public ArrayList<Book> getBooksForPlan() {
+//        return booksForPlan;
+//    }
+//
+//    public void setBooksForPlan(ArrayList<Book> booksForPlan) {
+//        this.booksForPlan = booksForPlan;
+//    }
+//
 
-    public void setBooksForPlan(
-            LinkedList<Book> booksForPlan) {
-        this.booksForPlan = booksForPlan;
-    }
 
-    public LinkedList<Links> getLinksForPlan() {
-        return linksForPlan;
-    }
-
-    public void setLinksForPlan(
-            LinkedList<Links> linksForPlan) {
-        this.linksForPlan = linksForPlan;
-    }
-
-    public LinkedList<String> getPlanOrder() {
+    public ArrayList<String> getPlanOrder() {
         return planOrder;
     }
 
-    public void setPlanOrder(LinkedList<String> planOrder) {
+    public void setPlanOrder(ArrayList<String> planOrder) {
         this.planOrder = planOrder;
     }
 

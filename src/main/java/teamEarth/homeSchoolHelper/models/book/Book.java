@@ -21,13 +21,11 @@ public class Book {
     Subject subject;
 
     @ManyToMany(cascade = CascadeType.REMOVE)
-
     @JoinTable(
             name="books",
             joinColumns = @JoinColumn(name="book"),
             inverseJoinColumns = @JoinColumn(name="lesson")
     )
-
     public Set<LessonPlan> plans = new HashSet<>();
 
     private String title;
