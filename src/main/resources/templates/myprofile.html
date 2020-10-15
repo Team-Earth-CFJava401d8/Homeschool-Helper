@@ -44,18 +44,18 @@
                         </div>
 
                     </section>
-                  
-                  <div th:each="note : ${childNotes.get(iStat.index)}">
-                        <p th:text="${note.getNotes()}"></p>
-                    </div>
-                    <p class="plan-one" >Content all here <br>
-                    and here</p>
-                    <p class="plan-two">More <br> then there</p>
-                    <form action="/notes" method="POST">
-                        <input type="hidden" th:value="${child.getId()}" name="childId">
-                        <input type="text" name="notes">
-                        <input type="submit" value="Add Note">
-                    </form>
+
+                    <section class="notes-container">
+                        <div th:each="note : ${childNotes.get(iStat.index)}" class="note">
+                            <p th:text="${note.getNotes()}"></p>
+                        </div>
+                        <form class="notes-container" action="/notes" method="POST">
+                            <input type="hidden" th:value="${child.getId()}" name="childId">
+                            <textarea cols="31" rows="5" name="notes"></textarea>
+                            <input class="submit" type="submit" value="Add">
+                        </form>
+                    </section>
+
                 </section>
 
             </div>
