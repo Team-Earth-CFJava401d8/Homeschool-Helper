@@ -129,9 +129,10 @@ public class LessonPlanController {
         List<Book> books = bookRepository.findAllBooksBySubjectId(subjectId);
         List<Links> links = linksRepository.findAll();
 
-        link.lessonPlans.add(lessonPlan);
+
+        lessonPlan.links.add(link);
         lessonPlan.planOrder.add("L");
-        linksRepository.save(link);
+        lessonPlanRepository.save(lessonPlan);
 
         m.addAttribute("subCats", subCats);
         m.addAttribute("lessonPlan", lessonPlan);
