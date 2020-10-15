@@ -90,7 +90,7 @@
   border-color: #309ABA;
   inline-size: 480px;
   margin: auto;
-  margin-top: 270px;
+  margin-top: 90px;
   inline-size: 215px;
 }
 
@@ -361,9 +361,11 @@
 
 .basic-column-box p {
     background-color: #E6C67C;
-    margin-bottom: 10px;
+    font-size: 0.7em;
+    text-decoration-line: underline;
+    margin-bottom: 5px;
 }
 
 .basic-column-box select, .basic-column-box input {
-    margin-top: 10px;
+    margin: 10px 0px 10px 0px;
 }

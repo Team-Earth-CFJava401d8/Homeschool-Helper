@@ -54,19 +54,11 @@
             <input type="submit" value="Add Link">
         </form>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     </section>
 
-
-    <section class="basic-row-box" id="create-a-box">
-        <section class="form-standard">
-            <form class="basic-column-box" action="/createSubject" method="POST">
-            Create Subject<input type="text" name="subjectMatter" value="">
-=======
-=======
->>>>>>> f6354acc538869e9f6cc5d0b2065b91d07512969
 <!--        //=================== Add Book -========================-->
+
+    <section>
         <form th:if="${subCats}" action="/addBook" method="POST">
             <input type="hidden" name="lessonPlanId" th:value="${lessonPlan.getId()}">
             <input type="hidden" name="subjectId" th:value="${subject.getId()}">
@@ -84,66 +76,47 @@
     </section>
 
 <!--    //============= Create Stuff =========================-->
-     
-      <section class="basic-row-box" id="create-a-box">
+
+    <section class="basic-row-box" id="create-a-box">
+
         <section class="form-standard">
             <form class="basic-column-box" action="/createSubject" method="POST">
-            Create Subject<input type="text" name="subjectMatter" value="">   
-      <input type="submit" value="Create">
-        </form>
-
-        <form action="/createLink" method="post">
-            Subject:&nbsp;<select name="subjectId">
-            <option th:each="subject : ${monkey}" th:value="${subject.getId()}"
-                    th:text="${subject.getSubjectMatter()}"></option>
-        </select><br>
-            Link: <input type="text" name="url">
-            Description: <input type="text" name="desc">
-            <input type="submit" value="Create">
-        </form>
-
-        <form action="/createSubCat" method="POST">
-            Subject:&nbsp;<select name="subjectId">
-            <option th:each="subject : ${monkey}" th:value="${subject.getId()}"
-                    th:text="${subject.getSubjectMatter()}"></option>
-        </select><br>
-            Sub Category: <input type="text" name="categoryName">
-<<<<<<< HEAD
->>>>>>> 5346e8d79351cd62621f3448c9426a2fca4b7e63
-=======
->>>>>>> f6354acc538869e9f6cc5d0b2065b91d07512969
-            <input type="submit" value="Create">
-            </form>
+                <p>Category</p>
+                Create Subject<input type="text" name="subjectMatter" value="">
+                <input type="submit" value="Create">
+             </form>
         </section>
+
 
         <section class="form-standard">
-            <form class="basic-column-box" action="/createSubCat" method="POST">
-                <p> Create a Subcategory</p>
-                Subject:&nbsp;<select name="subjectId">
-                <option th:each="subject : ${monkey}" th:value="${subject.getId()}"
-                        th:text="${subject.getSubjectMatter()}"></option>
-            </select><br>
-                Sub Category: <input type="text" name="categoryName">
-                <input type="submit" value="Create">
-            </form>
+                <form class="basic-column-box" action="/createSubCat" method="POST">
+                    <p>Create Subcategory</p>
+                    Subject:&nbsp;<select name="subjectId">
+                    <option th:each="subject : ${monkey}" th:value="${subject.getId()}"
+                            th:text="${subject.getSubjectMatter()}"></option>
+                             </select>
+                    Sub Category: <input type="text" name="categoryName">
+                    <input type="submit" value="Create">
+                </form>
         </section>
 
-        <section class="form-standard">
-            <form class="basic-column-box" action="/createLink" method="post">
-                <p> Create a Link</p>
-                Subject:&nbsp;<select name="subjectId">
-                <option th:each="subject : ${monkey}" th:value="${subject.getId()}"
-                        th:text="${subject.getSubjectMatter()}"></option>
-            </select><br>
-                Link: <input type="text" name="url">
-                Description: <input type="text" name="desc">
-                <input type="submit" value="Create">
-            </form>
-        </section>
+            <section class="form-standard">
+                <form class="basic-column-box" action="/createLink" method="post">
+                    <p>Create Link</p>
+                    Subject:&nbsp;<select name="subjectId">
+                    <option th:each="subject : ${monkey}" th:value="${subject.getId()}"
+                            th:text="${subject.getSubjectMatter()}"></option>
+                </select>
+                    Link: <input type="text" name="url">
+                    Description: <input type="text" name="desc">
+                    <input type="submit" value="Create">
+                </form>
+            </section>
+
     </section>
 
 </body>
 
-<script th:replace="fragments/bottomcontent.html :: javascripts"></script>
+    <script th:replace="fragments/bottomcontent.html :: javascripts"></script>
 
 </html>
