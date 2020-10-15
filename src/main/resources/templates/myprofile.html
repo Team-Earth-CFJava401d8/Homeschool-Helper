@@ -33,7 +33,7 @@
             <div id="students">
               
                 <section th:each="child, iStat : ${children}" th:value="${child.getId()}" class="container">
-                    <img src="/graphics/Icon.png" alt="homeschool helper logo" class='profilepic'>
+                    <img src="/graphics/Icon.svg" alt="homeschool helper logo" class='profilepic'>
                     <p th:text="${child.getFirstName()} + ' ' + ${child.getLastName()}" class="name">Paul O'Brien</p>
                     
                   <section class="plans">

@@ -210,6 +210,7 @@
   border-radius: 5px;
   font: 1em sans-serif;
   margin-top: 5px;
+  margin-left: 5px;
 }
 
 .plans {
@@ -302,6 +303,7 @@
 .flex-item {
   margin-left: 8px;
   background-color: #F23D3D;
+  height: 64px;
 }
 
 #plus-pic:hover, #profile-pic:hover {
