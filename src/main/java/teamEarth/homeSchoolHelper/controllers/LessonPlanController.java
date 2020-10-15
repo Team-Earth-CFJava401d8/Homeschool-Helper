@@ -152,21 +152,40 @@ public class LessonPlanController {
         return "lessonPlanner";
     }
 
+    //================= Add Book ==========================
 //    @PostMapping("/addBook")
-//    public RedirectView addBook(Model m, Principal principal, Long bookId,
-//                                Long lessonId) {
-//        Book book = bookRepository.findById(bookId).get();
-//        LessonPlan lessonPlan = lessonPlanRepository.findById(lessonId).get();
+//    public String addLink(Model m, Principal principal, Long subjectId, Long bookId,
+//                          Long lessonPlanId) {
 //
+//        List<SubCat> subCats = subCatRepository.findAllSubCatBySubjectId(subjectId);
+//        Links link = linksRepository.findById(bookId).get();
+//        LessonPlan lessonPlan = lessonPlanRepository.findById(lessonPlanId).get();
 //
-////        LinkedList<Book> books = booksList;
-////        books.add(book);
-////        LinkedList<String> planOrder = order;
-////        planOrder.add("b");
-////        m.addAttribute("links", linksList);
-////        m.addAttribute("books", books);
-////        m.addAttribute("order", order);
-////        return new RedirectView("/lessonPlanner");
+//        System.out.println(lessonPlan.links + "!!!!!!!!!");
+//
+//        link.lessonPlans.add(lessonPlan);
+//        linksRepository.save(link);
+//
+//        System.out.println(lessonPlan.links);
+//
+//        lessonPlan.planOrder.add("L");
+//
+//        System.out.println(lessonPlan.planOrder);
+//
+//        m.addAttribute("subCats", subCats);
+//        m.addAttribute("lessonPlan", lessonPlan);
+//
+//        ApplicationUser user = applicationUserRepository.findByUsername(principal.getName());
+//        Subject subject = subjectRepository.findById(subjectId).get();
+//        List<Book> books = bookRepository.findAllBooksBySubjectId(subjectId);
+//        List<Links> links = linksRepository.findAll();
+//
+//        m.addAttribute("subject", subject);
+//        m.addAttribute("user", user);
+//        m.addAttribute("books", books);
+//        m.addAttribute("links", links);
+//
+//        return "lessonPlanner";
 //    }
 
 
