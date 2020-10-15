@@ -3,11 +3,10 @@
 <head th:replace="fragments/head :: head"></head>
 <body>
     <header th:replace="fragments/header :: header"></header>
-    <section>Left Resources</section>
 
 <!--     This select the subject-->
     <section class="flex-flow-container">
-        <form th:unless="${panda}" class="basic-row-box" action="/lessonPlanner" method="POST">
+        <form th:unless="${subCats}" class="basic-row-box" action="/lessonPlanner" method="POST">
             Subject:&nbsp;<select name="subjectId">
                         <option th:each="subject : ${monkey}" th:value="${subject.getId()}"
                         th:text="${subject.getSubjectMatter()}"></option>
@@ -16,17 +15,13 @@
         </form>
 
 <!-- If subject has been selected this form shows subject categories -->
-        <form class="basic-column-box" th:if="${panda}" action="/createLessonPlan" method="POST">
+        <form class="basic-column-box" th:if="${subCats}"
+              action="/createLessonPlan"
+              method="POST">
             <input type="hidden" th:value="${subject.getSubjectMatter()}" name="subject">
             Subject Category:&nbsp;<select name="subCatId">
-            <option th:each="subCat : ${panda}" th:value="${subCat.getId()}"
+            <option th:each="subCat : ${subCats}" th:value="${subCat.getId()}"
                     th:text="${subCat.getCategoryName()}"></option>
-        </select><br>
-
-            Links:<select name="links">
-            <option th:each="link : ${links}"
-                    th:text="${link.getDescription()}"
-                    th:value="${link.getUrl()}"></option>
         </select><br>
 
             Books:<select name="booksId">
@@ -36,9 +31,19 @@
         </select><br>
             <input type="hidden" th:value="${user.getUserName()}" name="creator">
             Lesson Plan:<input type="text" name="planName"><br>
-            <input type="submit" value="Add">
+            <input type="submit" value="Create Lesson Plan">
         </form>
 
+        <form th:if="${subCats}" action="/addLink" method="POST">
+            <input type="hidden" name="lessonPlanId" th:value="${lessonPlan.getId()}">
+            <input type="hidden" name="subjectId" th:value="${subject.getId()}">
+            Links:<select name="linkId">
+            <option th:each="link : ${links}"
+                    th:text="${link.getDescription()}"
+                    th:value="${link.getId()}"></option>
+        </select><br>
+            <input type="submit" value="Add Link">
+        </form>
 
 <!--        <form action="/lessonPlan/update" method="post">-->
 <!--            Lesson Plan:<input type="text" name="planName"><br>-->
@@ -52,27 +57,34 @@
     </section>
 
 
-        <form action="/addLink" method="post">
+
+
+
+
+        <form action="/createSubject" method="POST">
+        Subject: <input type="text" name="subjectMatter">
+        <input type="submit" value="Create">
+        </form>
+
+        <form action="/createLink" method="post">
+            Subject:&nbsp;<select name="subjectId">
+            <option th:each="subject : ${monkey}" th:value="${subject.getId()}"
+                    th:text="${subject.getSubjectMatter()}"></option>
+        </select><br>
             Link: <input type="text" name="url">
             Description: <input type="text" name="desc">
-            <input type="submit" value="Add">
-
+            <input type="submit" value="Create">
         </form>
 
-
-
-        <form action="/addSubject" method="POST">
-            Subject: <input type="text" name="subjectMatter">
-            <input type="submit" value="Add">
-        </form>
-
-        <form action="/addSubCat" method="POST">
-            Subject: <input type="text" name="subjectName">
+        <form action="/createSubCat" method="POST">
+            Subject:&nbsp;<select name="subjectId">
+            <option th:each="subject : ${monkey}" th:value="${subject.getId()}"
+                    th:text="${subject.getSubjectMatter()}"></option>
+        </select><br>
             Sub Category: <input type="text" name="categoryName">
-            <input type="submit" value="Add">
+            <input type="submit" value="Create">
         </form>
 
-    <section>Right Resources</section>
 </body>
 
 <script th:replace="fragments/bottomcontent.html :: javascripts"></script>

@@ -88,7 +88,6 @@ public class Child {
 
     }
 
-
     public Set<LessonPlan> getPlans() { return plans; }
     public void setPlans(Set<LessonPlan> plans) { this.plans = plans; }
 

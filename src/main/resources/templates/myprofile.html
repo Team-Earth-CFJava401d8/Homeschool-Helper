@@ -36,28 +36,23 @@
                     <img src="/graphics/Icon.png" alt="homeschool helper logo" class='profilepic'>
                     <p th:text="${child.getFirstName()} + ' ' + ${child.getLastName()}" class="name">Paul O'Brien</p>
                     
-                  <section class="plans">
+                    <section class="plans">
 <!--                        <h3>Lesson Plans</h3>-->
                         <div th:each="plan : ${child.getPlans()}" class="plan"> <!-- th:each="plan : ${child.getPlans()}"-->
                             <p th:text=" 'Plan Name : ' + ${plan.getPlanName()}"></p>
                             <p th:text=" 'Subject: ' + ${plan.getSubject()}"></p>
                         </div>
-
                     </section>
                   
-                  <div th:each="note : ${childNotes.get(iStat.index)}">
+                    <div th:each="note : ${childNotes.get(iStat.index)}">
                         <p th:text="${note.getNotes()}"></p>
                     </div>
-                    <p class="plan-one" >Content all here <br>
-                    and here</p>
-                    <p class="plan-two">More <br> then there</p>
                     <form action="/notes" method="POST">
                         <input type="hidden" th:value="${child.getId()}" name="childId">
                         <input type="text" name="notes">
                         <input type="submit" value="Add Note">
                     </form>
                 </section>
-
             </div>
 
             <section id="agenda" class="flex-flow-container">
@@ -74,15 +69,7 @@
                     <p>Wednesday</p>
                 </div>
             </section>
-
         </section>
-
-
-
-
-
-
-
     </main>
 </body>
 
