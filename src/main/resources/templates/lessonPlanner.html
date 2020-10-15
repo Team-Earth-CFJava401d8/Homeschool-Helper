@@ -55,6 +55,7 @@
         </form>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     </section>
 
 
@@ -63,6 +64,8 @@
             <form class="basic-column-box" action="/createSubject" method="POST">
             Create Subject<input type="text" name="subjectMatter" value="">
 =======
+=======
+>>>>>>> f6354acc538869e9f6cc5d0b2065b91d07512969
 <!--        //=================== Add Book -========================-->
         <form th:if="${subCats}" action="/addBook" method="POST">
             <input type="hidden" name="lessonPlanId" th:value="${lessonPlan.getId()}">
@@ -81,9 +84,12 @@
     </section>
 
 <!--    //============= Create Stuff =========================-->
-    <form action="/createSubject" method="POST">
-        Subject: <input type="text" name="subjectMatter" value="">
-        <input type="submit" value="Create">
+     
+      <section class="basic-row-box" id="create-a-box">
+        <section class="form-standard">
+            <form class="basic-column-box" action="/createSubject" method="POST">
+            Create Subject<input type="text" name="subjectMatter" value="">   
+      <input type="submit" value="Create">
         </form>
 
         <form action="/createLink" method="post">
@@ -102,7 +108,10 @@
                     th:text="${subject.getSubjectMatter()}"></option>
         </select><br>
             Sub Category: <input type="text" name="categoryName">
+<<<<<<< HEAD
 >>>>>>> 5346e8d79351cd62621f3448c9426a2fca4b7e63
+=======
+>>>>>>> f6354acc538869e9f6cc5d0b2065b91d07512969
             <input type="submit" value="Create">
             </form>
         </section>
