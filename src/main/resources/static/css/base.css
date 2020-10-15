@@ -357,5 +357,13 @@
         transform-origin: 50% 0%;
         transform: scale(1) translate(0%, 0%);
     }
+}
 
+.basic-column-box p {
+    background-color: #E6C67C;
+    margin-bottom: 10px;
+}
+
+.basic-column-box select, .basic-column-box input {
+    margin-top: 10px;
 }
