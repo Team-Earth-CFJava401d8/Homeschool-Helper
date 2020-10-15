@@ -5,13 +5,13 @@
 <body>
     <header th:replace="fragments/header :: header"></header>
 
-    <section class="flex-flow-container">
+    <section class="form-standard">
         <div class="cheap-padding"></div>
         <form class="basic-column-box" action="/addChild" method="post">
             First name:<input type="text" name="firstName">
             Last Name:<input type="text" name="lastName">
             Birthday:<input type="date" name="dob" class="one-hundred-basis">
-            <button type="submit">Add Child</button>
+            <input type="submit" value="Add Child"></input>
         </form>
     </section>
 

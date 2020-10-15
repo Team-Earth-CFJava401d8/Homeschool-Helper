@@ -1,7 +1,3 @@
-* {
-    background-color: #446938;
-}
-
 #header-container {
   display: flex;
   flex-flow: row wrap;
@@ -43,19 +39,6 @@
   background-color: black;
 }
 
-hr {``
-  height: 10px;
-  background-color: whitesmoke;
-  border-width: 0px;
-  margin: 0px;
-}
-
-.flex-flow-container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  margin: 15% 0% 0% 0%;
-}
 
 #start-here {
   display: flex;
@@ -86,21 +69,15 @@ hr {``
   margin: 10px;
   font-family: 'Caveat', cursive;
   background-color: #E6C67C;
+  font-size: 1.6em;
+  margin: 3px 0px 10px 0px;
 }
 
 .login-signin {
   padding: 10px;
 }
 
-button {
-  color: beige;
-  background-color: #F23D3D;
-  border-radius: 10px;
-  font-family: "Caveat", cursive;
-  border-width: 0;
-}
-
-.sign-up-form {
+.form-standard { /* was .sign-up-form */
   display: flex;
   flex-flow: column wrap;
   justify-content: space-evenly;
@@ -111,11 +88,10 @@ button {
   border-radius: 10px;
   border-width: 5px;
   border-color: #309ABA;
-}
-
-input {
-  background-color: whitesmoke;
-  margin: 3px 0px 3px 0px;
+  inline-size: 480px;
+  margin: auto;
+  margin-top: 270px;
+  inline-size: 215px;
 }
 
 #sign-up-finish {
@@ -124,44 +100,9 @@ input {
   font-size: 1.25em;
   background-color: #F23D3D;
   border-radius: 10px;
-}
-
-.basic-column-box {
-  background-color: #E6C67C;
-  text-align: center;
-  padding: 12px;
-  font-size: 1.5em;
-  display: flex;
-  flex-flow: column wrap;
-  border-radius: 8px;
-  font-family: 'Caveat', cursive;
-}
-
-.basic-row-box {
-  background-color: #E6C67C;
-  text-align: center;
-  padding: 12px;
-  font-size: 1.5em;
-  display: flex;
-  flex-flow: row wrap;
-  border-radius: 8px;
-  font-family: 'Caveat', cursive;
-}
-
-.basic-row-box select {
-  margin-top: 10px;
-}
-
-.basic-row-box * {
-  background-color: whitesmoke;
-}
-
-.basic-column-box * {
-  background-color: whitesmoke;
-}
-
-.one-hundred-basis {
-  flex-basis: 100%;
+  border-width: 0px;
+  inline-size: 120px;
+  align-self: center;
 }
 
 .subject-select {
@@ -180,6 +121,7 @@ input {
   font-size: 1.25em;
   margin-top: 10px;
 }
+
 #add-button {
   margin 0px 0px 0px 0px;
   padding 0px;
@@ -198,6 +140,7 @@ input {
 
 #students {
   grid-column: 1;
+  grid-row: 2;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
@@ -315,11 +258,19 @@ input {
   overflow: auto;
 }
 
+.notes-container a {
+    background-color: rgba(1, 136, 130, 1);
+    text-decoration: none;
+    color: black;
+    position: relative; /* */
+}
+
 .notes-container textarea {
-  background-color: #EDF9E3;
-  margin: 1px 0px 0px 10px;
-  border-radius: 10px;
-  padding: 3px 3px 3px 6px;
+    background-color: #EDF9E3;
+    margin: 1px 0px 8px 10px;
+    border-radius: 10px;
+    padding: 3px 3px 3px 6px;
+    font-size: 1em;
 }
 
 .notes-container textarea:focus {
@@ -333,14 +284,15 @@ input {
     height: 70px;
     padding: 6px;
     margin: 3px 3px 9px 7px;
+    overflow:hidden;
 }
 
 
 .submit {
     border-radius: 10px;
-    margin: 5px;
-    margin-top: 5px;
-    align-self: auto;
+    margin-left: 2px;
+    align-self: self-start;
+    padding: 33px 4px 28px 4px;
 }
 
 .nav-bar-item {
@@ -366,4 +318,38 @@ input {
 #logobg:hover {
 /*   opacity: 0.5; */
   transform: scale(1.5);
+}
+
+.note i { /* ::before https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_image_overlay_fade */
+ /*   content: "\f1f8";
+    font-family: "FontAwesome"; */
+    opacity: 0;
+    position: absolute;
+    top: 25px;
+    left: 40px;
+    z-index: 100;
+    width: 33%;
+    height: auto;
+    font-size: 2.8em;
+    background-color: whitesmoke;
+}
+
+.note i:hover {
+    animation-name: apparate;
+    animation-duration: .235s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes apparate { /* https://www.alltechnotricks.com/Blog/font_awesome_animation_css.html */
+    0% {
+        opacity: 0;
+        transform-origin: 50% 0%;
+        transform: scale(.2) translate(0%, -200%);
+    }
+    100% {
+        opacity: 1;
+        transform-origin: 50% 0%;
+        transform: scale(1) translate(0%, 0%);
+    }
+
 }
