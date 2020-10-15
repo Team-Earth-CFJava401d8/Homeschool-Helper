@@ -5,7 +5,7 @@
 
     <div id="header-container">
         <div id="left-items">
-            <a href="/myprofile"><img class="flex-item" id="logobg" src="/graphics/Icon.svg"></a>
+            <a href="/myprofile"><img class="flex-item" id="logobg" src="/graphics/Icon.svg" title="Back to Home"></a>
             <h1 class="homeschoolhelper">Homeschool Helper</h1>
         </div>
         <div id="right-items"> <!-- TODO: th:if for user -->
@@ -19,6 +19,7 @@
             <div class="accountDropDown" id="profilepic-static">
                 <a onclick="accountDropDown()" class="dropbtn" id="profile-button"><i id="profile-pic" class="far fa-user-circle fa-3x"></i></a> <!-- https://fontawesome.com/how-to-use/on-the-web/styling/sizing-icons -->
                 <div id="myAccountDropdown" class="dropdown-content">
+                    <a href="/myprofile">Back to Dashboard</a>
                     <a href="/logout">Logout</a>
                 </div>
             </div>
