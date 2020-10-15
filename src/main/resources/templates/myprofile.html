@@ -48,12 +48,16 @@
                     <section class="notes-container">
                         <div th:each="note : ${childNotes.get(iStat.index)}" class="note">
                             <p th:text="${note.getNotes()}"></p>
+<!--                            <form class="notes-container" action="delete/${note.getId()}" method="delete"> &lt;!&ndash; Todo: Finish delete route&ndash;&gt;-->
+<!--                                <input class="submit" type="submit" value="Delete">-->
+<!--                            </form>-->
                         </div>
                         <form class="notes-container" action="/notes" method="POST">
                             <input type="hidden" th:value="${child.getId()}" name="childId">
                             <textarea cols="31" rows="5" name="notes"></textarea>
                             <input class="submit" type="submit" value="Add">
                         </form>
+
                     </section>
 
                 </section>

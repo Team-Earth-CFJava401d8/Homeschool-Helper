@@ -148,6 +148,10 @@ input {
   font-family: 'Caveat', cursive;
 }
 
+.basic-row-box select {
+  margin-top: 10px;
+}
+
 .basic-row-box * {
   background-color: whitesmoke;
 }
@@ -157,7 +161,11 @@ input {
 }
 
 .one-hundred-basis {
-    flex-basis: 100%;
+  flex-basis: 100%;
+}
+
+.subject-select {
+  margin-top: 10px;
 }
 
 #create-your-account {
@@ -348,6 +356,14 @@ input {
   text-shadow: 1px 3px 4px black;
 }
 
+#logobg {
+  transition: transform .3s;
+  padding: 0px;
+  margin: 0px;
+  border-radius: 9px;
+}
+
 #logobg:hover {
-  opacity: 0.5;
+/*   opacity: 0.5; */
+  transform: scale(1.5);
 }
