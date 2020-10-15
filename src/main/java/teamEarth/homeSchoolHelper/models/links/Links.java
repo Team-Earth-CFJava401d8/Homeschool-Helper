@@ -5,10 +5,7 @@ import teamEarth.homeSchoolHelper.models.lessonPlan.LessonPlan;
 import teamEarth.homeSchoolHelper.models.subject.Subject;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class Links {
@@ -21,13 +18,12 @@ public class Links {
     Subject subject;
 
     @ManyToMany(cascade = CascadeType.REMOVE)
-
     @JoinTable(
             name="linkLessons",
             joinColumns = @JoinColumn(name="link"),
             inverseJoinColumns = @JoinColumn(name="lesson")
     )
-    public List<LessonPlan> lessonPlans = new LinkedList<>();
+    public List<LessonPlan> lessonPlans = new ArrayList<>();
 
     private String url;
     private String description;

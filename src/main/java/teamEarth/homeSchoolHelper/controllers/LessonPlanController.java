@@ -116,32 +116,33 @@ public class LessonPlanController {
         return new RedirectView("/myprofile");
     }
 
+    //================= Add Link ==========================
     @PostMapping("/addLink")
     public String addLink(Model m, Principal principal, Long subjectId, Long linkId,
                           Long lessonPlanId) {
 
-
         List<SubCat> subCats = subCatRepository.findAllSubCatBySubjectId(subjectId);
         Links link = linksRepository.findById(linkId).get();
+        System.out.println("LinkID-- " + link);
+        System.out.println("Link@@@@@@@@@@@@@@@@ " + link.getDescription());
         LessonPlan lessonPlan = lessonPlanRepository.findById(lessonPlanId).get();
 
+        System.out.println(lessonPlan.links + "!!!!!!!!!");
 
+        link.lessonPlans.add(lessonPlan);
+        linksRepository.save(link);
 
+        System.out.println(lessonPlan.links);
 
-        lessonPlan.links.add(link);
-        System.out.println(lessonPlan.links + "Knock Knock");
+        //lessonPlan.linksForPlan.add(link.getId());
+        lessonPlan.planOrder.add("L");
+//        lessonPlanRepository.save(lessonPlan);
 
-
-
-        
-
-        lessonPlan.planOrder.push("L");
-        System.out.println(lessonPlan.planOrder + "Hello");
+        //System.out.println(lessonPlan.linksForPlan);
+        System.out.println(lessonPlan.planOrder);
 
         m.addAttribute("subCats", subCats);
         m.addAttribute("lessonPlan", lessonPlan);
-
-
 
         ApplicationUser user = applicationUserRepository.findByUsername(principal.getName());
         Subject subject = subjectRepository.findById(subjectId).get();
