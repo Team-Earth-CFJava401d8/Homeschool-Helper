@@ -16,7 +16,7 @@ public class Subject {
     long id;
 
     @OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
-    List<SubCat> category = new ArrayList<>();
+    public List<SubCat> category = new ArrayList<>();
 
     @OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
     List<Book> book = new ArrayList<>();
