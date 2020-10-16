@@ -488,8 +488,8 @@ li {
 
 .posts {
     display: flex;
-    flex-direction: columns;
-    align-item: center;
+    flex-direction: column;
+    align-items: center;
     width: 500px;
     background-color: #E6C67C;
     padding: 5px 0px 20px;
@@ -500,8 +500,20 @@ li {
     margin: 10px 0px 10px 0px;
 }
 
-.postButton {
+.p a {
+    margin: 5px;
+    background-color: white;
+}
 
+.p {
+    margin: 5px;
+    background-color: white;
+    border: solid 1px #309ABA;
+}
+
+.p p {
+    margin: 5px;
+    background-color: white;
 }
 
 #addPostInput {
