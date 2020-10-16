@@ -18,7 +18,7 @@ input {
 .basic-column-box {
   background-color: #E6C67C;
   text-align: center;
-  padding: 3px 12px 12px 12px;
+  padding: 3px 6px 9px 12px;
   font-size: 1.5em;
   display: flex;
   flex-flow: column wrap;

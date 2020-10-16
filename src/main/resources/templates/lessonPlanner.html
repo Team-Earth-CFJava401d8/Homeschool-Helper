@@ -20,60 +20,56 @@
 <!-- If subject has been selected this form shows subject categories -->
 
         <form class="basic-column-box" th:if="${subCats}"
-              action="/createLessonPlan"
-              method="POST">
+                    action="/createLessonPlan"
+                    method="POST">
             <input type="hidden" th:value="${subject.getSubjectMatter()}" name="subject">
 
-            Subject Category:&nbsp;<select name="subCatId" class="subject-select">
+            Subject Category<select name="subCatId" class="subject-select">
             <option th:each="subCat : ${subCats}" th:value="${subCat.getId()}"
                     th:text="${subCat.getCategoryName()}" class="subject-select"></option>
-        </select><br>
+                              </select>
 
-            <div th:if="${display}">
+
+            <form th:if="${subCats}" action="/addBook" method="POST">
+                <input type="hidden" name="lessonPlanId" th:value="${lessonPlan.getId()}">
+                <input type="hidden" name="subjectId" th:value="${subject.getId()}">
+
+                Books<select name="booksId" class="subject-select">
+
+                <option th:each="books : ${books}"
+                        th:text="${books.getTitle()}"
+                        th:value="${books.getId()}"></option>
+            </select>
+                <input type="submit" value="Add Book">
+            </form>
+
+            <form th:if="${subCats}" action="/addLink" method="POST" class="basic-column-box">
+                <input type="hidden" name="lessonPlanId" th:value="${lessonPlan.getId()}">
+                <input type="hidden" name="subjectId" th:value="${subject.getId()}">
+                Add Links<select name="linkId" class="subject-select">
+                <option th:each="link : ${links}"
+                        th:text="${link.getDescription()}"
+                        th:value="${link.getId()}"></option>
+                          </select>
+                <input type="submit" value="Add Link">
+            </form>
+
+            <div th:if="${display}" id="books-list">
                 <ol>
                     <li th:each="display : ${display}" th:text="${display}"></li>
                 </ol>
             </div>
 
-            <input type="hidden" th:value="${user.getUserName()}" name="creator">
-            Lesson Plan:<input type="text" name="planName"><br>
-            <input type="submit" value="Create Lesson Plan">
-        </form>
-
-
-<!--        //================= Add Link =====================-->
-        <form th:if="${subCats}" action="/addLink" method="POST">
-            <input type="hidden" name="lessonPlanId" th:value="${lessonPlan.getId()}">
-            <input type="hidden" name="subjectId" th:value="${subject.getId()}">
-
-            Links:<select name="linkId">
-            <option th:each="link : ${links}"
-                    th:text="${link.getDescription()}"
-                    th:value="${link.getId()}"></option>
-        </select><br>
-            <input type="submit" value="Add Link">
+            <input type="hidden" th:value="${user.getUserName()}" name="creator" class="basic-column-box">
+            Lesson Plan Name<input type="text" name="planName" class="subject-select"><br>
+            <input type="submit" value="Create Lesson Plan"> <!-- TODO: LINK BACK UP AFTER BOOK FIXED -->
         </form>
 
     </section>
 
 <!--        //=================== Add Book -========================-->
 
-    <section>
-        <form th:if="${subCats}" action="/addBook" method="POST">
-            <input type="hidden" name="lessonPlanId" th:value="${lessonPlan.getId()}">
-            <input type="hidden" name="subjectId" th:value="${subject.getId()}">
 
-
-        Books:<select name="booksId" class="subject-select">
-
-            <option th:each="books : ${books}"
-                    th:text="${books.getTitle()}"
-                    th:value="${books.getId()}"></option>
-        </select><br>
-            <input type="submit" value="Add Book">
-        </form>
-
-    </section>
 
 <!--    //============= Create Stuff =========================-->
 
