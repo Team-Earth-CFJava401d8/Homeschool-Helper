@@ -38,7 +38,7 @@ public class BookController {
                                    int numberOfPages) {
         Book book = new Book(subject, title, author, ISBN, edition, gradeLevel, numberOfPages);
         bookRepository.save(book);
-        return new RedirectView("/myprofile");
+        return new RedirectView("/lessonPlanner");
     }
 
 }

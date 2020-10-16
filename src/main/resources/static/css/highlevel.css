@@ -67,3 +67,7 @@ hr {
     background-color: #446938;
     margin: auto;
 }
+
+#books-select {
+    width: 170px;
+}
