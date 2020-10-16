@@ -5,37 +5,36 @@
     <header th:replace="fragments/header :: header"></header>
     <main>
         <section id="pageAll">
-            <div id="teacher">
-                <h1>My Account Profile</h1>
+<!--            <div id="teacher">-->
+<!--                <h1>My Account Profile</h1>-->
                 <!--        Make a image profile property in ApplicationUser constructor-->
                 <!--        <img th:src="${user.()}">-->
-                <p th:text="'Username: ' + ${user.getUsername()}"></p>
-                <p th:if="${user.getFirstName()} !=''"
-                   th:text="'First Name: ' + ${user.getFirstName()}"></p>
-                <p th:if="${user.getLastName()} != ''"
-                   th:text="'Last Name: ' + ${user.getLastName()}"></p>
-                <p th:if="${user.getDateOfBirth()} != null"
-                   th:text="'Date of Birth: ' + ${user.getDateOfBirth()}"></p>
-<!--                <p th:if="${user.getBio()} != ''" th:text="'Bio: ' + ${user.getBio()}"></p>-->
 
-                <form action="/assignLesson" method="post">
-                    <select name="child" >
-                        <option th:each="child : ${children}" th:value="${child.getId()}" th:text="${child.getFirstName()}"></option>
-                    </select>
+<!--                <p th:text="'Username: ' + ${user.getUsername()}"></p>-->
+<!--                <p th:if="${user.getFirstName()} !=''"-->
+<!--                   th:text="'First Name: ' + ${user.getFirstName()}"></p>-->
+<!--                <p th:if="${user.getLastName()} != ''"-->
+<!--                   th:text="'Last Name: ' + ${user.getLastName()}"></p>-->
+<!--                <p th:if="${user.getDateOfBirth()} != null"-->
+<!--                   th:text="'Date of Birth: ' + ${user.getDateOfBirth()}"></p>-->
+<!--
 
-                    <select name="lesson">
-                        <option th:each="plan : ${plans}" th:value="${plan.getId()}" th:text="${plan.getPlanName()}"></option>
-                    </select>
-                    <input type="submit" value="Assign">
-                </form>
-            </div>
+    <p th:if="${user.getBio()} != ''" th:text="'Bio: ' + ${user.getBio()}"></p>-->
 
             <div id="students">
               
                 <section th:each="child, iStat : ${children}" th:value="${child.getId()}" class="container">
                     <img src="/graphics/Icon.svg" alt="homeschool helper logo" class='profilepic'>
                     <p th:text="${child.getFirstName()} + ' ' + ${child.getLastName()}" class="name">Paul O'Brien</p>
-                    
+
+                    <form class="assign" action="/assignLesson" method="post">
+                        <input type="hidden" name="child" th:value="${child.getId()}">
+                        <select class="assign-select" name="lesson">
+                            <option class="assign-option" th:each="plan : ${plans}" th:value="${plan.getId()}" th:text="${plan.getPlanName()}"></option>
+                        </select>
+                        <input type="submit" value="Assign">
+                    </form>
+
                     <section class="plans">
 <!--                        <h3>Lesson Plans</h3>-->
                         <div th:each="plan : ${child.getPlans()}" class="plan"> <!-- th:each="plan : ${child.getPlans()}"-->

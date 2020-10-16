@@ -27,32 +27,7 @@
             Subject Category<select name="subCatId" class="subject-select">
             <option th:each="subCat : ${subCats}" th:value="${subCat.getId()}"
                     th:text="${subCat.getCategoryName()}" class="subject-select"></option>
-                              </select>
-
-
-            <form th:if="${subCats}" action="/addBook" method="POST">
-                <input type="hidden" name="lessonPlanId" th:value="${lessonPlan.getId()}">
-                <input type="hidden" name="subjectId" th:value="${subject.getId()}">
-
-                Books<select name="booksId" class="subject-select">
-
-                <option th:each="books : ${books}"
-                        th:text="${books.getTitle()}"
-                        th:value="${books.getId()}"></option>
             </select>
-                <input type="submit" value="Add Book">
-            </form>
-
-            <form th:if="${subCats}" action="/addLink" method="POST" class="basic-column-box">
-                <input type="hidden" name="lessonPlanId" th:value="${lessonPlan.getId()}">
-                <input type="hidden" name="subjectId" th:value="${subject.getId()}">
-                Add Links<select name="linkId" class="subject-select">
-                <option th:each="link : ${links}"
-                        th:text="${link.getDescription()}"
-                        th:value="${link.getId()}"></option>
-                          </select>
-                <input type="submit" value="Add Link">
-            </form>
 
             <div th:if="${display}" id="books-list">
                 <ol>
@@ -67,8 +42,31 @@
 
     </section>
 
-<!--        //=================== Add Book -========================-->
+<!--        //=================== Add Book & Link ========================-->
 
+    <form th:if="${subCats}" action="/addBook" method="POST">
+        <input type="hidden" name="lessonPlanId" th:value="${lessonPlan.getId()}">
+        <input type="hidden" name="subjectId" th:value="${subject.getId()}">
+
+        Books<select name="booksId" class="subject-select">
+
+        <option th:each="books : ${books}"
+                th:text="${books.getTitle()}"
+                th:value="${books.getId()}"></option>
+    </select>
+        <input type="submit" value="Add Book">
+    </form>
+
+    <form th:if="${subCats}" action="/addLink" method="POST" class="basic-column-box">
+        <input type="hidden" name="lessonPlanId" th:value="${lessonPlan.getId()}">
+        <input type="hidden" name="subjectId" th:value="${subject.getId()}">
+        Add Links<select name="linkId" class="subject-select">
+        <option th:each="link : ${links}"
+                th:text="${link.getDescription()}"
+                th:value="${link.getId()}"></option>
+    </select>
+        <input type="submit" value="Add Link">
+    </form>
 
 
 <!--    //============= Create Stuff =========================-->
