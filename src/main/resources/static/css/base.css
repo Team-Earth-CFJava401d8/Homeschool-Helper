@@ -88,10 +88,10 @@
   border-radius: 10px;
   border-width: 5px;
   border-color: #309ABA;
-  inline-size: 480px;
+  inline-size: 230px;
   margin: auto;
-  margin-top: 270px;
-  inline-size: 215px;
+  margin-top: 90px;
+  font-family: 'Caveat', cursive;
 }
 
 #sign-up-finish {
@@ -103,6 +103,10 @@
   border-width: 0px;
   inline-size: 120px;
   align-self: center;
+}
+
+#sign-up-finish:hover {
+  transform: scale(1.1);
 }
 
 .subject-select {
@@ -192,13 +196,38 @@
 
 .name {
   grid-row: 1;
-  grid-column: 1 / 4;
+  grid-column: 1 / 3;
   align-self: flex-start;
   padding: 2px 0px 6px 10px;
   background-color: #faf7fa;
   margin: 7px 0px 3px 5px;
   border-radius: 6px;
   font: 1.2em sans-serif;
+}
+
+.assign{
+    font-family: sans-serif;
+    font-size: 19px;
+    padding: 0px;
+    margin: 7px 6px 4px 2px;
+    grid-row: 1;
+    grid-column: 3 / span 2;
+    background-color: #FAF7FA;
+    border-radius: 6px;
+    font: 1.2em sans-serif;
+}
+
+.assign-option {
+     background-color: #FAF7FA;
+     font: .8em sans-serif;
+}
+
+.assign-select {
+    background-color: #FAF7FA;
+    font: .8em sans-serif;
+    width: 150PX;
+    margin-left: 4px;
+    border: none;
 }
 
 .profilepic {
@@ -313,13 +342,13 @@
 #logobg {
   transition: transform .3s;
   padding: 0px;
-  margin: 0px;
   border-radius: 9px;
+  margin: 0px 9px 0px 10px;
 }
 
 #logobg:hover {
 /*   opacity: 0.5; */
-  transform: scale(1.5);
+  transform: scale(1.3);
 }
 
 .note i { /* ::before https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_image_overlay_fade */
@@ -353,5 +382,141 @@
         transform-origin: 50% 0%;
         transform: scale(1) translate(0%, 0%);
     }
+}
 
+.basic-column-box p {
+    background-color: #E6C67C;
+    font-size: 0.7em;
+    text-decoration-line: underline;
+    margin-bottom: 5px;
+}
+
+.basic-column-box select, .basic-column-box input {
+    margin: 10px 0px 10px 0px;
+}
+
+ol * {
+    background-color: #E6C67C;
+    font-family: 'Commissioner', sans-serif;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#books-list, ol, ul, li {
+    background-color: #E6C67C;
+}
+
+#make-a-plan {
+    background-color: #446938;
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    font-size: 1.5em;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    inline-size: 720px;
+    margin: auto;
+}
+
+li {
+    background-color: #E6C67C;
+    padding: 15px 0px 15px 0px;
+}
+
+#add-books {
+    inline-size: 170px;
+}
+
+.about-h2 {
+    background-color: #E6C67C;
+    margin-bottom: 10px;
+}
+
+#aboutbox {
+    background-color: #446938;
+}
+
+#aboutbox img {
+    width: 240px;
+    margin-top: 10px;
+    border-radius: 15px;
+    margin: auto;
+}
+ .form-standard-about {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    background: whitesmoke;
+    padding: 10px;
+    background-color: #E6C67C;
+    border-style: outset;
+    border-radius: 10px;
+    border-width: 5px;
+    border-color: #309ABA;
+    inline-size: 380px;
+    margin: auto;
+    margin-top: 90px;
+    font-family: 'Caveat', cursive;
+ }
+
+ .about-h4 {
+    background-color: #E6C67C;
+    margin-top: 15px;
+    font-family: 'Commissioner', sans-serif;
+}
+
+#forum {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-family: 'Caveat', cursive;
+}
+
+#forum h1 {
+    font-size: 75px;
+    margin: 30px 0px 30px 0px;
+    text-decoration: underline;
+}
+
+#forum h2 {
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+
+.posts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    background-color: #E6C67C;
+    padding: 5px 0px 20px;
+    border-style: outset;
+    border-radius: 10px;
+    border-color: #309ABA;
+    border-width: 5px;
+    margin: 10px 0px 10px 0px;
+}
+
+.p a {
+    margin: 5px;
+    background-color: white;
+}
+
+.p {
+    margin: 5px;
+    background-color: white;
+    border: solid 1px #309ABA;
+}
+
+.p p {
+    margin: 5px;
+    background-color: white;
+}
+
+#addPostInput {
+    margin-top: 20px;
+    padding: 15px 0px 15px 0px;
 }

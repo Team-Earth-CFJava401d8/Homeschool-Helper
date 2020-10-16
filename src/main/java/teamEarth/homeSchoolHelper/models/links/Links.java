@@ -1,8 +1,11 @@
 package teamEarth.homeSchoolHelper.models.links;
 
+import teamEarth.homeSchoolHelper.models.child.Child;
 import teamEarth.homeSchoolHelper.models.lessonPlan.LessonPlan;
+import teamEarth.homeSchoolHelper.models.subject.Subject;
 
 import javax.persistence.*;
+import java.util.*;
 
 @Entity
 public class Links {
@@ -12,7 +15,10 @@ public class Links {
 
     //============== Many to One =================
     @ManyToOne
-    LessonPlan lessonPlan;
+    Subject subject;
+
+    @ManyToMany(mappedBy = "links", cascade = CascadeType.ALL)
+    public List<LessonPlan> lessonPlans = new LinkedList<>();
 
     private String url;
     private String description;
@@ -36,6 +42,14 @@ public class Links {
         this.id = id;
     }
 
+    public Subject getSubject() {
+        return subject;
+    }
+
+    public void setSubject(Subject subject) {
+        this.subject = subject;
+    }
+
     public String getUrl() {
         return url;
     }
@@ -50,5 +64,14 @@ public class Links {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<LessonPlan> getLessonPlans() {
+        return lessonPlans;
+    }
+
+    public void setLessonPlans(
+            List<LessonPlan> lessonPlans) {
+        this.lessonPlans = lessonPlans;
     }
 }

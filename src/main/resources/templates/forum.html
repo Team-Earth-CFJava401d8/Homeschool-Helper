@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="fragments/head :: head"></head>
+<body>
+    <header th:replace="fragments/header :: header"></header>
+    <main id="forum">
+        <h1>Homeschool Helper Public Forum</h1>
+        <h2>Feel free to share lesson plans, links and ideas which worked for you to the
+            community!</h2>
+<!--        <div th:each="post : ${user.getPosts()}">-->
+<!--            <p th:text="'Posted by: ' + ${user.getUsername()} + ' on ' + ${post.getCreatedAt()}"></p>-->
+<!--            <p th:text="${post.getBody()}"></p>-->
+<!--        </div>-->
+
+        <section class="posts" th:each="post : ${posts}">
+            <div class="p">
+                <p th:text="${post.getBody()}"></p>
+                <p th:text="'Posted by: ' + ${post.getApplicationUser().username} + ' on ' + ${post
+                .getCreatedAt()}"></p>
+            </div>
+
+            <button class="p"
+                    type="button"><a th:href="'/deletePost/' + ${post.getId()}">Delete
+                Post</a></button>
+        </section>
+
+        <section class="form-standard">
+            <form class="basic-column-box" action="/createPost" method="POST">
+                <legend>Add a post</legend>
+                <input type="hidden" th:value="${user.getId()}" name="userId">
+<!--                <input id="addPostInput" type="text" name="body">-->
+                <textarea id="addPostInput" rows="4" cols="25" name="body"></textarea>
+                <input type="submit" value="Add Post">
+            </form>
+        </section>
+    </main>
+</body>
+
+    <script th:replace="fragments/bottomcontent.html :: javascripts"></script>
+
+</html>

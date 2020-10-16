@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 import teamEarth.homeSchoolHelper.models.book.Book;
 import teamEarth.homeSchoolHelper.models.book.BookRepository;
-
 import teamEarth.homeSchoolHelper.models.subject.Subject;
 import teamEarth.homeSchoolHelper.models.subject.SubjectRepository;
 
@@ -33,13 +32,13 @@ public class BookController {
     }
 
     //Adding book to the database
-    @PostMapping("/addBook")
+    @PostMapping("/createBook")
     public RedirectView createBook(Model m, Principal principal, Subject subject, String title,
                                    String author, String ISBN, int edition, int gradeLevel,
                                    int numberOfPages) {
         Book book = new Book(subject, title, author, ISBN, edition, gradeLevel, numberOfPages);
         bookRepository.save(book);
-        return new RedirectView("/myprofile");
+        return new RedirectView("/lessonPlanner");
     }
 
 }

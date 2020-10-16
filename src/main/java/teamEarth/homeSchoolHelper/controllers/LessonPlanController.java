@@ -23,6 +23,8 @@ import teamEarth.homeSchoolHelper.models.user.ApplicationUserRepository;
 
 import java.security.Principal;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @Controller
@@ -61,15 +63,20 @@ public class LessonPlanController {
     public String planner2(Model m, Principal principal, Long subjectId) {
         ApplicationUser user = applicationUserRepository.findByUsername(principal.getName());
         Subject subject = subjectRepository.findById(subjectId).get();
+        String subjectName = subject.getSubjectMatter();
         List<SubCat> subCats = subCatRepository.findAllSubCatBySubjectId(subjectId);
         List<Book> books = bookRepository.findAllBooksBySubjectId(subjectId);
         List<Links> links = linksRepository.findAll();
+        LessonPlan lessonPlan = new LessonPlan("Addition", subjectName, null,
+                "", null, "", null);
 
+        lessonPlanRepository.save(lessonPlan);
+        m.addAttribute("lessonPlan", lessonPlan);
         m.addAttribute("subject", subject);
         m.addAttribute("user", user);
         m.addAttribute("books", books);
         m.addAttribute("links", links);
-        m.addAttribute("panda", subCats);
+        m.addAttribute("subCats", subCats);
         return "lessonPlanner";
     }
 
@@ -107,6 +114,67 @@ public class LessonPlanController {
         m.addAttribute("principal", principal);
 
         return new RedirectView("/myprofile");
+    }
+
+    //================= Add Link ==========================
+    @PostMapping("/addLink")
+    public String addLink(Model m, Principal principal, Long subjectId, Long linkId,
+                          Long lessonPlanId) {
+
+        List<SubCat> subCats = subCatRepository.findAllSubCatBySubjectId(subjectId);
+        Links link = linksRepository.findById(linkId).get();
+        LessonPlan lessonPlan = lessonPlanRepository.findById(lessonPlanId).get();
+        ApplicationUser user = applicationUserRepository.findByUsername(principal.getName());
+        Subject subject = subjectRepository.findById(subjectId).get();
+        List<Book> books = bookRepository.findAllBooksBySubjectId(subjectId);
+        List<Links> links = linksRepository.findAll();
+
+
+        lessonPlan.links.add(link);
+        lessonPlan.planOrder.add("L");
+        lessonPlan.displayContent.add(link.getDescription());
+        ArrayList<String> display = lessonPlan.displayContent;
+        lessonPlanRepository.save(lessonPlan);
+
+        m.addAttribute("display", display);
+        m.addAttribute("subCats", subCats);
+        m.addAttribute("lessonPlan", lessonPlan);
+        m.addAttribute("subject", subject);
+        m.addAttribute("user", user);
+        m.addAttribute("books", books);
+        m.addAttribute("links", links);
+
+        return "lessonPlanner";
+    }
+
+    //================= Add Book ==========================
+    @PostMapping("/addBook")
+    public String addBook(Model m, Principal principal, Long subjectId, Long booksId,
+                          Long lessonPlanId) {
+
+        List<SubCat> subCats = subCatRepository.findAllSubCatBySubjectId(subjectId);
+        Book book = bookRepository.findById(booksId).get();
+        LessonPlan lessonPlan = lessonPlanRepository.findById(lessonPlanId).get();
+        ApplicationUser user = applicationUserRepository.findByUsername(principal.getName());
+        Subject subject = subjectRepository.findById(subjectId).get();
+        List<Book> books = bookRepository.findAllBooksBySubjectId(subjectId);
+        List<Links> links = linksRepository.findAll();
+
+        lessonPlan.books.add(book);
+        lessonPlan.planOrder.add("B");
+        lessonPlan.displayContent.add(book.getTitle());
+        ArrayList<String> display = lessonPlan.displayContent;
+        lessonPlanRepository.save(lessonPlan);
+
+        m.addAttribute( "display", display);
+        m.addAttribute("subCats", subCats);
+        m.addAttribute("lessonPlan", lessonPlan);
+        m.addAttribute("subject", subject);
+        m.addAttribute("user", user);
+        m.addAttribute("books", books);
+        m.addAttribute("links", links);
+
+        return "lessonPlanner";
     }
 
 

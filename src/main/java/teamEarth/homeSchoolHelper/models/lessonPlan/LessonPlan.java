@@ -1,5 +1,6 @@
 package teamEarth.homeSchoolHelper.models.lessonPlan;
 
+import net.bytebuddy.dynamic.scaffold.MethodGraph;
 import org.springframework.beans.factory.annotation.Autowired;
 import teamEarth.homeSchoolHelper.models.book.Book;
 import teamEarth.homeSchoolHelper.models.child.Child;
@@ -12,10 +13,7 @@ import teamEarth.homeSchoolHelper.models.user.ApplicationUser;
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class LessonPlan {
@@ -24,27 +22,40 @@ public class LessonPlan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
-    //======= One to Many ==================
-    @OneToMany(mappedBy = "lessonPlan", cascade = CascadeType.ALL)
-    public List<Links> links = new ArrayList<>();
-
     //======== Many to One =================
     @ManyToOne
     SubCat subCat;
 
     //======== Many to Many =================
 
-    @ManyToMany(mappedBy = "plans")
-    public Set<Book> books = new HashSet<>();
 
+
+
+    //Links to lessons connection
     @ManyToMany(cascade = CascadeType.REMOVE)
+    @JoinTable(
+            name="lessonLinks",
+            joinColumns = @JoinColumn(name="lesson"),
+            inverseJoinColumns = @JoinColumn(name="links")
+    )
+    public List<Links> links = new ArrayList<>();
 
+    //Book to lessons connection
+    @ManyToMany(cascade = CascadeType.REMOVE)
+    @JoinTable(
+            name="lessonBooks",
+            joinColumns = @JoinColumn(name="lesson"),
+            inverseJoinColumns = @JoinColumn(name="books")
+    )
+    public List<Book> books = new ArrayList<>();
+
+    // Child to lesson connection
+    @ManyToMany(cascade = CascadeType.REMOVE)
     @JoinTable(
             name="childlessons",
             joinColumns = @JoinColumn(name="child1"),
             inverseJoinColumns = @JoinColumn(name="lesson2")
     )
-
     public Set<Child> kids = new HashSet<>();
 
     private String planName;
@@ -52,6 +63,10 @@ public class LessonPlan {
     private String url;
     private Long bookId;
     private String creator;
+
+    public ArrayList<String> planOrder = new ArrayList<>();
+    public ArrayList<String> displayContent = new ArrayList<>();
+
     Timestamp createdAt = new Timestamp(System.currentTimeMillis());
 
     //========== Constructors ===========
@@ -81,9 +96,6 @@ public class LessonPlan {
     public List<Links> getLinks() {
         return links;
     }
-    public void setLinks(List<Links> links) {
-        this.links = links;
-    }
 
     public SubCat getSubCat() {
         return subCat;
@@ -92,11 +104,8 @@ public class LessonPlan {
         this.subCat = subCat;
     }
 
-    public Set<Book> getBooks() {
-        return books;
-    }
-    public void setBooks(Set<Book> books) {
-        this.books = books;
+    public void setLinks(LinkedList<Links> links) {
+        this.links = links;
     }
 
     public Set<Child> getKids() {
@@ -146,6 +155,14 @@ public class LessonPlan {
     }
     public void setSubject(String subject) {
         this.subject = subject;
+    }
+
+    public ArrayList<String> getPlanOrder() {
+        return planOrder;
+    }
+
+    public void setPlanOrder(ArrayList<String> planOrder) {
+        this.planOrder = planOrder;
     }
 
     //=========== toString Method ==========
