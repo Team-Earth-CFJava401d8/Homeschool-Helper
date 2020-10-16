@@ -109,6 +109,7 @@
 
         <section class="form-standard">
             <form class="basic-column-box" action="/createBook" method="POST">
+                <p>Create Book</p>
                 Subject:<select name="subject">
                 <option th:each="subject : ${monkey}" th:value="${subject.getId()}"
                         th:text="${subject.getSubjectMatter()}"></option>
@@ -121,7 +122,7 @@
                 Grade Level: <input type="number" name="gradeLevel"><br>
                 <!--                Number of units might change to an object-->
                 Number of Pages: <input type="number" name="numberOfPages">
-                <input type="submit" value="Add Book">
+                <input type="submit" value="Create">
             </form>
         </section>
 
