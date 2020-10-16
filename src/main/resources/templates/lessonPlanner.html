@@ -39,7 +39,7 @@
             Subject Category<select name="subCatId" class="subject-select" required>
             <option th:each="subCat : ${subCats}" th:value="${subCat.getId()}"
                     th:text="${subCat.getCategoryName()}" class="subject-select"></option>
-                              </select>
+            </select>
 
 
             <div th:if="${display}" id="books-list">
@@ -67,9 +67,6 @@
     </form>
 
 </section>
-
-<!--        //=================== Add Book -========================-->
-
 
 
 <!--    //============= Create Stuff =========================-->
