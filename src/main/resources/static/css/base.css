@@ -402,6 +402,29 @@ ol * {
     margin-bottom: 10px;
 }
 
-#books-list, ol, ul {
+#books-list, ol, ul, li {
     background-color: #E6C67C;
+}
+
+#make-a-plan {
+    background-color: #446938;
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    font-size: 1.5em;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    inline-size: 720px;
+    margin: auto;
+}
+
+li {
+    background-color: #E6C67C;
+    padding: 15px 0px 15px 0px;
+}
+
+#add-books {
+    inline-size: 170px;
 }

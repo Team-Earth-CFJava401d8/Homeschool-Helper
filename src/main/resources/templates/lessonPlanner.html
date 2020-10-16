@@ -4,8 +4,20 @@
 <body>
     <header th:replace="fragments/header :: header"></header>
 
-<!--     This select the subject-->
+<section id="make-a-plan">
 
+    <form th:if="${subCats}" action="/addBook" method="POST" class="basic-column-box" id="add-books">
+        <input type="hidden" name="lessonPlanId" th:value="${lessonPlan.getId()}">
+        <input type="hidden" name="subjectId" th:value="${subject.getId()}">
+
+        Books<select name="booksId" class="subject-select">
+
+        <option th:each="books : ${books}"
+                th:text="${books.getTitle()}"
+                th:value="${books.getId()}"></option>
+    </select>
+        <input type="submit" value="Add Book">
+    </form>
 
     <section class="form-standard">
         <form th:unless="${subCats}" class="basic-column-box" action="/lessonPlanner" method="POST">
@@ -24,10 +36,11 @@
                     method="POST">
             <input type="hidden" th:value="${subject.getSubjectMatter()}" name="subject">
 
-            Subject Category<select name="subCatId" class="subject-select">
+            Subject Category<select name="subCatId" class="subject-select" required>
             <option th:each="subCat : ${subCats}" th:value="${subCat.getId()}"
                     th:text="${subCat.getCategoryName()}" class="subject-select"></option>
             </select>
+
 
             <div th:if="${display}" id="books-list">
                 <ol>
@@ -42,21 +55,6 @@
 
     </section>
 
-<!--        //=================== Add Book & Link ========================-->
-
-    <form th:if="${subCats}" action="/addBook" method="POST">
-        <input type="hidden" name="lessonPlanId" th:value="${lessonPlan.getId()}">
-        <input type="hidden" name="subjectId" th:value="${subject.getId()}">
-
-        Books<select name="booksId" class="subject-select">
-
-        <option th:each="books : ${books}"
-                th:text="${books.getTitle()}"
-                th:value="${books.getId()}"></option>
-    </select>
-        <input type="submit" value="Add Book">
-    </form>
-
     <form th:if="${subCats}" action="/addLink" method="POST" class="basic-column-box">
         <input type="hidden" name="lessonPlanId" th:value="${lessonPlan.getId()}">
         <input type="hidden" name="subjectId" th:value="${subject.getId()}">
@@ -67,6 +65,8 @@
     </select>
         <input type="submit" value="Add Link">
     </form>
+
+</section>
 
 
 <!--    //============= Create Stuff =========================-->
@@ -106,6 +106,25 @@
                 <input type="submit" value="Create">
             </form>
         </section>
+
+        <section class="form-standard">
+            <form class="basic-column-box" action="/createBook" method="POST">
+                Subject:<select name="subject">
+                <option th:each="subject : ${subjects}" th:value="${subject.getId()}"
+                        th:text="${subject.getSubjectMatter()}"></option>
+            </select>
+                Title: <input type="text" name="title"><br>
+                Author: <input type="text" name="author"><br>
+                ISBN: <input type="text" name="ISBN"><br>
+                Edition: <input type="number" name="edition"><br>
+                <!--                Change grade level to be a dropdown-->
+                Grade Level: <input type="number" name="gradeLevel"><br>
+                <!--                Number of units might change to an object-->
+                Number of Pages: <input type="number" name="numberOfPages">
+                <input type="submit" value="Add Book">
+            </form>
+        </section>
+
     </section>
 
 </body>
