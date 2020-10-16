@@ -13,11 +13,15 @@
 <!--        </div>-->
 
         <section class="posts" th:each="post : ${posts}">
-            <p th:text="${post.getBody()}"></p>
-            <p th:text="'Posted by: ' + ${post.getApplicationUser().username} + ' on ' + ${post
+            <div class="p">
+                <p th:text="${post.getBody()}"></p>
+                <p th:text="'Posted by: ' + ${post.getApplicationUser().username} + ' on ' + ${post
                 .getCreatedAt()}"></p>
-            <button class="postButton"
-                    type="button"><a th:href="'/deletePost/' + ${post.getId()}">Delete Post</a></button>
+            </div>
+
+            <button class="p"
+                    type="button"><a th:href="'/deletePost/' + ${post.getId()}">Delete
+                Post</a></button>
         </section>
 
         <section class="form-standard">
