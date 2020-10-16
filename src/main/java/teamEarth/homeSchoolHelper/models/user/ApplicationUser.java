@@ -4,6 +4,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import teamEarth.homeSchoolHelper.models.child.Child;
 import teamEarth.homeSchoolHelper.models.child.ChildRepository;
+import teamEarth.homeSchoolHelper.models.post.Post;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -40,6 +41,9 @@ public class ApplicationUser implements UserDetails {
     @OneToMany(mappedBy = "applicationUser", cascade = CascadeType.ALL)
     public List<Child> children = new ArrayList<>();
 
+    @OneToMany(mappedBy = "applicationUser", cascade = CascadeType.ALL)
+    List<Post> posts = new ArrayList<>();
+
     @Override
     public String toString() {
         return "ApplicationUser{" +
@@ -75,6 +79,14 @@ public class ApplicationUser implements UserDetails {
 
     public String getBio() { return bio; }
     public void setBio(String bio) { this.bio = bio; }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() { return null; }
