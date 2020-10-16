@@ -10,7 +10,7 @@
         <input type="hidden" name="lessonPlanId" th:value="${lessonPlan.getId()}">
         <input type="hidden" name="subjectId" th:value="${subject.getId()}">
 
-        Books<select name="booksId" class="subject-select">
+        Books<select name="booksId" class="subject-select" id="books-select">
 
         <option th:each="books : ${books}"
                 th:text="${books.getTitle()}"
@@ -110,7 +110,7 @@
         <section class="form-standard">
             <form class="basic-column-box" action="/createBook" method="POST">
                 Subject:<select name="subject">
-                <option th:each="subject : ${subjects}" th:value="${subject.getId()}"
+                <option th:each="subject : ${monkey}" th:value="${subject.getId()}"
                         th:text="${subject.getSubjectMatter()}"></option>
             </select>
                 Title: <input type="text" name="title"><br>

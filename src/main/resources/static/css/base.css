@@ -428,3 +428,41 @@ li {
 #add-books {
     inline-size: 170px;
 }
+
+.about-h2 {
+    background-color: #E6C67C;
+    margin-bottom: 10px;
+}
+
+#aboutbox {
+    background-color: #446938;
+}
+
+#aboutbox img {
+    width: 240px;
+    margin-top: 10px;
+    border-radius: 15px;
+    margin: auto;
+}
+ .form-standard-about {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    background: whitesmoke;
+    padding: 10px;
+    background-color: #E6C67C;
+    border-style: outset;
+    border-radius: 10px;
+    border-width: 5px;
+    border-color: #309ABA;
+    inline-size: 380px;
+    margin: auto;
+    margin-top: 90px;
+    font-family: 'Caveat', cursive;
+ }
+
+ .about-h4 {
+    background-color: #E6C67C;
+    margin-top: 15px;
+    font-family: 'Commissioner', sans-serif;
+}
