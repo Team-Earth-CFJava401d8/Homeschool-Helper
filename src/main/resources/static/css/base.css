@@ -88,10 +88,10 @@
   border-radius: 10px;
   border-width: 5px;
   border-color: #309ABA;
-  inline-size: 480px;
+  inline-size: 230px;
   margin: auto;
   margin-top: 90px;
-  inline-size: 215px;
+  font-family: 'Caveat', cursive;
 }
 
 #sign-up-finish {
@@ -368,4 +368,15 @@
 
 .basic-column-box select, .basic-column-box input {
     margin: 10px 0px 10px 0px;
+}
+
+ol * {
+    background-color: #E6C67C;
+    font-family: 'Commissioner', sans-serif;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#books-list, ol, ul {
+    background-color: #E6C67C;
 }
