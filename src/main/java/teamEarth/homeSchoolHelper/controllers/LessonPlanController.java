@@ -67,7 +67,7 @@ public class LessonPlanController {
         List<SubCat> subCats = subCatRepository.findAllSubCatBySubjectId(subjectId);
         List<Book> books = bookRepository.findAllBooksBySubjectId(subjectId);
         List<Links> links = linksRepository.findAll();
-        LessonPlan lessonPlan = new LessonPlan("Addition", subjectName, null,
+        LessonPlan lessonPlan = new LessonPlan("---", subjectName, null,
                 "", null, "", null);
 
         lessonPlanRepository.save(lessonPlan);
